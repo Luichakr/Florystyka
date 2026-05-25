@@ -717,8 +717,10 @@
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 280px 280px;
       gap: 18px;
+    }
+    .port-item:not(:first-child) {
+      aspect-ratio: 1 / 1;
     }
     .port-item {
       overflow: hidden;
