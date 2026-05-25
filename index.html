@@ -909,14 +909,24 @@
       background:
         radial-gradient(circle at 50% 55%, rgba(232,220,200,.55) 0%, transparent 60%),
         linear-gradient(135deg, #ece2d0 0%, #d8c8ad 100%);
+    }
+    /* Photo layer — scaled 1.15x for tighter crop */
+    .product-visual[data-photo]::before {
+      content: '';
+      position: absolute;
+      inset: 0;
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      transform: scale(1.15);
+      transform-origin: center;
+      z-index: 0;
     }
-    .product-visual[data-photo="bouquet-rozy"]     { background-image: url('bouquet-1.jpg'); }
-    .product-visual[data-photo="bouquet-piwonie"]  { background-image: url('bouquet-2.jpg'); }
-    .product-visual[data-photo="bouquet-autorska"] { background-image: url('bouquet-3.jpg'); }
-    .product-visual[data-photo="bouquet-hortensje"]{ background-image: url('bouquet-4.jpg'); }
+    .product-visual > * { position: relative; z-index: 2; }
+    .product-visual[data-photo="bouquet-rozy"]::before     { background-image: url('bouquet-1.jpg'); }
+    .product-visual[data-photo="bouquet-piwonie"]::before  { background-image: url('bouquet-2.jpg'); }
+    .product-visual[data-photo="bouquet-autorska"]::before { background-image: url('bouquet-3.jpg'); }
+    .product-visual[data-photo="bouquet-hortensje"]::before{ background-image: url('bouquet-4.jpg'); }
     .product-num {
       position: absolute;
       top: 16px; left: 20px;
@@ -996,7 +1006,7 @@
 
     /* ─── ABOUT ─── */
     .about {
-      background: var(--bg-alt);
+      background: var(--bg);
       display: grid;
       grid-template-columns: 6fr 5fr;
       gap: 64px;
