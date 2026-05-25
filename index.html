@@ -1007,49 +1007,34 @@
         radial-gradient(circle at 50% 55%, rgba(232,220,200,.45) 0%, transparent 65%),
         linear-gradient(135deg, #e8dccb 0%, #d8c8ad 100%);
     }
-    /* Circular VFG badge — top-left overlay */
+    /* Circular VFG badge — top-left overlay (curved text via SVG) */
     .about-badge {
       position: absolute;
-      top: 36px;
-      left: 36px;
-      width: 124px;
-      height: 124px;
-      border: 1px solid var(--gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      color: var(--gold);
-      background: rgba(255, 252, 247, .35);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
+      top: 32px;
+      left: 32px;
+      width: 150px;
+      height: 150px;
       z-index: 2;
     }
-    .about-badge-top, .about-badge-bot {
-      position: absolute;
-      font-size: 8px;
-      letter-spacing: .35em;
-      text-transform: uppercase;
+    .about-badge svg {
       width: 100%;
-      text-align: center;
-      color: var(--gold);
+      height: 100%;
+      display: block;
     }
-    .about-badge-top { top: 14px; }
-    .about-badge-bot { bottom: 14px; }
-    .about-badge-mono {
+    .about-badge svg text {
+      font-family: 'Inter', sans-serif;
+      fill: #C9A96E;
+    }
+    .about-badge svg .badge-arc-text {
+      font-size: 7.5px;
+      letter-spacing: 3px;
+    }
+    .about-badge svg .badge-mono {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-weight: 300;
-      font-size: 32px;
-      line-height: 1;
-      color: var(--gold);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
+      font-size: 24px;
+      letter-spacing: .04em;
     }
-    .about-badge-mono span { display: block; }
 
     .about-content {
       padding: 0;
@@ -1088,33 +1073,33 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      margin-top: 40px;
-      padding-top: 36px;
+      margin-top: 44px;
+      padding-top: 40px;
       border-top: 1px solid rgba(201,169,110,.25);
-      max-width: 560px;
     }
     .about-stat { text-align: center; }
     .about-stat-ico {
       color: var(--gold);
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       display: flex;
       justify-content: center;
     }
-    .about-stat-ico svg { width: 32px; height: 32px; stroke: currentColor; fill: none; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+    .about-stat-ico svg { width: 40px; height: 40px; stroke: currentColor; fill: none; stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; }
     .about-stat-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 32px;
+      font-size: 38px;
       font-weight: 300;
       color: var(--gold);
       line-height: 1;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      letter-spacing: -.01em;
     }
     .about-stat-lbl {
-      font-size: 9.5px;
+      font-size: 10px;
       letter-spacing: .22em;
       text-transform: uppercase;
       color: var(--text-muted);
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
     .signature {
@@ -2687,9 +2672,21 @@
 <div class="about" id="about">
   <div class="about-photo reveal" data-photo="about-viktoriya">
     <div class="about-badge">
-      <div class="about-badge-top">Vittoria Fiore Gallery</div>
-      <div class="about-badge-mono"><span>V . F.</span><span>G</span></div>
-      <div class="about-badge-bot">Estd · MMXVII</div>
+      <svg viewBox="0 0 150 150" aria-label="Vittoria Fiore Gallery — Estd MMXVII">
+        <defs>
+          <path id="vfgArcTop" d="M 20,75 A 55,55 0 0 1 130,75" fill="none"/>
+          <path id="vfgArcBot" d="M 25,75 A 50,50 0 0 0 125,75" fill="none"/>
+        </defs>
+        <circle cx="75" cy="75" r="68" fill="none" stroke="#C9A96E" stroke-width="1"/>
+        <text class="badge-arc-text">
+          <textPath href="#vfgArcTop" startOffset="50%" text-anchor="middle">VITTORIA FIORE GALLERY</textPath>
+        </text>
+        <text class="badge-arc-text">
+          <textPath href="#vfgArcBot" startOffset="50%" text-anchor="middle">ESTD · MMXVII</textPath>
+        </text>
+        <text class="badge-mono" x="75" y="73" text-anchor="middle">V . F .</text>
+        <text class="badge-mono" x="75" y="98" text-anchor="middle">G</text>
+      </svg>
     </div>
   </div>
   <div class="about-content reveal">
@@ -2702,7 +2699,7 @@
       <div class="about-stat">
         <div class="about-stat-ico"><svg viewBox="0 0 32 32"><use href="#ico-floral-1"/></svg></div>
         <div class="about-stat-num">8+</div>
-        <div class="about-stat-lbl">Lat<br>doświadczenia</div>
+        <div class="about-stat-lbl">Lat doświadczenia</div>
       </div>
       <div class="about-stat">
         <div class="about-stat-ico"><svg viewBox="0 0 32 32"><use href="#ico-floral-2"/></svg></div>
