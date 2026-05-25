@@ -3318,6 +3318,175 @@
 </div>
 
 <script>
+  // ── I18N — PL is default, swap to EN/RU via dict ──
+  const I18N = {
+    en: {
+      // nav
+      'Dla firm':'For business','Bukiety':'Bouquets','Ślub':'Wedding','Warsztaty':'Workshops',
+      'Kontakt':'Contact','Realizacje':'Portfolio','O Viktorii':'About',
+      // topbar
+      'Dostawa w Warszawie w 3h':'Delivery in Warsaw within 3h',
+      'Aranżacje dla hoteli, restauracji & eventów premium':'Floral arrangements for premium hotels, restaurants & events',
+      // hero
+      'Luksusowa sztuka kwiatowa dla przestrzeni, które wymagają':'Luxury floral art for spaces that demand',
+      'doskonałości.':'excellence.',
+      'Aranżacje kwiatowe dla hoteli, restauracji, salonów samochodowych i eventów premium w Warszawie i całej Polsce.':'Floral arrangements for hotels, restaurants, car showrooms and premium events in Warsaw and across Poland.',
+      'Porozmawiajmy o współpracy':"Let's talk collaboration",
+      'Zobacz realizacje':'View portfolio',
+      'Lat doświadczenia':'Years of experience',
+      'Eventów premium':'Premium events',
+      'Hoteli i restauracji':'Hotels & restaurants',
+      'Ocena Google':'Google rating',
+      'Klientów powraca':'Clients return',
+      '„Każda kompozycja to dialog między kwiatem a przestrzenią."':'"Every composition is a dialogue between flower and space."',
+      'Dostępna konsultacja':'Consultation available',
+      'Odpowiedź w 24h':'Reply within 24h',
+      // trust bar
+      'Hotele':'Hotels','Restauracje':'Restaurants','Eventy':'Events','Wesela':'Weddings',
+      'Salony Auto':'Car Showrooms','Cała Polska':'All Poland','Warszawa':'Warsaw',
+      // services
+      'Oferta premium':'Premium offer',
+      'Tworzymy dla przestrzeni,':'We design for spaces',
+      'które mówią o':'that speak of',
+      'klasie':'class',
+      'Każda aranżacja to indywidualny projekt — dostosowany do charakteru miejsca, sezonu i estetyki marki naszego klienta.':'Every arrangement is a bespoke project — tailored to the venue, season, and the aesthetic of our clients brand.',
+      'Hotele & SPA':'Hotels & SPA',
+      'Regularne, kuratorowane kompozycje kwiatowe dla lobby, restauracji hotelowej i stref relaksu. Subskrypcja tygodniowa lub miesięczna z gwarancją świeżości.':'Regular, curated floral compositions for lobbies, hotel restaurants and relaxation zones. Weekly or monthly subscription with freshness guarantee.',
+      'B2B · abonament':'B2B · subscription',
+      'Restauracje Fine Dining':'Fine Dining Restaurants',
+      'Sezonowe aranżacje stołów, kompozycje wejściowe i dekoracje baru.':'Seasonal table arrangements, entrance compositions and bar decor.',
+      'Sezonowe':'Seasonal',
+      'Salony Samochodowe':'Car Showrooms',
+      'Premium display dla showroomów premium klasy.':'Premium displays for high-class showrooms.',
+      'Luxury display':'Luxury display',
+      'Eventy & Konferencje':'Events & Conferences',
+      'Ekskluzywna oprawa konferencji, gal i wieczorów specjalnych.':'Exclusive floral setting for conferences, galas and special evenings.',
+      'Jednorazowe':'One-time',
+      'Florystyka Ślubna':'Wedding Floristry',
+      'Kompleksowa oprawa ceremonii, sali weselnej i bukietów.':'Complete arrangement of ceremony, wedding venue and bouquets.',
+      'Wesela premium':'Premium weddings',
+      'Biura & Przestrzenie':'Offices & Spaces',
+      'Stałe kompozycje dla biur klasy A i sal konferencyjnych.':'Permanent compositions for class A offices and conference rooms.',
+      'B2B · cykliczne':'B2B · recurring',
+      // offer
+      'na pierwszą współpracę B2B':'on your first B2B collaboration',
+      'Dla hoteli, restauracji i firm — zapytaj o indywidualną wycenę':'For hotels, restaurants and businesses — ask for a custom quote',
+      'Zapytaj o wycenę':'Ask for a quote',
+      // portfolio
+      'Portfolio':'Portfolio',
+      'Realizacje, które':'Projects that',
+      'mówią same':'speak for themselves',
+      'Każda aranżacja to indywidualna opowieść o miejscu, marce i emocjach. Zobacz wybrane realizacje, które tworzymy z pasją i dbałością o każdy detal.':'Each arrangement is a personal story of place, brand and emotion. Discover selected projects we create with passion and attention to every detail.',
+      'Zobacz pełne portfolio':'View full portfolio',
+      // bouquets
+      'Na zamówienie':'Bespoke',
+      'Bukiety':'Bouquets',
+      'Bespoke':'Bespoke',
+      'Personalizowane kompozycje z najlepszych kwiatów — Holandia, Ekwador, Kenia. Dostawa w Warszawie w 3 godziny.':'Personalised compositions of the finest flowers — Holland, Ecuador, Kenya. Delivery in Warsaw within 3 hours.',
+      'Zobacz wszystkie kompozycje':'View all compositions',
+      'Bestseller':'Bestseller','Authorial':'Signature','Premium':'Premium',
+      'Róże Ekwadorskie':'Ecuadorian Roses','Ekwador · 50–101 szt.':'Ecuador · 50–101 stems',
+      'Piwonie Holenderskie':'Dutch Peonies','Holandia · sezonowe':'Holland · seasonal',
+      'Kompozycja Autorska':'Signature Composition','Mix premium · seasonal':'Premium mix · seasonal',
+      'Hortensje & Orchidee':'Hydrangeas & Orchids','Holandia · całoroczne':'Holland · all year',
+      'od 290 zł':'from 290 PLN','od 340 zł':'from 340 PLN','od 420 zł':'from 420 PLN','od 380 zł':'from 380 PLN',
+      '/ bukiet':'/ bouquet',
+      // about
+      'O mnie':'About',
+      'Florystka z duszą artysty':'Florist with an artist soul',
+      '„Każdy kwiat opowiada historię. Moją rolą jest sprawić, żeby opowiadał historię Twojej przestrzeni."':'"Every flower tells a story. My role is to make it tell the story of your space."',
+      'Jestem Viktoriya — twórczynią Vittoria Fiore Gallery. Inspirują mnie emocje, natura i piękno w najczystszej formie. Od lat tworzę luksusowe aranżacje dla najbardziej wymagających przestrzeni w Polsce.':"I'm Viktoriya — founder of Vittoria Fiore Gallery. I'm inspired by emotion, nature and beauty in its purest form. For years I've been creating luxury arrangements for the most demanding spaces in Poland.",
+      'Pracuję wyłącznie z kwiatami najwyższej jakości, sprowadzanymi z Holandii, Ekwadoru i Kenii. Każdy projekt traktuję jak dzieło sztuki — z dbałością o każdy detal.':'I work exclusively with the highest-quality flowers sourced from Holland, Ecuador and Kenya. I treat each project as a work of art — with attention to every detail.',
+      'Zrealizowanych':'Completed','projektów':'projects',
+      'Kraje, z których':'Countries we','pozyskujemy kwiaty':'source flowers from',
+      // FAQ
+      'FAQ':'FAQ','Najczęstsze':'Frequently asked','pytania':'questions',
+      'Nie znalazłaś odpowiedzi na swoje pytanie?':"Couldn't find your answer?",
+      'Skontaktuj się z nami — chętnie pomożemy.':"Get in touch — we're happy to help.",
+      'Skontaktuj się':'Contact us',
+      // contact
+      'Porozmawiajmy':"Let's talk",
+      'o Twojej':'about your',
+      'przestrzeni':'space',
+      'Opowiedz nam o swoim projekcie. Skontaktujemy się w ciągu 24 godzin z indywidualną propozycją.':"Tell us about your project. We'll get back to you within 24h with a personalised proposal.",
+      'Imię i nazwisko':'Full name','Firma / Hotel / Restauracja':'Company / Hotel / Restaurant',
+      'Telefon':'Phone','Email':'Email','Rodzaj współpracy':'Type of collaboration',
+      'Wiadomość':'Message','Wyślij zapytanie':'Send inquiry',
+      'Nazwa firmy':'Company name','Opisz krótko swój projekt lub potrzeby...':'Briefly describe your project or needs...',
+      'Wybierz...':'Select...','Dane kontaktowe':'Contact info',
+      'Dostawa · cała Polska na eventy':'Delivery · all Poland for events',
+      'Godziny':'Hours','Pon–Pt 9:00–19:00 · Sob 10:00–16:00':'Mon–Fri 9–19 · Sat 10–16',
+      'Języki obsługi':'Languages',
+      // newsletter / footer
+      'Newsletter':'Newsletter',
+      'Zostań w kręgu':'Join the','premium':'circle',
+      'Nowe kompozycje, sezonowe inspiracje i ekskluzywne oferty B2B — raz w miesiącu.':'New compositions, seasonal inspirations and exclusive B2B offers — once a month.',
+      'Subskrybuj':'Subscribe',
+      'Luksusowe aranżacje kwiatowe':'Luxury floral arrangements',
+      'dla przestrzeni, które wymagają doskonałości.':'for spaces that demand excellence.',
+      'Fiori che raccontano storie.':'Fiori che raccontano storie.',
+      'Oferta':'Services','Informacje':'Information',
+      'Bukiety bespoke':'Bespoke bouquets','Florystyka ślubna':'Wedding floristry','Dostawa domowa':'Home delivery',
+      'Blog':'Blog','Polityka prywatności':'Privacy policy',
+      '© 2026 Vittoria Fiore Gallery. Wszelkie prawa zastrzeżone.':'© 2026 Vittoria Fiore Gallery. All rights reserved.',
+    },
+    ru: {
+      'Dla firm':'Для бизнеса','Bukiety':'Букеты','Ślub':'Свадьба','Warsztaty':'Воркшопы',
+      'Kontakt':'Контакт','Realizacje':'Портфолио','O Viktorii':'О Виктории',
+      'Dostawa w Warszawie w 3h':'Доставка в Варшаве за 3 часа',
+      'Porozmawiajmy o współpracy':'Поговорим о сотрудничестве',
+      'Zobacz realizacje':'Смотреть портфолио',
+      'Hotele':'Отели','Restauracje':'Рестораны','Eventy':'Эвенты','Wesela':'Свадьбы',
+      'Salony Auto':'Автосалоны','Cała Polska':'Вся Польша','Warszawa':'Варшава',
+      'Hotele & SPA':'Отели и СПА','Restauracje Fine Dining':'Рестораны Fine Dining',
+      'Salony Samochodowe':'Автосалоны','Eventy & Konferencje':'События и конференции',
+      'Florystyka Ślubna':'Свадебная флористика','Biura & Przestrzenie':'Офисы и пространства',
+      'Bestseller':'Бестселлер','Premium':'Премиум','Sezonowe':'Сезонные','Authorial':'Авторская',
+      'Wyślij zapytanie':'Отправить заявку','Subskrybuj':'Подписаться','Zapytaj o wycenę':'Запросить смету',
+      'Polski':'Польский','Русский':'Русский','English':'Английский',
+    }
+  };
+
+  let originalSnapshot = null;
+  function snapshotOriginal() {
+    if (originalSnapshot) return;
+    originalSnapshot = new Map();
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: n => (n.nodeValue && n.nodeValue.trim() && !n.parentElement.closest('script,style,svg'))
+        ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT
+    });
+    let n; while (n = walker.nextNode()) originalSnapshot.set(n, n.nodeValue);
+  }
+
+  function applyLang(lang) {
+    snapshotOriginal();
+    document.documentElement.lang = lang === 'en' ? 'en' : (lang === 'ru' ? 'ru' : 'pl');
+    document.querySelectorAll('.lang-switch a, .mobile-menu-lang a').forEach(a => {
+      a.classList.toggle('active', a.textContent.trim().toLowerCase() === lang);
+    });
+    const dict = I18N[lang];
+    originalSnapshot.forEach((origText, node) => {
+      if (!dict) { node.nodeValue = origText; return; }
+      const t = origText.trim();
+      if (dict[t]) node.nodeValue = origText.replace(t, dict[t]);
+      else node.nodeValue = origText;
+    });
+    localStorage.setItem('vfg-lang', lang);
+  }
+
+  // hook language buttons
+  document.querySelectorAll('.lang-switch a, .mobile-menu-lang a').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const code = a.textContent.trim().toLowerCase();
+      applyLang(code);
+    });
+  });
+
+  // restore on load
+  const savedLang = localStorage.getItem('vfg-lang');
+  if (savedLang && savedLang !== 'pl') applyLang(savedLang);
+
   // ── THEME TOGGLE ──
   const html = document.documentElement;
   const toggleBtn = document.getElementById('themeToggleSwitch');
