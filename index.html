@@ -1655,6 +1655,9 @@
     .thanks-icon .ico { width: 28px; height: 28px; stroke-width: 1.6; }
     .btn-ico          { width: 12px; height: 12px; vertical-align: -1px; margin-left: 6px; stroke-width: 1.8; }
     .star-ico         { width: 14px; height: 14px; fill: currentColor; stroke: none; margin: 0 1px; }
+    .flag-ico         { width: 20px; height: 14px; stroke: none; vertical-align: -3px; margin-right: 4px; display: inline-block; }
+    .lang-list        { display: flex; gap: 16px; font-size: 13px; color: var(--text-muted); flex-wrap: wrap; align-items: center; }
+    .lang-list span   { display: inline-flex; align-items: center; }
     .footer-socials svg { stroke-width: 0; }  /* socials use fill, override default */
 
     /* ════════════════════════════════════════════════════════════
@@ -2035,6 +2038,11 @@
 
     <!-- Star (filled for rating) -->
     <symbol id="ico-star" viewBox="0 0 24 24"><polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.5 12 18.2 5.8 21.5 7 14.5 2 9.6 8.9 8.6"/></symbol>
+
+    <!-- Flag pictograms -->
+    <symbol id="ico-flag-pl" viewBox="0 0 24 16"><rect width="24" height="8" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/><rect x=".5" y=".5" width="23" height="15" fill="none" stroke="rgba(0,0,0,.18)"/></symbol>
+    <symbol id="ico-flag-ru" viewBox="0 0 24 16"><rect width="24" height="5.33" fill="#fff"/><rect y="5.33" width="24" height="5.34" fill="#0039A6"/><rect y="10.67" width="24" height="5.33" fill="#D52B1E"/><rect x=".5" y=".5" width="23" height="15" fill="none" stroke="rgba(0,0,0,.18)"/></symbol>
+    <symbol id="ico-flag-gb" viewBox="0 0 24 16"><rect width="24" height="16" fill="#012169"/><path d="M0 0L24 16M24 0L0 16" stroke="#fff" stroke-width="2.4"/><path d="M12 0v16M0 8h24" stroke="#fff" stroke-width="4"/><path d="M12 0v16M0 8h24" stroke="#C8102E" stroke-width="2"/><rect x=".5" y=".5" width="23" height="15" fill="none" stroke="rgba(0,0,0,.18)"/></symbol>
   </defs>
 </svg>
 
@@ -2545,10 +2553,10 @@
     </div>
     <div style="margin-top:40px;padding:20px;border:1px solid var(--border);background:var(--card)">
       <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Języki obsługi</div>
-      <div style="display:flex;gap:12px;font-size:13px;color:var(--muted)">
-        <span>🇵🇱 Polski</span>
-        <span>🇷🇺 Русский</span>
-        <span>🇬🇧 English</span>
+      <div class="lang-list">
+        <span><svg class="flag-ico"><use href="#ico-flag-pl"/></svg> Polski</span>
+        <span><svg class="flag-ico"><use href="#ico-flag-ru"/></svg> Русский</span>
+        <span><svg class="flag-ico"><use href="#ico-flag-gb"/></svg> English</span>
       </div>
     </div>
   </div>
