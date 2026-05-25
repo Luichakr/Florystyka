@@ -1251,7 +1251,8 @@
     .footer-col ul li a:hover { color: var(--ivory); }
     .footer-bottom {
       border-top: 1px solid var(--border);
-      padding-top: 24px;
+      padding-top: 40px;
+      margin-top: 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -1658,7 +1659,7 @@
     .flag-ico         { width: 20px; height: 14px; stroke: none; vertical-align: -3px; margin-right: 4px; display: inline-block; }
     .lang-list        { display: flex; gap: 16px; font-size: 13px; color: var(--text-muted); flex-wrap: wrap; align-items: center; }
     .lang-list span   { display: inline-flex; align-items: center; }
-    .footer-socials svg { stroke-width: 0; }  /* socials use fill, override default */
+    /* socials: each SVG has its own stroke/fill attrs; no global override */
 
     /* ════════════════════════════════════════════════════════════
        RESPONSIVE — large screens / tablet / mobile
