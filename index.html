@@ -1635,6 +1635,28 @@
 
     body.modal-locked { overflow: hidden; }
 
+    /* SVG icons — universal */
+    .ico {
+      width: 1em;
+      height: 1em;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+    .service-icon .ico { width: 20px; height: 20px; }
+    .faq-icon .ico    { width: 14px; height: 14px; stroke-width: 1.8; }
+    .port-arrow .ico  { width: 14px; height: 14px; stroke-width: 1.6; }
+    .product-cta .ico { width: 12px; height: 12px; stroke-width: 1.8; }
+    .ci-icon .ico     { width: 16px; height: 16px; stroke-width: 1.4; }
+    .modal-close .ico { width: 14px; height: 14px; stroke-width: 1.6; }
+    .thanks-icon .ico { width: 28px; height: 28px; stroke-width: 1.6; }
+    .btn-ico          { width: 12px; height: 12px; vertical-align: -1px; margin-left: 6px; stroke-width: 1.8; }
+    .star-ico         { width: 14px; height: 14px; fill: currentColor; stroke: none; margin: 0 1px; }
+    .footer-socials svg { stroke-width: 0; }  /* socials use fill, override default */
+
     /* ════════════════════════════════════════════════════════════
        RESPONSIVE — large screens / tablet / mobile
        ════════════════════════════════════════════════════════════ */
@@ -1987,6 +2009,35 @@
 </head>
 <body>
 
+<!-- ─── ICON SPRITE ─── -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
+  <defs>
+    <!-- Service icons -->
+    <symbol id="ico-hotel" viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-7h6v7"/><path d="M3 21h18"/></symbol>
+    <symbol id="ico-utensils" viewBox="0 0 24 24"><path d="M7 3v18"/><path d="M5 3v6a2 2 0 0 0 2 2 2 2 0 0 0 2-2V3"/><path d="M17 13c-2 0-3-1-3-3V5a2 2 0 0 1 4 0v16"/></symbol>
+    <symbol id="ico-car" viewBox="0 0 24 24"><path d="M5 17h14"/><rect x="3" y="11" width="18" height="6" rx="1"/><path d="M5 11l2-5h10l2 5"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/></symbol>
+    <symbol id="ico-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17l.7 2L22 20l-2.3.7L19 23l-.7-2.3L16 20l2.3-.7z"/></symbol>
+    <symbol id="ico-rings" viewBox="0 0 24 24"><circle cx="9" cy="14" r="5"/><circle cx="16" cy="11" r="4"/></symbol>
+    <symbol id="ico-building" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18"/><path d="M9 8h1M14 8h1M9 12h1M14 12h1M9 16h1M14 16h1"/><path d="M10 21v-3h4v3"/></symbol>
+
+    <!-- UI icons -->
+    <symbol id="ico-chevron-down" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
+    <symbol id="ico-arrow-ur" viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></symbol>
+    <symbol id="ico-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></symbol>
+    <symbol id="ico-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="ico-check" viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></symbol>
+
+    <!-- Contact icons -->
+    <symbol id="ico-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></symbol>
+    <symbol id="ico-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 6 12 13 22 6"/></symbol>
+    <symbol id="ico-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="ico-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></symbol>
+
+    <!-- Star (filled for rating) -->
+    <symbol id="ico-star" viewBox="0 0 24 24"><polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.5 12 18.2 5.8 21.5 7 14.5 2 9.6 8.9 8.6"/></symbol>
+  </defs>
+</svg>
+
 <!-- TOP BAR -->
 <div class="topbar">
   Dostawa w Warszawie w 3h &nbsp;·&nbsp; Aranżacje dla hoteli, restauracji & eventów premium &nbsp;·&nbsp; +48 XXX XXX XXX
@@ -2081,7 +2132,7 @@
 <!-- TRUST BAR -->
 <div class="trust-bar">
   <div class="trust-item">
-    <span class="trust-stars">★★★★★</span>
+    <span class="trust-stars"><svg class="star-ico"><use href="#ico-star"/></svg><svg class="star-ico"><use href="#ico-star"/></svg><svg class="star-ico"><use href="#ico-star"/></svg><svg class="star-ico"><use href="#ico-star"/></svg><svg class="star-ico"><use href="#ico-star"/></svg></span>
     <strong>4.9</strong>
     <span>Google · 182 opinie</span>
   </div>
@@ -2108,7 +2159,7 @@
     <!-- Hero card 2×2 -->
     <div class="service-card service-card--hero">
       <div class="service-head">
-        <div class="service-icon">✦</div>
+        <div class="service-icon"><svg class="ico"><use href="#ico-hotel"/></svg></div>
         <div class="service-num">01 / Flagship</div>
       </div>
       <div>
@@ -2120,7 +2171,7 @@
     <!-- Standard cards -->
     <div class="service-card">
       <div class="service-head">
-        <div class="service-icon">◈</div>
+        <div class="service-icon"><svg class="ico"><use href="#ico-utensils"/></svg></div>
         <div class="service-num">02</div>
       </div>
       <div>
@@ -2131,7 +2182,7 @@
     </div>
     <div class="service-card">
       <div class="service-head">
-        <div class="service-icon">◇</div>
+        <div class="service-icon"><svg class="ico"><use href="#ico-car"/></svg></div>
         <div class="service-num">03</div>
       </div>
       <div>
@@ -2142,7 +2193,7 @@
     </div>
     <div class="service-card">
       <div class="service-head">
-        <div class="service-icon">❋</div>
+        <div class="service-icon"><svg class="ico"><use href="#ico-sparkle"/></svg></div>
         <div class="service-num">04</div>
       </div>
       <div>
@@ -2153,7 +2204,7 @@
     </div>
     <div class="service-card">
       <div class="service-head">
-        <div class="service-icon">✿</div>
+        <div class="service-icon"><svg class="ico"><use href="#ico-rings"/></svg></div>
         <div class="service-num">05</div>
       </div>
       <div>
@@ -2164,7 +2215,7 @@
     </div>
     <div class="service-card">
       <div class="service-head">
-        <div class="service-icon">⬡</div>
+        <div class="service-icon"><svg class="ico"><use href="#ico-building"/></svg></div>
         <div class="service-num">06</div>
       </div>
       <div>
@@ -2203,7 +2254,7 @@
         <div class="port-loc">Warszawa · cykliczna kompozycja</div>
       </div>
       <span class="port-tag">Hotel</span>
-      <div class="port-arrow">→</div>
+      <div class="port-arrow"><svg class="ico"><use href="#ico-arrow-ur"/></svg></div>
     </div>
     <div class="port-item" data-form-open="portfolio-inquiry" data-prefill-project="Atelier Amaro — Fine Dining">
       <div class="port-meta">Case 02</div>
@@ -2213,7 +2264,7 @@
         <div class="port-loc">Fine Dining · Warszawa</div>
       </div>
       <span class="port-tag">Restauracja</span>
-      <div class="port-arrow">→</div>
+      <div class="port-arrow"><svg class="ico"><use href="#ico-arrow-ur"/></svg></div>
     </div>
     <div class="port-item" data-form-open="portfolio-inquiry" data-prefill-project="Ferrari Showroom — Auto Fus">
       <div class="port-meta">Case 03</div>
@@ -2223,7 +2274,7 @@
         <div class="port-loc">Auto Fus · premium display</div>
       </div>
       <span class="port-tag">Salon Auto</span>
-      <div class="port-arrow">→</div>
+      <div class="port-arrow"><svg class="ico"><use href="#ico-arrow-ur"/></svg></div>
     </div>
     <div class="port-item" data-form-open="portfolio-inquiry" data-prefill-project="Wesele Pałac w Jabłonnie">
       <div class="port-meta">Case 04</div>
@@ -2233,7 +2284,7 @@
         <div class="port-loc">Florystyka pełna</div>
       </div>
       <span class="port-tag">Wesele</span>
-      <div class="port-arrow">→</div>
+      <div class="port-arrow"><svg class="ico"><use href="#ico-arrow-ur"/></svg></div>
     </div>
     <div class="port-item" data-form-open="portfolio-inquiry" data-prefill-project="Gala BNP Paribas — 380 gości">
       <div class="port-meta">Case 05</div>
@@ -2243,7 +2294,7 @@
         <div class="port-loc">Event korporacyjny · 380 gości</div>
       </div>
       <span class="port-tag">Event</span>
-      <div class="port-arrow">→</div>
+      <div class="port-arrow"><svg class="ico"><use href="#ico-arrow-ur"/></svg></div>
     </div>
   </div>
   <div class="portfolio-cta">
@@ -2273,7 +2324,7 @@
         <div class="origin">Ekwador · 50–101 szt.</div>
         <div class="product-row">
           <div class="product-price">od 290 zł <small>/ bukiet</small></div>
-          <div class="product-cta">→</div>
+          <div class="product-cta"><svg class="ico"><use href="#ico-arrow-right"/></svg></div>
         </div>
       </div>
     </div>
@@ -2288,7 +2339,7 @@
         <div class="origin">Holandia · sezonowe</div>
         <div class="product-row">
           <div class="product-price">od 340 zł <small>/ bukiet</small></div>
-          <div class="product-cta">→</div>
+          <div class="product-cta"><svg class="ico"><use href="#ico-arrow-right"/></svg></div>
         </div>
       </div>
     </div>
@@ -2303,7 +2354,7 @@
         <div class="origin">Mix premium · seasonal</div>
         <div class="product-row">
           <div class="product-price">od 420 zł <small>/ bukiet</small></div>
-          <div class="product-cta">→</div>
+          <div class="product-cta"><svg class="ico"><use href="#ico-arrow-right"/></svg></div>
         </div>
       </div>
     </div>
@@ -2318,7 +2369,7 @@
         <div class="origin">Holandia · całoroczne</div>
         <div class="product-row">
           <div class="product-price">od 380 zł <small>/ bukiet</small></div>
-          <div class="product-cta">→</div>
+          <div class="product-cta"><svg class="ico"><use href="#ico-arrow-right"/></svg></div>
         </div>
       </div>
     </div>
@@ -2374,42 +2425,42 @@
     <div class="faq-item open">
       <div class="faq-question">
         <h4>Jak zamówić regularne dekoracje kwiatowe dla hotelu lub restauracji?</h4>
-        <div class="faq-icon">⌄</div>
+        <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
       </div>
       <div class="faq-answer">Skontaktuj się z nami telefonicznie lub przez formularz. Umówimy bezpłatną konsultację, podczas której omówimy Twoje potrzeby, styl i budżet. Przygotujemy indywidualną ofertę z możliwością abonamentu tygodniowego lub miesięcznego.</div>
     </div>
     <div class="faq-item">
       <div class="faq-question">
         <h4>Ile kosztuje florystyka na event lub konferencję korporacyjną?</h4>
-        <div class="faq-icon">⌄</div>
+        <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
       </div>
       <div class="faq-answer">Cena zależy od skali eventu, rodzaju kompozycji i użytych kwiatów. Wyceny przygotowujemy indywidualnie. Skontaktuj się z nami z opisem eventu — odpiszemy w ciągu 24 godzin.</div>
     </div>
     <div class="faq-item">
       <div class="faq-question">
         <h4>Czy oferujecie aranżacje dla restauracji w Warszawie i poza nią?</h4>
-        <div class="faq-icon">⌄</div>
+        <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
       </div>
       <div class="faq-answer">Tak — obsługujemy klientów w Warszawie z dostawą tego samego dnia, a także w całej Polsce dla eventów i dużych projektów. Skontaktuj się z nami, żeby omówić szczegóły logistyki.</div>
     </div>
     <div class="faq-item">
       <div class="faq-question">
         <h4>Jak działają warsztaty florystyczne Vittoria Fiore?</h4>
-        <div class="faq-icon">⌄</div>
+        <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
       </div>
       <div class="faq-answer">Warsztaty odbywają się w kameralnej atmosferze w małych grupach (do 8 osób). W programie: teoria kompozycji, praca z kwiatami premium i stworzenie własnego bukietu, który zabierasz do domu. Organizujemy też warsztaty dla firm (team-building).</div>
     </div>
     <div class="faq-item">
       <div class="faq-question">
         <h4>Czy dostarczacie kwiaty do domu — subskrypcja tygodniowa?</h4>
-        <div class="faq-icon">⌄</div>
+        <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
       </div>
       <div class="faq-answer">Tak, oferujemy cotygodniową dostawę świeżych kompozycji do domu na terenie Warszawy. Każdy bukiet jest inny — sezonowy i tworzony przez Vikoriyę. Możesz zamówić jednorazowo lub wykupić abonament.</div>
     </div>
     <div class="faq-item">
       <div class="faq-question">
         <h4>Z jakich krajów pochodzą kwiaty Vittoria Fiore Gallery?</h4>
-        <div class="faq-icon">⌄</div>
+        <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
       </div>
       <div class="faq-answer">Pracujemy wyłącznie z kwiatami premium: róże z Ekwadoru i Kenii, piwonie i hortensje z Holandii, egzotyczne gatunki sprowadzane na specjalne zamówienie. Jakość ma dla nas znaczenie — nie idziemy na kompromisy.</div>
     </div>
@@ -2464,28 +2515,28 @@
     <h3 class="section-title" style="font-size:32px;margin-bottom:8px">Vittoria<br><em>Fiore Gallery</em></h3>
     <div class="contact-info">
       <div class="contact-info-item">
-        <div class="ci-icon">✆</div>
+        <div class="ci-icon"><svg class="ico"><use href="#ico-phone"/></svg></div>
         <div class="ci-text">
           <strong>Telefon</strong>
           <span>+48 XXX XXX XXX</span>
         </div>
       </div>
       <div class="contact-info-item">
-        <div class="ci-icon">✉</div>
+        <div class="ci-icon"><svg class="ico"><use href="#ico-mail"/></svg></div>
         <div class="ci-text">
           <strong>Email</strong>
           <span>hello@vittoriagallery.com</span>
         </div>
       </div>
       <div class="contact-info-item">
-        <div class="ci-icon">◎</div>
+        <div class="ci-icon"><svg class="ico"><use href="#ico-pin"/></svg></div>
         <div class="ci-text">
           <strong>Warszawa</strong>
           <span>Dostawa · cała Polska na eventy</span>
         </div>
       </div>
       <div class="contact-info-item">
-        <div class="ci-icon">◷</div>
+        <div class="ci-icon"><svg class="ico"><use href="#ico-clock"/></svg></div>
         <div class="ci-text">
           <strong>Godziny</strong>
           <span>Pon–Pt 9:00–19:00 · Sob 10:00–16:00</span>
@@ -2513,7 +2564,7 @@
     </div>
     <form class="newsletter-form" onsubmit="event.preventDefault()">
       <input type="email" placeholder="twój@email.com" aria-label="Email">
-      <button type="submit" class="btn-primary">Subskrybuj →</button>
+      <button type="submit" class="btn-primary">Subskrybuj <svg class="btn-ico"><use href="#ico-arrow-right"/></svg></button>
     </form>
   </div>
   <div class="footer-grid">
@@ -2580,7 +2631,7 @@
 <div class="modal" id="vfgModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal-backdrop" data-close></div>
   <div class="modal-panel">
-    <button class="modal-close" data-close aria-label="Zamknij">×</button>
+    <button class="modal-close" data-close aria-label="Zamknij"><svg class="ico"><use href="#ico-close"/></svg></button>
     <div id="modalBody"></div>
   </div>
 </div>
@@ -2790,7 +2841,7 @@
       <form class="modal-form" data-source="${sourceKey}" novalidate>
         <input type="hidden" name="source" value="${sourceKey}">
         ${fieldsHtml}
-        <button type="submit" class="btn-primary">${cfg.submit} →</button>
+        <button type="submit" class="btn-primary">${cfg.submit} <svg class="btn-ico"><use href="#ico-arrow-right"/></svg></button>
         <div class="modal-foot">Wysyłając zgadzasz się na kontakt w sprawie zapytania. Twoje dane są bezpieczne.</div>
       </form>
     `;
@@ -2855,7 +2906,7 @@
 
     const thanksHtml = `
       <div class="thanks-state">
-        <div class="thanks-icon">✓</div>
+        <div class="thanks-icon"><svg class="ico"><use href="#ico-check"/></svg></div>
         <h3 class="thanks-title">${title}</h3>
         <p class="thanks-sub">${sub}</p>
         <div class="thanks-source">Źródło zapytania: <strong>${source}</strong></div>
