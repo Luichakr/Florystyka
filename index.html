@@ -1003,9 +1003,8 @@
       position: relative;
       aspect-ratio: 1 / 1.05;
       overflow: hidden;
-      background:
-        radial-gradient(circle at 50% 55%, rgba(232,220,200,.45) 0%, transparent 65%),
-        linear-gradient(135deg, #e8dccb 0%, #d8c8ad 100%);
+      background: url('about.jpg') center/cover no-repeat,
+                  linear-gradient(135deg, #e8dccb 0%, #d8c8ad 100%);
     }
     /* Circular VFG badge — top-left overlay (curved text via SVG) */
     .about-badge {
@@ -1981,7 +1980,6 @@
 
     /* ─── GLOBAL CONTAINER CAP (always 1440px) ─── */
     section,
-    .topbar,
     .trust-bar,
     .about,
     .contact,
@@ -1992,6 +1990,13 @@
       margin-left: auto;
       margin-right: auto;
       width: 100%;
+    }
+    /* Topbar — always full-bleed across viewport */
+    .topbar {
+      max-width: none !important;
+      width: 100%;
+      padding-left: max(20px, calc((100% - 1440px) / 2 + 20px));
+      padding-right: max(20px, calc((100% - 1440px) / 2 + 20px));
     }
     /* Nav full-bleed background, content capped at 1440 via dynamic padding */
     nav {
