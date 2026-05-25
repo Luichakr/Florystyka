@@ -1,0 +1,3307 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vittoria Fiore Gallery · Colors Edition — Luksusowe Aranżacje Kwiatowe Warszawa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── DARK THEME (default) ── */
+    :root {
+      --black:   #0E0E0E;
+      --charcoal:#161616;
+      --card:    #1A1A1A;
+      --gold:    #0F2547;
+      --gold-lt: #1B3A6B;
+      --ivory:   #F5F0E8;
+      --muted:   #8A8070;
+      --border:  rgba(15,37,71,.18);
+
+      /* semantic aliases */
+      --bg:        var(--black);
+      --bg-alt:    var(--charcoal);
+      --bg-card:   var(--card);
+      --text:      var(--ivory);
+      --text-muted:var(--muted);
+      --nav-bg:    rgba(14,14,14,.92);
+      --topbar-bg: var(--gold);
+      --topbar-text:#111;
+      --hero-overlay: linear-gradient(135deg,#1a1510 0%,#2a1f14 40%,#1a1510 100%);
+      --about-bg:  linear-gradient(135deg,#0e0c18,#1e1428,#0e0c18);
+      --offer-bg:  linear-gradient(135deg,#1a1408 0%,#2a1f0a 50%,#1a1408 100%);
+      --footer-bg: #0A1A33;
+      --shadow:    none;
+    }
+
+    /* ── LIGHT THEME ── */
+    html.light {
+      --black:   #FAF7F2;
+      --charcoal:#F0EBE3;
+      --card:    #FFFFFF;
+      --gold:    #0F2547;
+      --gold-lt: #0F2547;
+      --ivory:   #1C1714;
+      --muted:   #7A6A58;
+      --border:  rgba(15,37,71,.2);
+
+      --bg:        #FAF7F2;
+      --bg-alt:    #F0EBE3;
+      --bg-card:   #FFFFFF;
+      --text:      #1C1714;
+      --text-muted:#7A6A58;
+      --nav-bg:    rgba(250,247,242,.94);
+      --topbar-bg: #1C1714;
+      --topbar-text:#0F2547;
+      --hero-overlay: linear-gradient(135deg,#ede5d8 0%,#f5ede0 40%,#ede5d8 100%);
+      --about-bg:  linear-gradient(135deg,#ede5d8,#e8ddd0,#ede5d8);
+      --offer-bg:  linear-gradient(135deg,#f0e8d4 0%,#f5edda 50%,#f0e8d4 100%);
+      --footer-bg: #1C1714;
+      --shadow:    0 2px 24px rgba(0,0,0,.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    /* Scroll reveal — opt-in via .reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1);
+      transition-delay: var(--delay, 0ms);
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      transition: background .4s, color .4s;
+    }
+
+    /* ─── TOP BAR ─── */
+    .topbar {
+      background: var(--gold);
+      color: #111;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 9px 20px;
+    }
+    .topbar span { margin: 0 18px; opacity: .8; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 72px;
+    }
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .nav-left a, .nav-right a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-left a:hover, .nav-right a:hover { color: var(--gold); }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .lang-switch {
+      display: flex;
+      gap: 6px;
+      font-size: 11px;
+      letter-spacing: .08em;
+    }
+    .lang-switch a {
+      color: var(--muted) !important;
+      padding: 2px 4px;
+      border-radius: 2px;
+      transition: all .2s;
+    }
+    .lang-switch a.active { color: var(--gold) !important; }
+    .nav-cta {
+      border: 1px solid var(--gold);
+      color: var(--gold) !important;
+      padding: 7px 18px;
+      border-radius: 2px;
+      font-size: 11px !important;
+      letter-spacing: .12em;
+      transition: all .2s;
+    }
+    .nav-cta:hover {
+      background: var(--gold);
+      color: #111 !important;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: clamp(720px, 92vh, 940px);
+      position: relative;
+      overflow: hidden;
+      max-width: none !important;       /* full-bleed image across full viewport */
+      width: 100%;
+      margin: 0;
+      background:
+        linear-gradient(90deg, rgba(245,240,232,.9) 0%, rgba(245,240,232,.6) 32%, rgba(0,0,0,0) 55%),
+        url('hero.jpg') center/cover no-repeat;
+    }
+    html.light .hero {
+      background:
+        linear-gradient(90deg, rgba(250,247,242,.92) 0%, rgba(250,247,242,.65) 30%, rgba(0,0,0,0) 55%),
+        url('hero.jpg') center/cover no-repeat;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+      min-height: inherit;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 88px 56px 88px 80px;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 3vw, 48px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 20px;
+      max-width: 580px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 420px;
+      margin-bottom: 28px;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold);
+      color: #111;
+      padding: 16px 36px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all .25s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-lt); }
+    .btn-ghost {
+      color: var(--ivory);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color .2s;
+    }
+    .btn-ghost:hover { color: var(--gold); }
+    .btn-ghost::after { content: '→'; transition: transform .2s; }
+    .btn-ghost:hover::after { transform: translateX(4px); }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .hero-stat {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .hero-stat-ico {
+      width: 36px; height: 36px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .hero-stat-ico .ico { width: 16px; height: 16px; }
+    .hero-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .hero-right {
+      position: relative;
+      padding: 80px 80px 80px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      gap: 20px;
+    }
+    /* Floating quote panel — top right over photo */
+    .hero-quote {
+      position: absolute;
+      top: 50%;
+      right: 80px;
+      transform: translateY(-30%);
+      max-width: 300px;
+      background: rgba(255, 252, 247, .92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(15,37,71,.2);
+      padding: 26px 26px 22px;
+      text-align: center;
+      box-shadow: 0 12px 36px rgba(60, 40, 20, .08);
+    }
+    html:not(.light) .hero-quote { background: rgba(20,18,14,.78); border-color: rgba(15,37,71,.3); }
+    .hero-quote-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      letter-spacing: -.02em;
+    }
+    .hero-quote-label {
+      font-size: 10px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+    .hero-quote-divider {
+      width: 48px; height: 1px;
+      background: var(--gold);
+      margin: 18px auto;
+    }
+    .hero-quote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.45;
+      color: var(--text);
+    }
+    .hero-quote-cite {
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    /* Floating editorial badge over hero image */
+    .hero-badge {
+      position: absolute;
+      bottom: 48px;
+      right: 48px;
+      z-index: 3;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 18px 22px;
+      max-width: 280px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+    .hero-badge-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 4px rgba(15,37,71,.18);
+      animation: pulse 2.4s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 4px rgba(15,37,71,.18); }
+      50%     { box-shadow: 0 0 0 9px rgba(15,37,71,.05); }
+    }
+    .hero-badge-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .hero-badge-sub {
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Decorative floral SVG overlay */
+    .hero-deco {
+      position: absolute;
+      bottom: 40px;
+      left: 40px;
+      z-index: 2;
+    }
+
+    /* Hero badge — bottom-right pill */
+    .hero-badge {
+      position: relative;
+      align-self: flex-end;
+      margin-right: 0;
+    }
+
+    /* ─── TRUST BAR ─── */
+    .trust-bar {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      letter-spacing: .2em;
+      color: var(--text);
+      text-transform: uppercase;
+    }
+    .trust-item .ico {
+      width: 22px; height: 22px;
+      color: var(--gold);
+      stroke-width: 1.3;
+    }
+    .trust-item strong { color: var(--text); font-weight: 500; }
+
+    /* ─── SECTION COMMON ─── */
+    section { padding: 100px 80px; }
+    .section-eyebrow {
+      font-size: 11px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--ivory);
+      margin-bottom: 16px;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 56px;
+    }
+
+    /* ─── SERVICES ─── */
+    .services { background: var(--charcoal); }
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    /* Bento: 3 cols × 4 rows, hero card occupies 2×2 */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 0;
+      transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .25s, box-shadow .3s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      aspect-ratio: 2 / 1;          /* card 2:1 → each half is square */
+    }
+    .service-card.service-card--hero { aspect-ratio: auto; }   /* hero auto-fills 2×2 span */
+    .service-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold);
+      box-shadow: 0 18px 40px rgba(60, 40, 20, .08);
+    }
+    /* Photo placeholder — left half */
+    .service-photo {
+      position: relative;
+      background:
+        radial-gradient(circle at 40% 40%, rgba(15,37,71,.18) 0%, transparent 55%),
+        linear-gradient(135deg, #e8dccb 0%, #d8c8ad 100%);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      overflow: hidden;
+    }
+    .service-photo[data-photo="service-hotel"]     { background-image: url('service-hotel.jpg'); }
+    .service-photo[data-photo="service-restaurant"]{ background-image: url('service-restaurant.jpg'); }
+    .service-photo[data-photo="service-auto"]      { background-image: url('service-auto.jpg'); }
+    .service-photo[data-photo="service-event"]     { background-image: url('service-event.jpg'); }
+    .service-photo[data-photo="service-wedding"]   { background-image: url('service-wedding.jpg'); }
+    .service-photo[data-photo="service-office"]    { background-image: url('service-office.jpg'); }
+    /* Content half — right side */
+    .service-content {
+      padding: 28px 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      gap: 18px;
+    }
+
+    /* Hero card — spans 2×2 */
+    .service-card.service-card--hero {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    .service-card.service-card--hero .service-content {
+      padding: 48px;
+    }
+    .service-card.service-card--hero h3 {
+      font-size: 38px;
+      margin-bottom: 14px;
+    }
+    .service-card.service-card--hero p {
+      font-size: 14.5px;
+      max-width: 380px;
+      line-height: 1.7;
+    }
+    /* Tall card spans 2 rows (kept for future use) */
+    .service-card.service-card--tall { grid-row: span 2; }
+
+    .service-num {
+      position: absolute;
+      top: 22px;
+      right: 28px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      font-style: italic;
+      letter-spacing: .15em;
+      color: var(--gold);
+      opacity: .7;
+      line-height: 1;
+    }
+    .service-card.service-card--hero .service-num {
+      top: 36px; right: 40px;
+      font-size: 14px;
+    }
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 18px;
+      flex-shrink: 0;
+      transition: background .25s, color .25s;
+    }
+    .service-card:hover .service-icon {
+      background: var(--gold);
+      color: var(--bg-card);
+    }
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text);
+      margin: 14px 0 6px;
+      letter-spacing: -.005em;
+      line-height: 1.15;
+    }
+    .service-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .service-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 4px;
+      width: fit-content;
+    }
+    .service-tag::before {
+      content: '';
+      width: 18px; height: 1px;
+      background: var(--gold);
+    }
+    .service-head { display: contents; }
+
+    /* ─── OFFER STRIP — outlined cream card with leaf accent ─── */
+    .offer-wrap {
+      background: var(--bg);
+      padding: 56px 80px;
+    }
+    .offer-strip {
+      background: var(--bg-card);
+      border: 1px solid rgba(15,37,71,.35);
+      padding: 32px 36px 32px 40px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 36px;
+      position: relative;
+      overflow: hidden;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    /* Subtle leaf silhouette decoration on the right */
+    .offer-strip::after {
+      content: '';
+      position: absolute;
+      top: -20%; right: -8%;
+      width: 460px; height: 140%;
+      background: radial-gradient(ellipse, rgba(15,37,71,.18) 0%, transparent 55%);
+      filter: blur(2px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .offer-strip > * { position: relative; z-index: 1; }
+
+    .offer-text {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .offer-mark {
+      width: 64px;
+      height: 64px;
+      border: 1.4px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .offer-mark .ico { width: 24px; height: 24px; stroke-width: 1.2; }
+    .offer-pct {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 56px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      letter-spacing: -.01em;
+      padding-right: 20px;
+      border-right: 1px solid rgba(15,37,71,.25);
+    }
+    .offer-desc strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 4px;
+      letter-spacing: -.005em;
+    }
+    .offer-desc span {
+      font-size: 13px;
+      color: var(--text-muted);
+      letter-spacing: .01em;
+    }
+    .offer-strip .btn-primary {
+      padding: 18px 36px;
+      font-size: 11px;
+      letter-spacing: .25em;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .offer-strip .btn-primary svg { width: 14px; height: 14px; }
+
+    /* ─── PORTFOLIO ─── */
+    .portfolio { background: var(--bg); }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: 1.7fr 1fr 1fr;
+      gap: 18px;
+      max-width: 1160px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .port-item:not(:first-child) {
+      aspect-ratio: 1 / 1;
+    }
+    .port-item {
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .3s;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      color: #F5F0E8;
+      background:
+        linear-gradient(180deg, rgba(20,17,12,.25) 0%, rgba(20,17,12,.85) 100%),
+        radial-gradient(ellipse at 50% 35%, #3a2e1f 0%, #1c1610 70%);
+    }
+    .port-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 50px rgba(20, 17, 12, .25);
+    }
+    .port-item::before {
+      /* placeholder photo bg — will be overridden by actual <img> later */
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 50% 40%, rgba(232, 220, 200, .14) 0%, transparent 55%),
+        linear-gradient(135deg, #2a2018 0%, #14110c 100%);
+      background-size: cover;
+      background-position: center;
+      transition: transform .6s cubic-bezier(.2,.7,.2,1);
+    }
+    .port-item[data-photo="portfolio-1"]::before { background: url('portfolio-1.jpg') center/cover no-repeat; }
+    .port-item[data-photo="portfolio-2"]::before { background: url('portfolio-2.jpg') center/cover no-repeat; }
+    .port-item[data-photo="portfolio-3"]::before { background: url('portfolio-3.jpg') center/cover no-repeat; }
+    .port-item[data-photo="portfolio-4"]::before { background: url('portfolio-4.jpg') center/cover no-repeat; }
+    .port-item[data-photo="portfolio-5"]::before { background: url('portfolio-5.jpg') center/cover no-repeat; }
+    .port-item:hover::before { transform: scale(1.04); }
+    .port-item::after {
+      /* dark gradient overlay for text legibility */
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(20,17,12,.0) 35%, rgba(20,17,12,.85) 100%);
+      pointer-events: none;
+    }
+    .port-item > * { position: relative; z-index: 2; }
+    .port-item:first-child {
+      grid-column: 1 / 2;
+      grid-row: 1 / 3;
+      padding: 40px;
+    }
+    .port-meta {
+      font-size: 10px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: #0F2547;
+      position: absolute;
+      top: 28px;
+      left: 28px;
+      z-index: 2;
+    }
+    .port-item:first-child .port-meta {
+      top: 40px; left: 40px;
+    }
+    .port-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(15,37,71,.45);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .port-item:first-child .port-num { font-size: 88px; margin-bottom: 16px; }
+    .port-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: #F5F0E8;
+      margin: 0 0 6px;
+      line-height: 1.15;
+    }
+    .port-item:first-child .port-title { font-size: 36px; }
+    .port-loc {
+      font-size: 13px;
+      color: rgba(245,240,232,.7);
+      letter-spacing: .03em;
+    }
+    .port-tag {
+      position: absolute;
+      top: 28px; right: 28px;
+      z-index: 2;
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #0F2547;
+      border: 1px solid rgba(15,37,71,.55);
+      padding: 4px 10px;
+      background: rgba(20,17,12,.45);
+      backdrop-filter: blur(4px);
+    }
+    .port-item:first-child .port-tag { top: 40px; right: 40px; }
+    .port-arrow {
+      position: absolute;
+      bottom: 28px;
+      right: 28px;
+      z-index: 2;
+      width: 38px; height: 38px;
+      border: 1px solid rgba(15,37,71,.45);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0F2547;
+      font-size: 14px;
+      transition: all .25s;
+    }
+    .port-item:first-child .port-arrow { bottom: 40px; right: 40px; width: 44px; height: 44px; }
+    .port-item:hover .port-arrow {
+      background: #0F2547;
+      border-color: #0F2547;
+      color: #0A1A33;
+    }
+    .portfolio-cta {
+      text-align: center;
+      margin-top: 56px;
+      display: flex;
+      justify-content: center;
+    }
+    .portfolio-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 48px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      transition: all .25s;
+      min-width: 460px;
+      justify-content: center;
+    }
+    .portfolio-cta a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .portfolio-cta a svg { width: 14px; height: 14px; stroke: currentColor; }
+
+    /* ─── BOUQUETS ─── */
+    .bouquets { background: var(--bg-alt); }
+    .bouquets-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .product-card {
+      border: 1px solid rgba(15,37,71,.18);
+      background: var(--bg-card);
+      transition: border-color .3s, transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      border-color: rgba(15,37,71,.4);
+      transform: translateY(-6px);
+      box-shadow: 0 24px 50px rgba(60, 40, 20, .08);
+    }
+    /* Photo placeholder — vertical 4:5 */
+    .product-visual {
+      aspect-ratio: 4 / 5;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 55%, rgba(232,220,200,.55) 0%, transparent 60%),
+        linear-gradient(135deg, #ece2d0 0%, #d8c8ad 100%);
+    }
+    /* Photo layer — scaled 1.15x for tighter crop */
+    .product-visual[data-photo]::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transform: scale(1.15);
+      transform-origin: center;
+      z-index: 0;
+    }
+    .product-visual > * { position: relative; z-index: 2; }
+    .product-visual[data-photo="bouquet-rozy"]::before     { background-image: url('bouquet-1.jpg'); transform: scale(1.4); }
+    .product-visual[data-photo="bouquet-piwonie"]::before  { background-image: url('bouquet-2.jpg'); }
+    .product-visual[data-photo="bouquet-autorska"]::before { background-image: url('bouquet-3.jpg'); }
+    .product-visual[data-photo="bouquet-hortensje"]::before{ background-image: url('bouquet-4.jpg'); }
+    .product-num {
+      position: absolute;
+      top: 16px; left: 20px;
+      z-index: 2;
+      font-size: 10px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .product-badge {
+      position: absolute;
+      top: 16px; right: 20px;
+      z-index: 2;
+      font-size: 9px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 4px 10px;
+      background: rgba(255, 252, 247, .55);
+      backdrop-filter: blur(4px);
+    }
+    .product-info {
+      padding: 22px 22px 20px;
+      background: var(--bg-card);
+    }
+    .product-info h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .product-info .origin {
+      font-size: 10.5px;
+      letter-spacing: .2em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(15,37,71,.18);
+    }
+    .product-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .product-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .product-price small {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      letter-spacing: .04em;
+    }
+    .product-cta {
+      width: 34px; height: 34px;
+      border: 1px solid rgba(15,37,71,.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 13px;
+      transition: all .25s;
+    }
+    .product-card:hover .product-cta {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--bg-card);
+    }
+
+    /* ─── ABOUT ─── */
+    .about {
+      background: var(--bg);
+      display: grid;
+      grid-template-columns: 6fr 5fr;
+      gap: 64px;
+      padding: 80px;
+      align-items: center;
+    }
+    /* Photo column with VFG badge overlay */
+    .about-photo {
+      position: relative;
+      aspect-ratio: 1 / 1.05;
+      overflow: hidden;
+      background: url('about.jpg') center/cover no-repeat,
+                  linear-gradient(135deg, #e8dccb 0%, #d8c8ad 100%);
+    }
+    /* Circular VFG badge — top-left overlay (curved text via SVG) */
+    .about-badge {
+      position: absolute;
+      top: 32px;
+      left: 32px;
+      width: 150px;
+      height: 150px;
+      z-index: 2;
+    }
+    .about-badge svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .about-badge svg text {
+      font-family: 'Inter', sans-serif;
+      fill: #0F2547;
+    }
+    .about-badge svg .badge-arc-text {
+      font-size: 7.5px;
+      letter-spacing: 3px;
+    }
+    .about-badge svg .badge-mono {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 24px;
+      letter-spacing: .04em;
+    }
+
+    .about-content {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: transparent;
+    }
+    .about-content .section-title {
+      font-size: clamp(36px, 3.4vw, 52px);
+      line-height: 1.15;
+      margin-bottom: 28px;
+    }
+    .about-content blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.5;
+      margin: 0 0 28px;
+      padding-left: 22px;
+      border-left: 2px solid var(--gold);
+    }
+    .about-content p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      max-width: 560px;
+    }
+    .about-content p:last-of-type { margin-bottom: 0; }
+
+    /* Stats row at bottom of about-content */
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 44px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(15,37,71,.25);
+    }
+    .about-stat { text-align: center; }
+    .about-stat-ico {
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: center;
+    }
+    .about-stat-ico svg { width: 40px; height: 40px; stroke: currentColor; fill: none; stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; }
+    .about-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 10px;
+      letter-spacing: -.01em;
+    }
+    .about-stat-lbl {
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .signature {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-style: italic;
+      color: var(--text);
+      margin-top: 32px;
+    }
+    .signature small {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-style: normal;
+      margin-top: 4px;
+    }
+
+    /* ─── FAQ ─── */
+    .faq {
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Foliage placeholder background — replace later with image */
+    .faq::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 600px 800px at -5% 20%, rgba(15,37,71,.10) 0%, transparent 60%),
+        radial-gradient(ellipse 500px 700px at 105% 75%, rgba(15,37,71,.08) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .faq > * { position: relative; z-index: 1; }
+
+    .faq-ornament {
+      display: flex;
+      justify-content: center;
+      margin: 18px auto 0;
+      color: var(--gold);
+    }
+    .faq-ornament svg { width: 88px; height: 14px; stroke: currentColor; fill: currentColor; }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 24px;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      background: rgba(255, 252, 247, .55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(15,37,71,.18);
+      padding: 22px 24px;
+      cursor: pointer;
+      position: relative;
+      transition: border-color .3s, background .3s;
+      display: grid;
+      grid-template-columns: 44px 1fr 24px;
+      gap: 18px;
+      align-items: center;
+    }
+    .faq-item:hover { border-color: rgba(15,37,71,.4); }
+    .faq-item.open {
+      background: rgba(255, 252, 247, .85);
+      border-color: var(--gold);
+      align-items: start;
+    }
+
+    .faq-mark {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .faq-mark .ico { width: 20px; height: 20px; stroke-width: 1.3; }
+    .faq-item.open .faq-mark {
+      background: var(--gold);
+      color: var(--bg-card);
+    }
+
+    .faq-body {
+      min-width: 0;
+    }
+    .faq-question {
+      display: flex;
+      flex-direction: column;
+    }
+    .faq-question h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.35;
+    }
+    .faq-icon {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      transition: all .3s cubic-bezier(.2,.7,.2,1);
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+      color: var(--gold);
+    }
+    .faq-answer {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s cubic-bezier(.2,.7,.2,1), padding .3s;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 360px;
+      padding-top: 14px;
+    }
+
+    /* FAQ bottom CTA panel */
+    .faq-cta {
+      max-width: 1240px;
+      margin: 56px auto 0;
+      padding: 32px 40px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 28px;
+      align-items: center;
+    }
+    .faq-cta-mark {
+      width: 56px; height: 56px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+    }
+    .faq-cta-mark .ico { width: 22px; height: 22px; stroke-width: 1.3; }
+    .faq-cta-text strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .faq-cta-text span {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .faq-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 32px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      transition: all .25s;
+    }
+    .faq-cta a:hover { background: var(--gold); color: var(--bg-card); }
+    .faq-cta a svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+
+    /* ─── CONTACT ─── */
+    .contact {
+      background: var(--bg-alt);
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 80px;
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 28px; margin-top: 40px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+      transition: border-color .25s;
+    }
+    .form-group:focus-within { border-color: var(--gold); }
+    .form-group label {
+      font-size: 10px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: transparent;
+      border: none;
+      color: var(--text);
+      padding: 6px 0 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      outline: none;
+      resize: none;
+      width: 100%;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-muted);
+      opacity: .55;
+    }
+    .form-group select option { background: var(--bg-card); color: var(--text); }
+    .contact-form .btn-primary { align-self: flex-start; margin-top: 12px; padding: 18px 44px; }
+    .contact-right {}
+    .contact-info { display: flex; flex-direction: column; gap: 28px; margin-top: 32px; }
+    .contact-info-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .ci-icon {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .ci-text strong { display: block; font-size: 13px; color: var(--ivory); margin-bottom: 3px; }
+    .ci-text span { font-size: 13px; color: var(--muted); }
+
+    /* ─── FOOTER — always dark, regardless of theme ─── */
+    footer {
+      background: #0A1A33;
+      color: #E8DDC9;
+      border-top: none;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 10% 30%, rgba(15,37,71,.04) 0%, transparent 50%),
+                  radial-gradient(ellipse at 90% 70%, rgba(15,37,71,.03) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* Newsletter section */
+    .footer-newsletter {
+      padding: 80px 80px 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      border-bottom: 1px solid rgba(15,37,71,.15);
+      background: transparent;
+      position: relative;
+    }
+    .footer-newsletter .section-eyebrow { color: #0F2547; }
+    .newsletter-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px;
+      font-weight: 300;
+      color: #F5F0E8;
+      line-height: 1.15;
+      margin: 16px 0 16px;
+      letter-spacing: -.005em;
+    }
+    .newsletter-title em { font-style: italic; color: #0F2547; }
+    .newsletter-sub {
+      color: rgba(232,221,201,.6);
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 460px;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 0;
+      align-items: stretch;
+      border: none;
+      padding: 0;
+    }
+    .newsletter-form input {
+      flex: 1;
+      background: rgba(20,17,12,.6);
+      border: 1px solid rgba(15,37,71,.25);
+      color: #F5F0E8;
+      padding: 20px 24px;
+      font-size: 14px;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+      transition: border-color .25s;
+    }
+    .newsletter-form input::placeholder { color: rgba(232,221,201,.4); }
+    .newsletter-form input:focus { border-color: #0F2547; }
+    .newsletter-form .btn-primary {
+      padding: 20px 32px;
+      font-size: 11px;
+      background: #0F2547;
+      color: #0A1A33;
+      border: 1px solid #0F2547;
+      letter-spacing: .2em;
+      margin-left: -1px;
+    }
+    .newsletter-form .btn-primary:hover { background: #1B3A6B; border-color: #1B3A6B; }
+    .footer-newsletter .newsletter-thanks {
+      color: #0F2547;
+      font-size: 16px;
+    }
+
+    /* Main grid */
+    .footer-grid {
+      padding: 72px 80px 56px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 56px;
+      position: relative;
+    }
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 300;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: #0F2547;
+      line-height: 1.3;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+    .footer-logo span { color: #0F2547; }
+    .footer-logo::after {
+      content: '';
+      width: 56px;
+      height: 1px;
+      background: rgba(15,37,71,.5);
+      margin-top: 16px;
+    }
+    .footer-tagline {
+      font-size: 13px;
+      color: rgba(232,221,201,.55);
+      line-height: 1.7;
+      font-style: normal;
+    }
+    .footer-tagline em {
+      display: block;
+      margin-top: 12px;
+      color: #0F2547;
+      font-style: italic;
+    }
+    .footer-col h5 {
+      font-size: 11px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: #0F2547;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .footer-col ul li a {
+      font-size: 14px;
+      color: #E8DDC9;
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-col ul li a:hover { color: #0F2547; }
+
+    /* Bottom bar */
+    .footer-bottom {
+      border-top: 1px solid rgba(15,37,71,.15);
+      padding: 32px 80px;
+      margin: 0;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      font-size: 12px;
+      color: rgba(232,221,201,.5);
+      gap: 24px;
+    }
+    .footer-bottom-loc {
+      text-align: center;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      font-size: 11px;
+      color: #0F2547;
+    }
+    .footer-bottom-loc span { color: rgba(15,37,71,.4); margin: 0 8px; }
+    .footer-socials { display: flex; gap: 14px; justify-content: flex-end; }
+    .footer-socials a {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(15,37,71,.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0F2547;
+      text-decoration: none;
+      transition: all .25s;
+    }
+    .footer-socials a:hover {
+      background: #0F2547;
+      color: #0A1A33;
+      border-color: #0F2547;
+    }
+    .footer-socials svg { width: 16px; height: 16px; }
+
+    /* ─── UTILITIES ─── */
+    .text-gold { color: var(--gold); }
+    .center { text-align: center; }
+    .center .section-eyebrow { justify-content: center; }
+    .center .section-eyebrow::before { display: none; }
+    .center .section-title { margin: 0 auto 16px; }
+    .center .section-sub { margin: 0 auto 56px; text-align: center; }
+
+    /* ─── SCROLL INDICATOR ─── */
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 80px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      z-index: 3;
+    }
+    .scroll-hint::before {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%,100% { opacity: .4; }
+      50% { opacity: 1; }
+    }
+
+    /* ─── FLORAL DECORATIONS ─── */
+    .floral-deco {
+      position: absolute;
+      opacity: .06;
+      pointer-events: none;
+    }
+
+    /* ─── THEME TOGGLE ─── */
+    .theme-toggle {
+      width: 44px;
+      height: 24px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      position: relative;
+      cursor: pointer;
+      transition: border-color .3s, background .3s;
+      flex-shrink: 0;
+    }
+    .theme-toggle::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--gold);
+      transition: transform .3s, background .3s;
+    }
+    html.light .theme-toggle::after {
+      transform: translateX(20px);
+    }
+    html.light .theme-toggle {
+      background: #e8ddd0;
+      border-color: var(--gold);
+    }
+    .theme-icon {
+      font-size: 14px;
+      cursor: pointer;
+      user-select: none;
+      transition: opacity .2s;
+    }
+    .theme-icon:hover { opacity: .7; }
+
+    /* ─── LIGHT THEME OVERRIDES ─── */
+    /* Elements using hardcoded dark values */
+    /* Footer is always dark — no light overrides needed */
+
+    html.light .about-img-bg { background: var(--about-bg); }
+    html.light .about-content blockquote { color: var(--text); }
+    html.light .about-content p { color: var(--text-muted); }
+    html.light .about-img-bg::after { color: rgba(15,37,71,.1); }
+    html.light .about-gold-border { border-color: var(--border); }
+    html.light .about { background: var(--bg); }
+
+    html.light .offer-strip { background: var(--offer-bg); border-color: var(--gold); }
+
+    /* light-theme hero handled inline above with image */
+
+    html.light .services { background: var(--bg); }
+    html.light .service-card { background: var(--bg-alt); }
+    html.light .service-card:hover { background: #e8ecf2; }
+    html.light .service-card h3 { color: var(--text); }
+    html.light .service-card p { color: var(--text-muted); }
+    html.light .service-num { color: rgba(15,37,71,.2); }
+    html.light .service-tag { color: var(--gold); border-color: var(--border); }
+
+    html.light .bouquets { background: var(--bg-alt); }
+    html.light .product-card { background: #fff; border-color: rgba(15,37,71,.15); }
+    html.light .product-info h4 { color: var(--text); }
+    html.light .product-price small { color: var(--text-muted); }
+
+    html.light .portfolio { background: var(--bg); }
+
+    html.light .trust-bar { background: var(--bg-alt); }
+
+    html.light .faq { background: var(--bg); }
+    html.light .faq-item { border-color: var(--border); }
+    html.light .faq-question h4 { color: var(--text); }
+
+    html.light .contact { background: var(--bg-alt); }
+    /* form-group inputs are transparent/underline — no light override needed */
+    html.light .form-group select option { background: #fff; color: #1C1714; }
+    html.light .ci-text strong { color: var(--text); }
+
+    html.light nav { box-shadow: 0 1px 24px rgba(0,0,0,.08); }
+    html.light .nav-logo { color: var(--text); }
+    html.light .topbar { background: var(--topbar-bg); color: var(--topbar-text); }
+    html.light .btn-primary { background: var(--gold); color: #fff; }
+    html.light .btn-primary:hover { background: var(--gold-lt); }
+    html.light .hero h1 { color: var(--text); }
+    html.light .hero-sub { color: var(--text-muted); }
+    html.light .btn-ghost { color: var(--text); }
+    html.light .hero-stat-label { color: var(--text-muted); }
+    html.light .section-title { color: var(--text); }
+    html.light .section-sub { color: var(--text-muted); }
+
+    /* contact info block in light */
+    html.light [style*="background:var(--card)"] { background: #fff !important; }
+
+    /* ─── MODAL FORMS ─── */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .modal.is-open { display: flex; }
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(8,8,8,.72);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      animation: fadeIn .25s ease;
+    }
+    html.light .modal-backdrop { background: rgba(28,23,20,.55); }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .modal-panel {
+      position: relative;
+      width: 100%;
+      max-width: 620px;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 48px 48px 40px;
+      animation: slideUp .35s cubic-bezier(.2,.7,.2,1);
+    }
+    .modal-close {
+      position: absolute;
+      top: 18px; right: 18px;
+      width: 36px; height: 36px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s;
+      line-height: 1;
+    }
+    .modal-close:hover { color: var(--gold); border-color: var(--gold); }
+    .modal-source-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 9px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 5px 10px;
+      margin-bottom: 20px;
+    }
+    .modal-source-tag::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+    .modal-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .modal-title em { font-style: italic; color: var(--gold); }
+    .modal-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .modal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .modal-form .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+    .modal-form .form-group {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+      transition: border-color .25s;
+    }
+    .modal-form .form-group:focus-within { border-color: var(--gold); }
+    .modal-form label {
+      font-size: 9.5px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .modal-form input,
+    .modal-form select,
+    .modal-form textarea {
+      background: transparent;
+      border: none;
+      color: var(--text);
+      padding: 4px 0 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      outline: none;
+      resize: none;
+      width: 100%;
+    }
+    .modal-form input::placeholder,
+    .modal-form textarea::placeholder { color: var(--text-muted); opacity: .55; }
+    .modal-form .btn-primary {
+      align-self: flex-start;
+      padding: 16px 38px;
+      margin-top: 8px;
+    }
+    .modal-foot {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 12px;
+      letter-spacing: .04em;
+    }
+
+    /* Thank-you state (replaces form contents) */
+    .thanks-state {
+      text-align: center;
+      padding: 24px 0 12px;
+    }
+    .thanks-icon {
+      width: 64px; height: 64px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 26px;
+      margin: 0 auto 24px;
+      animation: scaleIn .45s cubic-bezier(.2,.7,.2,1);
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(.6); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    .thanks-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px;
+      color: var(--text);
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+    .thanks-title em { font-style: italic; color: var(--gold); }
+    .thanks-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 380px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+    }
+    .thanks-source {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      margin-top: 4px;
+    }
+    .thanks-source strong { color: var(--gold); font-weight: 500; }
+
+    /* Newsletter inline thank-you */
+    .newsletter-thanks {
+      font-size: 14px;
+      color: var(--gold);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      letter-spacing: .02em;
+    }
+
+    /* SVG socials */
+    .footer-socials a {
+      width: 36px; height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(15,37,71,.25);
+      border-radius: 50%;
+      color: var(--gold);
+      transition: all .25s;
+    }
+    .footer-socials a:hover {
+      background: var(--gold);
+      color: var(--bg);
+      border-color: var(--gold);
+    }
+    .footer-socials svg { width: 16px; height: 16px; }
+
+    body.modal-locked { overflow: hidden; }
+
+    /* SVG icons — universal */
+    .ico {
+      width: 1em;
+      height: 1em;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+    .service-icon .ico { width: 20px; height: 20px; }
+    .faq-icon .ico    { width: 14px; height: 14px; stroke-width: 1.8; }
+    .port-arrow .ico  { width: 14px; height: 14px; stroke-width: 1.6; }
+    .product-cta .ico { width: 12px; height: 12px; stroke-width: 1.8; }
+    .ci-icon .ico     { width: 16px; height: 16px; stroke-width: 1.4; }
+    .modal-close .ico { width: 14px; height: 14px; stroke-width: 1.6; }
+    .thanks-icon .ico { width: 28px; height: 28px; stroke-width: 1.6; }
+    .btn-ico          { width: 12px; height: 12px; vertical-align: -1px; margin-left: 6px; stroke-width: 1.8; }
+    .star-ico         { width: 14px; height: 14px; fill: currentColor; stroke: none; margin: 0 1px; }
+    .flag-ico         { width: 20px; height: 14px; stroke: none; vertical-align: -3px; margin-right: 4px; display: inline-block; }
+    .lang-list        { display: flex; gap: 16px; font-size: 13px; color: var(--text-muted); flex-wrap: wrap; align-items: center; }
+    .lang-list span   { display: inline-flex; align-items: center; }
+    /* socials: each SVG has its own stroke/fill attrs; no global override */
+
+    /* ════════════════════════════════════════════════════════════
+       RESPONSIVE — large screens / tablet / mobile
+       ════════════════════════════════════════════════════════════ */
+
+    /* Burger button — hidden by default, shown on mobile */
+    .nav-burger {
+      display: none;
+      width: 36px; height: 36px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    .nav-burger span {
+      display: block;
+      width: 22px; height: 1.5px;
+      background: var(--text);
+      transition: transform .3s, opacity .3s;
+    }
+    .nav-burger.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-burger.is-open span:nth-child(2) { opacity: 0; }
+    .nav-burger.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0; right: 0; bottom: 0;
+      background: var(--bg);
+      z-index: 99;
+      padding: 32px 28px 40px;
+      flex-direction: column;
+      gap: 6px;
+      overflow-y: auto;
+    }
+    .mobile-menu.is-open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--text);
+      text-decoration: none;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: -.005em;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu-lang {
+      display: flex;
+      gap: 16px;
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      letter-spacing: .15em;
+    }
+    .mobile-menu-lang a {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      padding: 0;
+      border: none;
+      color: var(--text-muted);
+      letter-spacing: .15em;
+    }
+    .mobile-menu-lang a.active { color: var(--gold); }
+
+    /* ─── GLOBAL CONTAINER CAP (always 1440px) ─── */
+    section,
+    .trust-bar,
+    .about,
+    .contact,
+    .footer-newsletter,
+    .footer-grid,
+    .footer-bottom {
+      max-width: 1440px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+    }
+    /* Topbar — always full-bleed across viewport */
+    .topbar {
+      max-width: none !important;
+      width: 100%;
+      padding-left: max(20px, calc((100% - 1440px) / 2 + 20px));
+      padding-right: max(20px, calc((100% - 1440px) / 2 + 20px));
+    }
+    /* Nav full-bleed background, content capped at 1440 via dynamic padding */
+    nav {
+      padding-left: max(48px, calc((100% - 1440px) / 2 + 48px));
+      padding-right: max(48px, calc((100% - 1440px) / 2 + 48px));
+    }
+    /* Mobile menu — match nav width */
+    .mobile-menu {
+      padding-left: max(28px, calc((100% - 1440px) / 2 + 28px));
+      padding-right: max(28px, calc((100% - 1440px) / 2 + 28px));
+    }
+    /* Body background blends with sections on wide screens */
+    body { background: var(--bg); }
+
+    /* ─── LARGE SCREEN (TV / 4K) — typography stays controlled inside 1440 cap ─── */
+    @media (min-width: 1600px) {
+      .hero h1 { font-size: 56px; }
+      .section-title { font-size: 56px !important; }
+    }
+
+    /* ─── TABLET (≤ 1024px) ─── */
+    @media (max-width: 1024px) {
+      /* Section padding */
+      section { padding: 72px 40px; }
+      nav { padding: 0 28px; }
+      .topbar { padding: 8px 28px; font-size: 11px; letter-spacing: .08em; }
+      .topbar span { margin: 0 10px; }
+
+      /* Hero stacked */
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 56px 40px 64px; }
+      .hero-right { min-height: 360px; }
+      .hero h1 { font-size: clamp(36px, 5.6vw, 56px); }
+      .hero-caption { top: 32px; right: 32px; max-width: 220px; }
+      .hero-caption-num { font-size: 48px; }
+      .hero-monogram { right: -20px; bottom: -50px; font-size: clamp(260px, 40vw, 360px); }
+      .hero-badge { bottom: 28px; right: 28px; padding: 14px 18px; max-width: 240px; }
+      .scroll-hint { display: none; }
+
+      /* Trust bar */
+      .trust-bar { padding: 18px 24px; gap: 20px; }
+
+      /* Services bento → 2 columns */
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
+      }
+      .service-card.service-card--hero {
+        grid-column: span 2;
+        grid-row: span 1;
+        padding: 36px;
+      }
+      .service-card.service-card--hero h3 { font-size: 32px; }
+
+      /* Portfolio 2 cols */
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+      }
+      .port-item:first-child {
+        grid-column: 1 / 3;
+        grid-row: auto;
+        min-height: 260px;
+      }
+      .port-item:first-child .port-title { font-size: 30px; }
+      .port-item { min-height: 220px; }
+
+      /* Bouquets 2 cols */
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .product-visual { height: 220px; }
+
+      /* About stack */
+      .about { grid-template-columns: 1fr; }
+      .about-cartouche { min-height: 480px; padding: 64px 40px; }
+      .about-content { padding: 56px 40px; }
+      .cartouche-mono { font-size: clamp(120px, 18vw, 180px); }
+
+      /* FAQ single col */
+      .faq-grid { grid-template-columns: 1fr; gap: 0; }
+
+      /* Contact stack */
+      .contact { grid-template-columns: 1fr; gap: 56px; }
+      .contact-form .form-row { gap: 20px; }
+
+      /* Footer */
+      .footer-newsletter { padding: 48px 40px; grid-template-columns: 1fr; gap: 32px; }
+      .newsletter-title { font-size: 30px; }
+      .footer-grid { padding: 48px 40px; grid-template-columns: 1fr 1fr; gap: 36px 32px; }
+      .footer-bottom { padding: 24px 40px; flex-direction: row; gap: 16px; flex-wrap: wrap; }
+
+      /* Bouquets header */
+      .bouquets-header { flex-direction: column; align-items: flex-start; }
+
+      /* Services header */
+      .services-header { flex-direction: column; align-items: flex-start; }
+      .section-sub { max-width: 100%; }
+
+      /* About cartouche stats — keep horizontal */
+      .cartouche-stats { gap: 24px; }
+    }
+
+    /* Burger appears on ≤ 900 (covers tablet portrait + mobile) */
+    @media (max-width: 900px) {
+      nav .nav-left, nav .nav-right .lang-switch, nav .nav-cta { display: none; }
+      .nav-burger { display: flex; }
+      .nav-right { gap: 12px; }
+    }
+
+    /* ─── MOBILE (≤ 720px) ─── */
+    @media (max-width: 720px) {
+      section { padding: 56px 20px; }
+      nav { padding: 0 20px; height: 64px; }
+      .nav-logo { font-size: 14px; letter-spacing: .15em; }
+      .nav-logo span { font-size: 11px; }
+      .mobile-menu { top: 64px; }
+
+      .topbar { font-size: 10px; letter-spacing: .06em; padding: 7px 16px; line-height: 1.5; }
+      .topbar span { margin: 0 6px; }
+
+      /* Hero */
+      .hero-left { padding: 36px 20px 56px; }
+      .hero h1 { font-size: clamp(30px, 8vw, 44px); margin-bottom: 20px; }
+      .hero-sub { font-size: 14px; margin-bottom: 32px; }
+      .hero-eyebrow { font-size: 10px; margin-bottom: 20px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .hero-actions .btn-primary { width: 100%; text-align: center; }
+      .hero-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 24px;
+        margin-top: 40px;
+        padding-top: 28px;
+      }
+      .hero-stat-num { font-size: 28px; }
+      .hero-stat-label { font-size: 9px; }
+      .hero-right { min-height: 280px; }
+      .hero-monogram { right: -10px; bottom: -30px; font-size: 200px; }
+      .hero-caption { top: 24px; right: 20px; max-width: 200px; }
+      .hero-caption-num { font-size: 38px; }
+      .hero-caption-quote { font-size: 14px; }
+      .hero-badge { bottom: 20px; right: 20px; max-width: 200px; padding: 12px 14px; }
+      .hero-badge-title { font-size: 14px; }
+      .hero-badge-sub { font-size: 9px; }
+
+      /* Trust bar */
+      .trust-bar {
+        padding: 16px 20px;
+        gap: 12px;
+        flex-direction: column;
+        font-size: 10px;
+      }
+      .trust-item { font-size: 10px; gap: 6px; }
+      .trust-divider { display: none; }
+
+      /* Section title */
+      .section-title { font-size: clamp(28px, 7vw, 36px) !important; }
+      .section-eyebrow { font-size: 10px; }
+      .section-sub { font-size: 13px; }
+
+      /* Services bento → 1 column */
+      .services-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        gap: 12px;
+      }
+      .service-card { grid-row: auto !important; grid-column: auto !important; padding: 28px 24px; min-height: 180px; }
+      .service-card.service-card--hero { padding: 32px 24px; }
+      .service-card.service-card--hero h3 { font-size: 28px; }
+      .service-card h3 { font-size: 22px; }
+
+      /* Portfolio 1 col */
+      .portfolio-grid { grid-template-columns: 1fr; grid-template-rows: auto; gap: 12px; }
+      .port-item, .port-item:first-child {
+        grid-column: auto !important; grid-row: auto !important;
+        min-height: 240px;
+        padding: 28px 24px;
+      }
+      .port-item:first-child .port-title { font-size: 26px; }
+      .port-num { font-size: 48px; }
+      .port-item:first-child .port-num { font-size: 64px; }
+
+      /* Bouquets 1 col */
+      .products-grid { grid-template-columns: 1fr; gap: 12px; }
+      .product-visual { height: 200px; }
+
+      /* Offer strip */
+      .offer-strip {
+        flex-direction: column !important;
+        gap: 20px;
+        align-items: flex-start !important;
+        padding: 28px 20px !important;
+      }
+      .offer-pct { font-size: 56px !important; }
+      .offer-strip .btn-primary { width: 100%; text-align: center; }
+
+      /* About */
+      .about-cartouche { min-height: 380px; padding: 48px 28px; }
+      .about-content { padding: 48px 24px; }
+      .about-cartouche::before { top: 20px; left: 20px; right: 20px; bottom: 20px; }
+      .about-cartouche::after { top: 26px; left: 26px; }
+      .cartouche-mono { font-size: clamp(80px, 22vw, 140px); }
+      .about-content blockquote { font-size: 18px; padding-left: 14px; margin: 20px 0 24px; }
+
+      /* FAQ */
+      .faq-item { padding: 22px 18px 22px 0; }
+      .faq-question h4 { font-size: 16px; line-height: 1.35; }
+      .faq-answer { font-size: 13px; max-width: 100%; }
+
+      /* Contact form */
+      .contact-form .form-row { grid-template-columns: 1fr; gap: 22px; }
+      .contact-form { gap: 22px; }
+      .contact-form .btn-primary { width: 100%; text-align: center; }
+
+      /* Footer */
+      .footer-newsletter { padding: 40px 24px; gap: 24px; }
+      .newsletter-title { font-size: 26px; }
+      .newsletter-form { flex-direction: column; gap: 16px; border: none; }
+      .newsletter-form input {
+        border-bottom: 1px solid var(--border);
+        padding: 12px 0;
+      }
+      .newsletter-form .btn-primary { width: 100%; text-align: center; padding: 14px 24px; }
+      .footer-grid { padding: 40px 24px; grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+      .footer-grid > div:first-child { grid-column: span 2; margin-bottom: 12px; }
+      .footer-logo { font-size: 16px; }
+      .footer-tagline { font-size: 12px; }
+      .footer-bottom {
+        padding: 20px 24px;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      /* Modal — full-screen on mobile */
+      .modal { padding: 0; align-items: stretch; }
+      .modal-panel {
+        max-width: 100%;
+        max-height: 100vh;
+        min-height: 100vh;
+        padding: 56px 24px 32px;
+        border: none;
+      }
+      .modal-title { font-size: 26px; }
+      .modal-form .form-row { grid-template-columns: 1fr; gap: 22px; }
+      .modal-form { gap: 20px; }
+      .modal-form .btn-primary { width: 100%; }
+      .modal-close { top: 14px; right: 14px; }
+
+      /* Portfolio CTA */
+      .portfolio-cta { margin-top: 40px; }
+    }
+
+    /* ─── SMALL MOBILE (≤ 380px) ─── */
+    @media (max-width: 380px) {
+      section { padding: 48px 16px; }
+      nav { padding: 0 16px; }
+      .hero-left { padding: 28px 16px 48px; }
+      .hero h1 { font-size: 28px; }
+      .hero-caption { display: none; }
+      .hero-monogram { font-size: 160px; bottom: -20px; }
+      .hero-stats { gap: 16px; }
+      .modal-panel { padding: 48px 18px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── ICON SPRITE ─── -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
+  <defs>
+    <!-- Service icons -->
+    <symbol id="ico-hotel" viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-7h6v7"/><path d="M3 21h18"/></symbol>
+    <symbol id="ico-utensils" viewBox="0 0 24 24"><path d="M7 3v18"/><path d="M5 3v6a2 2 0 0 0 2 2 2 2 0 0 0 2-2V3"/><path d="M17 13c-2 0-3-1-3-3V5a2 2 0 0 1 4 0v16"/></symbol>
+    <symbol id="ico-car" viewBox="0 0 24 24"><path d="M5 17h14"/><rect x="3" y="11" width="18" height="6" rx="1"/><path d="M5 11l2-5h10l2 5"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/></symbol>
+    <symbol id="ico-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17l.7 2L22 20l-2.3.7L19 23l-.7-2.3L16 20l2.3-.7z"/></symbol>
+    <symbol id="ico-rings" viewBox="0 0 24 24"><circle cx="9" cy="14" r="5"/><circle cx="16" cy="11" r="4"/></symbol>
+    <symbol id="ico-building" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18"/><path d="M9 8h1M14 8h1M9 12h1M14 12h1M9 16h1M14 16h1"/><path d="M10 21v-3h4v3"/></symbol>
+
+    <!-- UI icons -->
+    <symbol id="ico-chevron-down" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
+    <symbol id="ico-arrow-ur" viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></symbol>
+    <symbol id="ico-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></symbol>
+    <symbol id="ico-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="ico-check" viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></symbol>
+
+    <!-- Contact icons -->
+    <symbol id="ico-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></symbol>
+    <symbol id="ico-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 6 12 13 22 6"/></symbol>
+    <symbol id="ico-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="ico-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></symbol>
+
+    <!-- Star (filled for rating) -->
+    <symbol id="ico-star" viewBox="0 0 24 24"><polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.5 12 18.2 5.8 21.5 7 14.5 2 9.6 8.9 8.6"/></symbol>
+
+    <!-- Floral stat icons (About section) -->
+    <symbol id="ico-floral-1" viewBox="0 0 32 32"><path d="M16 24V14"/><path d="M16 16c-3-2-4-4-4-6 0-1.5 1.5-3 4-3s4 1.5 4 3c0 2-1 4-4 6z"/><path d="M16 19c-2-1-3-2-3-3.5"/><path d="M16 19c2-1 3-2 3-3.5"/><path d="M16 22c-1.6-.6-2.5-1.5-2.5-2.5"/><path d="M16 22c1.6-.6 2.5-1.5 2.5-2.5"/></symbol>
+    <symbol id="ico-floral-2" viewBox="0 0 32 32"><path d="M16 8a6 6 0 0 1 0 12 6 6 0 0 1 0-12z" transform="rotate(45 16 14)"/><path d="M16 14a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></symbol>
+    <symbol id="ico-floral-3" viewBox="0 0 32 32"><path d="M10 22c0-4 2-7 6-9"/><path d="M11 18c-1.5 0-3-1-3-2.5"/><path d="M13 14c-1.5-.5-2.5-2-2.5-3.5"/><path d="M16 11c-1-1-1-3 0-4.5"/><path d="M19 14c1.5-.5 2.5-2 2.5-3.5"/><path d="M21 18c1.5 0 3-1 3-2.5"/></symbol>
+
+    <!-- Headset (support icon for FAQ CTA) -->
+    <symbol id="ico-headset" viewBox="0 0 24 24"><path d="M3 18v-7a9 9 0 0 1 18 0v7"/><path d="M3 15h3a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-5z"/><path d="M21 15h-3a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-5z"/></symbol>
+
+    <!-- Ornament divider (small filigree) -->
+    <symbol id="ico-ornament" viewBox="0 0 80 12"><path d="M0 6h28"/><path d="M52 6h28"/><circle cx="40" cy="6" r="2"/><path d="M34 6c0-2 2-3 4-3M46 6c0 2-2 3-4 3M34 6c0 2 2 3 4 3M46 6c0-2-2-3-4-3"/></symbol>
+
+    <!-- Floral sprig (for offer mark) -->
+    <symbol id="ico-sprig" viewBox="0 0 24 24"><path d="M12 22V8"/><path d="M12 12c-2.5-2-3-4-3-5.5C9 5 10.5 4 12 4s3 1 3 2.5c0 1.5-.5 3.5-3 5.5z"/><path d="M12 15c-2-1-3-2-3-3.5"/><path d="M12 15c2-1 3-2 3-3.5"/><path d="M12 18c-1.6-.6-2.5-1.5-2.5-2.5"/><path d="M12 18c1.6-.6 2.5-1.5 2.5-2.5"/></symbol>
+
+    <!-- Stat / category icons -->
+    <symbol id="ico-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></symbol>
+    <symbol id="ico-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18"/><path d="M8 3v4M16 3v4"/></symbol>
+    <symbol id="ico-landmark" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V10M9 21V10M15 21V10M19 21V10"/><path d="M3 10h18"/><path d="M12 3L3 9h18z"/></symbol>
+
+    <!-- Flag pictograms -->
+    <symbol id="ico-flag-pl" viewBox="0 0 24 16"><rect width="24" height="8" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/><rect x=".5" y=".5" width="23" height="15" fill="none" stroke="rgba(0,0,0,.18)"/></symbol>
+    <symbol id="ico-flag-ru" viewBox="0 0 24 16"><rect width="24" height="5.33" fill="#fff"/><rect y="5.33" width="24" height="5.34" fill="#0039A6"/><rect y="10.67" width="24" height="5.33" fill="#D52B1E"/><rect x=".5" y=".5" width="23" height="15" fill="none" stroke="rgba(0,0,0,.18)"/></symbol>
+    <symbol id="ico-flag-gb" viewBox="0 0 24 16"><rect width="24" height="16" fill="#012169"/><path d="M0 0L24 16M24 0L0 16" stroke="#fff" stroke-width="2.4"/><path d="M12 0v16M0 8h24" stroke="#fff" stroke-width="4"/><path d="M12 0v16M0 8h24" stroke="#C8102E" stroke-width="2"/><rect x=".5" y=".5" width="23" height="15" fill="none" stroke="rgba(0,0,0,.18)"/></symbol>
+  </defs>
+</svg>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  Dostawa w Warszawie w 3h &nbsp;·&nbsp; Aranżacje dla hoteli, restauracji & eventów premium &nbsp;·&nbsp; +48 508 645 080
+</div>
+
+<!-- NAV -->
+<nav>
+  <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-left">
+    <a href="#" data-form-open="b2b-quote">Dla firm</a>
+    <a href="#bouquets">Bukiety</a>
+    <a href="#" data-form-open="wedding-inquiry">Ślub</a>
+    <a href="#" data-form-open="workshop-inquiry">Warsztaty</a>
+  </div>
+  <a href="#" class="nav-logo">Vittoria<span>&nbsp;·&nbsp;</span>Fiore Gallery</a>
+  <div class="nav-right">
+    <div class="lang-switch">
+      <a href="#" class="active">PL</a>
+      <a href="#">RU</a>
+      <a href="#">EN</a>
+    </div>
+    <button class="theme-toggle" id="themeToggleSwitch" aria-label="Toggle theme"></button>
+    <a href="#contact" class="nav-cta">Kontakt</a>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" data-form-open="b2b-quote">Dla firm</a>
+  <a href="#bouquets">Bukiety</a>
+  <a href="#" data-form-open="wedding-inquiry">Ślub</a>
+  <a href="#" data-form-open="workshop-inquiry">Warsztaty</a>
+  <a href="#portfolio">Realizacje</a>
+  <a href="#about">O Viktorii</a>
+  <a href="#contact">Kontakt</a>
+  <div class="mobile-menu-lang">
+    <a href="#" class="active">PL</a>
+    <a href="#">RU</a>
+    <a href="#">EN</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Fiori che raccontano storie</div>
+      <h1>Luksusowa sztuka kwiatowa dla przestrzeni, które wymagają <em>doskonałości.</em></h1>
+      <p class="hero-sub">Aranżacje kwiatowe dla hoteli, restauracji, salonów samochodowych i eventów premium w Warszawie i całej Polsce.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary" data-form-open="b2b-quote">Porozmawiajmy o współpracy</a>
+        <a href="#portfolio" class="btn-ghost">Zobacz realizacje</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-ico"><svg class="ico"><use href="#ico-award"/></svg></div>
+          <div>
+            <div class="hero-stat-num">8+</div>
+            <div class="hero-stat-label">Lat doświadczenia</div>
+          </div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-ico"><svg class="ico"><use href="#ico-sparkle"/></svg></div>
+          <div>
+            <div class="hero-stat-num">200+</div>
+            <div class="hero-stat-label">Eventów premium</div>
+          </div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-ico"><svg class="ico"><use href="#ico-hotel"/></svg></div>
+          <div>
+            <div class="hero-stat-num">50+</div>
+            <div class="hero-stat-label">Hoteli i restauracji</div>
+          </div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-ico"><svg class="ico"><use href="#ico-star"/></svg></div>
+          <div>
+            <div class="hero-stat-num">4.9</div>
+            <div class="hero-stat-label">Ocena Google</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-quote">
+        <div class="hero-quote-num">98%</div>
+        <div class="hero-quote-label">Klientów powraca</div>
+        <div class="hero-quote-divider"></div>
+        <div class="hero-quote-text">„Każda kompozycja to dialog między kwiatem a przestrzenią."</div>
+        <div class="hero-quote-cite">— Viktoriya, Founder</div>
+      </div>
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        <div>
+          <div class="hero-badge-title">Dostępna konsultacja</div>
+          <div class="hero-badge-sub">Odpowiedź w 24h</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><svg class="ico"><use href="#ico-hotel"/></svg><strong>Hotele</strong></div>
+  <div class="trust-item"><svg class="ico"><use href="#ico-utensils"/></svg><strong>Restauracje</strong></div>
+  <div class="trust-item"><svg class="ico"><use href="#ico-calendar"/></svg><strong>Eventy</strong></div>
+  <div class="trust-item"><svg class="ico"><use href="#ico-rings"/></svg><strong>Wesela</strong></div>
+  <div class="trust-item"><svg class="ico"><use href="#ico-car"/></svg><strong>Salony Auto</strong></div>
+  <div class="trust-item"><svg class="ico"><use href="#ico-pin"/></svg><strong>Cała Polska</strong></div>
+  <div class="trust-item"><svg class="ico"><use href="#ico-landmark"/></svg><strong>Warszawa</strong></div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <div>
+      <div class="section-eyebrow">Oferta premium</div>
+      <h2 class="section-title">Tworzymy dla przestrzeni,<br>które mówią o <em>klasie</em></h2>
+    </div>
+    <p class="section-sub" style="margin:0">Każda aranżacja to indywidualny projekt — dostosowany do charakteru miejsca, sezonu i estetyki marki naszego klienta.</p>
+  </div>
+  <div class="services-grid reveal">
+    <!-- Hero card 2×2 -->
+    <div class="service-card service-card--hero">
+      <div class="service-photo" data-photo="service-hotel"></div>
+      <div class="service-content">
+        <div class="service-icon"><svg class="ico"><use href="#ico-hotel"/></svg></div>
+        <div class="service-num">01 / Flagship</div>
+        <div>
+          <h3>Hotele & SPA</h3>
+          <p>Regularne, kuratorowane kompozycje kwiatowe dla lobby, restauracji hotelowej i stref relaksu. Subskrypcja tygodniowa lub miesięczna z gwarancją świeżości.</p>
+          <span class="service-tag">B2B · abonament</span>
+        </div>
+      </div>
+    </div>
+    <!-- Standard cards -->
+    <div class="service-card">
+      <div class="service-photo" data-photo="service-restaurant"></div>
+      <div class="service-content">
+        <div class="service-icon"><svg class="ico"><use href="#ico-utensils"/></svg></div>
+        <div class="service-num">02</div>
+        <div>
+          <h3>Restauracje Fine Dining</h3>
+          <p>Sezonowe aranżacje stołów, kompozycje wejściowe i dekoracje baru.</p>
+          <span class="service-tag">Sezonowe</span>
+        </div>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-photo" data-photo="service-auto"></div>
+      <div class="service-content">
+        <div class="service-icon"><svg class="ico"><use href="#ico-car"/></svg></div>
+        <div class="service-num">03</div>
+        <div>
+          <h3>Salony Samochodowe</h3>
+          <p>Premium display dla showroomów premium klasy.</p>
+          <span class="service-tag">Luxury display</span>
+        </div>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-photo" data-photo="service-event"></div>
+      <div class="service-content">
+        <div class="service-icon"><svg class="ico"><use href="#ico-sparkle"/></svg></div>
+        <div class="service-num">04</div>
+        <div>
+          <h3>Eventy & Konferencje</h3>
+          <p>Ekskluzywna oprawa konferencji, gal i wieczorów specjalnych.</p>
+          <span class="service-tag">Jednorazowe</span>
+        </div>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-photo" data-photo="service-wedding"></div>
+      <div class="service-content">
+        <div class="service-icon"><svg class="ico"><use href="#ico-rings"/></svg></div>
+        <div class="service-num">05</div>
+        <div>
+          <h3>Florystyka Ślubna</h3>
+          <p>Kompleksowa oprawa ceremonii, sali weselnej i bukietów.</p>
+          <span class="service-tag">Wesela premium</span>
+        </div>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-photo" data-photo="service-office"></div>
+      <div class="service-content">
+        <div class="service-icon"><svg class="ico"><use href="#ico-building"/></svg></div>
+        <div class="service-num">06</div>
+        <div>
+          <h3>Biura & Przestrzenie</h3>
+          <p>Stałe kompozycje dla biur klasy A i sal konferencyjnych.</p>
+          <span class="service-tag">B2B · cykliczne</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER STRIP -->
+<div class="offer-wrap">
+  <div class="offer-strip reveal">
+    <div class="offer-text">
+      <div class="offer-mark"><svg class="ico"><use href="#ico-sprig"/></svg></div>
+      <div class="offer-pct">−10%</div>
+    </div>
+    <div class="offer-desc">
+      <strong>na pierwszą współpracę B2B</strong>
+      <span>Dla hoteli, restauracji i firm — zapytaj o indywidualną wycenę</span>
+    </div>
+    <a href="#" class="btn-primary" data-form-open="b2b-quote">Zapytaj o wycenę <svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8"><use href="#ico-arrow-right"/></svg></a>
+  </div>
+</div>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="center reveal" style="margin-bottom:64px">
+    <div class="section-eyebrow">Portfolio</div>
+    <h2 class="section-title">Realizacje, które <em>mówią same</em></h2>
+    <p class="section-sub" style="max-width:640px;margin:18px auto 0">Każda aranżacja to indywidualna opowieść o miejscu, marce i emocjach. Zobacz wybrane realizacje, które tworzymy z pasją i dbałością o każdy detal.</p>
+  </div>
+  <div class="portfolio-grid reveal">
+    <div class="port-item" data-photo="portfolio-1" data-form-open="portfolio-inquiry" data-prefill-project="Lobby Hotelu Bristol — Warszawa">
+      <div class="port-meta">2025 · Flagship</div>
+      <div class="port-num">01</div>
+      <div>
+        <div class="port-title">Lobby<br>Hotelu Bristol</div>
+        <div class="port-loc">Warszawa · cykliczna kompozycja</div>
+      </div>
+      <span class="port-tag">Hotel</span>
+      <div class="port-arrow"><svg class="ico"><use href="#ico-arrow-ur"/></svg></div>
+    </div>
+    <div class="port-item" data-photo="portfolio-2" data-form-open="portfolio-inquiry" data-prefill-project="Atelier Amaro — Fine Dining">
+      <div class="port-meta">Case 02</div>
+      <div>
+        <div class="port-num">02</div>
+        <div class="port-title">Atelier Amaro</div>
+        <div class="port-loc">Fine Dining · Warszawa</div>
+      </div>
+      <span class="port-tag">Restauracja</span>
+      <div class="port-arrow"><svg class="ico"><use href="#ico-arrow-ur"/></svg></div>
+    </div>
+    <div class="port-item" data-photo="portfolio-3" data-form-open="portfolio-inquiry" data-prefill-project="Mercedes-Benz Showroom">
+      <div class="port-meta">Case 03</div>
+      <div>
+        <div class="port-num">03</div>
+        <div class="port-title">Mercedes-Benz<br>Showroom</div>
+        <div class="port-loc">Premium display dla salonu</div>
+      </div>
+      <span class="port-tag">Salon Auto</span>
+      <div class="port-arrow"><svg class="ico"><use href="#ico-arrow-ur"/></svg></div>
+    </div>
+    <div class="port-item" data-photo="portfolio-4" data-form-open="portfolio-inquiry" data-prefill-project="Wesele Pałac w Jabłonnie">
+      <div class="port-meta">Case 04</div>
+      <div>
+        <div class="port-num">04</div>
+        <div class="port-title">Wesele Pałac<br>w Jabłonnie</div>
+        <div class="port-loc">Florystyka pełna</div>
+      </div>
+      <span class="port-tag">Wesele</span>
+      <div class="port-arrow"><svg class="ico"><use href="#ico-arrow-ur"/></svg></div>
+    </div>
+    <div class="port-item" data-photo="portfolio-5" data-form-open="portfolio-inquiry" data-prefill-project="Gala BNP Paribas — 380 gości">
+      <div class="port-meta">Case 05</div>
+      <div>
+        <div class="port-num">05</div>
+        <div class="port-title">Gala BNP Paribas</div>
+        <div class="port-loc">Event korporacyjny · 380 gości</div>
+      </div>
+      <span class="port-tag">Event</span>
+      <div class="port-arrow"><svg class="ico"><use href="#ico-arrow-ur"/></svg></div>
+    </div>
+  </div>
+  <div class="portfolio-cta">
+    <a href="#">Zobacz pełne portfolio <svg><use href="#ico-arrow-right"/></svg></a>
+  </div>
+</section>
+
+<!-- BOUQUETS -->
+<section class="bouquets" id="bouquets">
+  <div class="bouquets-header reveal">
+    <div>
+      <div class="section-eyebrow">Na zamówienie</div>
+      <h2 class="section-title" style="margin-bottom:8px">Bukiety <em>Bespoke</em></h2>
+      <p class="section-sub" style="max-width:520px">Personalizowane kompozycje z najlepszych kwiatów — Holandia, Ekwador, Kenia. Dostawa w Warszawie w 3 godziny.</p>
+    </div>
+    <a href="#" class="btn-ghost" data-form-open="bouquet-order">Zobacz wszystkie kompozycje</a>
+  </div>
+  <div class="products-grid reveal">
+    <div class="product-card" data-form-open="bouquet-order" data-prefill-product="№ 01 Róże Ekwadorskie — od 290 zł">
+      <div class="product-visual" data-photo="bouquet-rozy">
+        <span class="product-num">№ 01</span>
+        <span class="product-badge">Bestseller</span>
+        
+      </div>
+      <div class="product-info">
+        <h4>Róże Ekwadorskie</h4>
+        <div class="origin">Ekwador · 50–101 szt.</div>
+        <div class="product-row">
+          <div class="product-price">od 290 zł <small>/ bukiet</small></div>
+          <div class="product-cta"><svg class="ico"><use href="#ico-arrow-right"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-form-open="bouquet-order" data-prefill-product="№ 02 Piwonie Holenderskie — od 340 zł">
+      <div class="product-visual" data-photo="bouquet-piwonie">
+        <span class="product-num">№ 02</span>
+        <span class="product-badge">Sezonowe</span>
+        
+      </div>
+      <div class="product-info">
+        <h4>Piwonie Holenderskie</h4>
+        <div class="origin">Holandia · sezonowe</div>
+        <div class="product-row">
+          <div class="product-price">od 340 zł <small>/ bukiet</small></div>
+          <div class="product-cta"><svg class="ico"><use href="#ico-arrow-right"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-form-open="bouquet-order" data-prefill-product="№ 03 Kompozycja Autorska — od 420 zł">
+      <div class="product-visual" data-photo="bouquet-autorska">
+        <span class="product-num">№ 03</span>
+        <span class="product-badge">Authorial</span>
+        
+      </div>
+      <div class="product-info">
+        <h4>Kompozycja Autorska</h4>
+        <div class="origin">Mix premium · seasonal</div>
+        <div class="product-row">
+          <div class="product-price">od 420 zł <small>/ bukiet</small></div>
+          <div class="product-cta"><svg class="ico"><use href="#ico-arrow-right"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-form-open="bouquet-order" data-prefill-product="№ 04 Hortensje & Orchidee — od 380 zł">
+      <div class="product-visual" data-photo="bouquet-hortensje">
+        <span class="product-num">№ 04</span>
+        <span class="product-badge">Premium</span>
+        
+      </div>
+      <div class="product-info">
+        <h4>Hortensje & Orchidee</h4>
+        <div class="origin">Holandia · całoroczne</div>
+        <div class="product-row">
+          <div class="product-price">od 380 zł <small>/ bukiet</small></div>
+          <div class="product-cta"><svg class="ico"><use href="#ico-arrow-right"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="about" id="about">
+  <div class="about-photo reveal" data-photo="about-viktoriya">
+    <div class="about-badge">
+      <svg viewBox="0 0 150 150" aria-label="Vittoria Fiore Gallery — Estd MMXVII">
+        <defs>
+          <path id="vfgArcTop" d="M 20,75 A 55,55 0 0 1 130,75" fill="none"/>
+          <path id="vfgArcBot" d="M 25,75 A 50,50 0 0 0 125,75" fill="none"/>
+        </defs>
+        <circle cx="75" cy="75" r="68" fill="none" stroke="#0F2547" stroke-width="1"/>
+        <text class="badge-arc-text">
+          <textPath href="#vfgArcTop" startOffset="50%" text-anchor="middle">VITTORIA FIORE GALLERY</textPath>
+        </text>
+        <text class="badge-arc-text">
+          <textPath href="#vfgArcBot" startOffset="50%" text-anchor="middle">ESTD · MMXVII</textPath>
+        </text>
+        <text class="badge-mono" x="75" y="73" text-anchor="middle">V . F .</text>
+        <text class="badge-mono" x="75" y="98" text-anchor="middle">G</text>
+      </svg>
+    </div>
+  </div>
+  <div class="about-content reveal">
+    <div class="section-eyebrow">O mnie</div>
+    <h2 class="section-title">Viktoriya —<br><em>Florystka z duszą artysty</em></h2>
+    <blockquote>„Każdy kwiat opowiada historię. Moją rolą jest sprawić, żeby opowiadał historię Twojej przestrzeni."</blockquote>
+    <p>Jestem Viktoriya — twórczynią Vittoria Fiore Gallery. Inspirują mnie emocje, natura i piękno w najczystszej formie. Od lat tworzę luksusowe aranżacje dla najbardziej wymagających przestrzeni w Polsce.</p>
+    <p>Pracuję wyłącznie z kwiatami najwyższej jakości, sprowadzanymi z Holandii, Ekwadoru i Kenii. Każdy projekt traktuję jak dzieło sztuki — z dbałością o każdy detal.</p>
+    <div class="about-stats">
+      <div class="about-stat">
+        <div class="about-stat-ico"><svg viewBox="0 0 32 32"><use href="#ico-floral-1"/></svg></div>
+        <div class="about-stat-num">8+</div>
+        <div class="about-stat-lbl">Lat doświadczenia</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-ico"><svg viewBox="0 0 32 32"><use href="#ico-floral-2"/></svg></div>
+        <div class="about-stat-num">200+</div>
+        <div class="about-stat-lbl">Zrealizowanych<br>projektów</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-ico"><svg viewBox="0 0 32 32"><use href="#ico-floral-3"/></svg></div>
+        <div class="about-stat-num">3</div>
+        <div class="about-stat-lbl">Kraje, z których<br>pozyskujemy kwiaty</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="center reveal" style="margin-bottom:48px">
+    <div class="section-eyebrow">FAQ</div>
+    <h2 class="section-title">Najczęstsze <em>pytania</em></h2>
+    <div class="faq-ornament"><svg viewBox="0 0 80 12"><use href="#ico-ornament"/></svg></div>
+  </div>
+  <div class="faq-grid reveal">
+    <div class="faq-item open">
+      <div class="faq-mark"><svg class="ico"><use href="#ico-sprig"/></svg></div>
+      <div class="faq-body">
+        <div class="faq-question"><h4>Jak działa abonament florystyczny dla hotelu lub restauracji?</h4></div>
+        <div class="faq-answer">Po bezpłatnej konsultacji przygotowujemy projekt kompozycji dopasowany do Twojej przestrzeni i marki. Świeże aranżacje dostarczamy i wymieniamy 1–2 razy w tygodniu — zawsze przed otwarciem lokalu, dyskretnie, niewidocznie dla gości. Codziennie dbamy o estetykę i czystość kompozycji. Abonament zawieramy na 3, 6 lub 12 miesięcy z gwarancją stałej ceny.</div>
+      </div>
+      <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-mark"><svg class="ico"><use href="#ico-sprig"/></svg></div>
+      <div class="faq-body">
+        <div class="faq-question"><h4>Ile kosztuje aranżacja kwiatowa dla biznesu — od jakiej kwoty?</h4></div>
+        <div class="faq-answer">Wycena zależy od skali projektu, częstotliwości i sezonu. Abonament B2B startuje od ~800 zł/tydzień za pojedynczą kompozycję recepcyjną. Pełna oprawa hotelu klasy 5★ to indywidualna wycena — zazwyczaj 4 000–15 000 zł/miesiąc. Eventy: od 3 500 zł. Pierwsza konsultacja i wycena są darmowe.</div>
+      </div>
+      <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-mark"><svg class="ico"><use href="#ico-sprig"/></svg></div>
+      <div class="faq-body">
+        <div class="faq-question"><h4>Jak szybko dostarczacie kwiaty w Warszawie?</h4></div>
+        <div class="faq-answer">Bukiety bespoke — dostawa w 3 godziny od potwierdzenia zamówienia (Warszawa, w godzinach pracy). Cała Polska — dostawa następnego dnia. Dla eventów i ślubów ustalamy indywidualny harmonogram montażu zwykle 24–48h przed wydarzeniem. Aranżacje B2B dowozimy w ustalonych dniach tygodnia.</div>
+      </div>
+      <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-mark"><svg class="ico"><use href="#ico-sprig"/></svg></div>
+      <div class="faq-body">
+        <div class="faq-question"><h4>Z jakich kwiatów pracujecie i skąd je sprowadzacie?</h4></div>
+        <div class="faq-answer">Pracujemy wyłącznie z kwiatami premium, sprowadzanymi bezpośrednio z aukcji w Holandii (FloraHolland), z farm w Ekwadorze (róże) i Kenii (sezonowe egzotyki). Codziennie odbieramy świeży towar. Trzymamy najwyższe standardy: kwiat przed wyjazdem do klienta zawsze przechodzi 24h w chłodni — gwarantuje to 7–10 dni życia w wazonie.</div>
+      </div>
+      <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-mark"><svg class="ico"><use href="#ico-sprig"/></svg></div>
+      <div class="faq-body">
+        <div class="faq-question"><h4>Z jakim wyprzedzeniem rezerwować florystykę ślubną?</h4></div>
+        <div class="faq-answer">Optymalny czas to 6–9 miesięcy przed datą — wtedy mamy pełną swobodę projektową i gwarancję terminu. Minimum to 3 miesiące. Przyjmujemy maksymalnie 2 śluby tygodniowo, aby zachować jakość. Cykl pracy: konsultacja → moodboard → wycena → zaliczka 30% → próbka kompozycji → montaż w dniu ślubu.</div>
+      </div>
+      <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-mark"><svg class="ico"><use href="#ico-sprig"/></svg></div>
+      <div class="faq-body">
+        <div class="faq-question"><h4>Jak działają warsztaty florystyczne i dla kogo są?</h4></div>
+        <div class="faq-answer">Warsztaty trwają ~3 godziny w studio na Mokotowie, w grupach do 8 osób. W programie: teoria kompozycji włoskiej, dobór kolorów, praca z różami, piwoniami i kwiatami sezonowymi. Zabierasz do domu własny bukiet (~50 łodyg) plus kawę i włoskie słodycze. Cena: 380 zł/osoba. Organizujemy też zamknięte warsztaty firmowe (team-building, integracje, kick-offy) — od 8 do 20 osób.</div>
+      </div>
+      <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-mark"><svg class="ico"><use href="#ico-sprig"/></svg></div>
+      <div class="faq-body">
+        <div class="faq-question"><h4>Jakie są metody płatności i czy wystawiacie faktury VAT?</h4></div>
+        <div class="faq-answer">Akceptujemy BLIK, karty (Visa/Mastercard), przelew tradycyjny, PayU oraz Przelewy24. Dla klientów B2B — faktura VAT 23% z odroczonym terminem płatności do 14 dni. Przy abonamentach miesięcznych możliwa płatność cykliczna kartą.</div>
+      </div>
+      <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-mark"><svg class="ico"><use href="#ico-sprig"/></svg></div>
+      <div class="faq-body">
+        <div class="faq-question"><h4>Co jeśli kompozycja nie spełnia oczekiwań?</h4></div>
+        <div class="faq-answer">Dajemy 100% gwarancji satysfakcji. Jeżeli kompozycja nie odpowiada Twoim oczekiwaniom — wymieniamy ją bezpłatnie w ciągu 24h lub zwracamy pieniądze. Każdy bukiet ma 7-dniową gwarancję świeżości. Wystarczy zgłoszenie ze zdjęciem na <a href="mailto:gallery.vittoria@gmail.com" style="color:var(--gold)">gallery.vittoria@gmail.com</a>.</div>
+      </div>
+      <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
+    </div>
+  </div>
+  <div class="faq-cta reveal">
+    <div class="faq-cta-mark"><svg class="ico"><use href="#ico-headset"/></svg></div>
+    <div class="faq-cta-text">
+      <strong>Nie znalazłaś odpowiedzi na swoje pytanie?</strong>
+      <span>Skontaktuj się z nami — chętnie pomożemy.</span>
+    </div>
+    <a href="#" data-form-open="b2b-quote">Skontaktuj się <svg><use href="#ico-arrow-right"/></svg></a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-left">
+    <div class="section-eyebrow">Kontakt</div>
+    <h2 class="section-title">Porozmawiajmy<br>o Twojej <em>przestrzeni</em></h2>
+    <p class="section-sub" style="margin-bottom:32px">Opowiedz nam o swoim projekcie. Skontaktujemy się w ciągu 24 godzin z indywidualną propozycją.</p>
+    <form class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Imię i nazwisko</label>
+          <input type="text" placeholder="Jan Kowalski">
+        </div>
+        <div class="form-group">
+          <label>Firma / Hotel / Restauracja</label>
+          <input type="text" placeholder="Nazwa firmy">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Telefon</label>
+          <input type="tel" placeholder="+48 000 000 000">
+        </div>
+        <div class="form-group">
+          <label>Rodzaj współpracy</label>
+          <select>
+            <option value="">Wybierz...</option>
+            <option>Hotel / SPA</option>
+            <option>Restauracja</option>
+            <option>Salon samochodowy</option>
+            <option>Event / Konferencja</option>
+            <option>Ślub</option>
+            <option>Bukiet na zamówienie</option>
+            <option>Warsztaty florystyczne</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Wiadomość</label>
+        <textarea rows="4" placeholder="Opisz krótko swój projekt lub potrzeby..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="align-self:flex-start">Wyślij zapytanie</button>
+    </form>
+  </div>
+  <div class="contact-right">
+    <div class="section-eyebrow">Dane kontaktowe</div>
+    <h3 class="section-title" style="font-size:32px;margin-bottom:8px">Vittoria<br><em>Fiore Gallery</em></h3>
+    <div class="contact-info">
+      <div class="contact-info-item">
+        <div class="ci-icon"><svg class="ico"><use href="#ico-phone"/></svg></div>
+        <div class="ci-text">
+          <strong>Telefon</strong>
+          <a href="tel:+48508645080" style="color:inherit;text-decoration:none">+48 508 645 080</a>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ci-icon"><svg class="ico"><use href="#ico-mail"/></svg></div>
+        <div class="ci-text">
+          <strong>Email</strong>
+          <a href="mailto:gallery.vittoria@gmail.com" style="color:inherit;text-decoration:none">gallery.vittoria@gmail.com</a>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ci-icon"><svg class="ico"><use href="#ico-pin"/></svg></div>
+        <div class="ci-text">
+          <strong>Warszawa</strong>
+          <span>Dostawa · cała Polska na eventy</span>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ci-icon"><svg class="ico"><use href="#ico-clock"/></svg></div>
+        <div class="ci-text">
+          <strong>Godziny</strong>
+          <span>Pon–Pt 9:00–19:00 · Sob 10:00–16:00</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:40px;padding:20px;border:1px solid var(--border);background:var(--card)">
+      <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Języki obsługi</div>
+      <div class="lang-list">
+        <span><svg class="flag-ico"><use href="#ico-flag-pl"/></svg> Polski</span>
+        <span><svg class="flag-ico"><use href="#ico-flag-ru"/></svg> Русский</span>
+        <span><svg class="flag-ico"><use href="#ico-flag-gb"/></svg> English</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-newsletter reveal">
+    <div class="newsletter-left">
+      <div class="section-eyebrow" style="color:var(--gold)">Newsletter</div>
+      <h3 class="newsletter-title">Zostań w kręgu <em>premium</em></h3>
+      <p class="newsletter-sub">Nowe kompozycje, sezonowe inspiracje i ekskluzywne oferty B2B — raz w miesiącu.</p>
+    </div>
+    <form class="newsletter-form" onsubmit="event.preventDefault()">
+      <input type="email" placeholder="twój@email.com" aria-label="Email">
+      <button type="submit" class="btn-primary">Subskrybuj <svg class="btn-ico"><use href="#ico-arrow-right"/></svg></button>
+    </form>
+  </div>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo"><span>Vittoria</span><span>Fiore Gallery</span></div>
+      <p class="footer-tagline">Luksusowe aranżacje kwiatowe<br>dla przestrzeni, które wymagają doskonałości.<em>Fiori che raccontano storie.</em></p>
+    </div>
+    <div class="footer-col">
+      <h5>Dla firm</h5>
+      <ul>
+        <li><a href="#" data-form-open="b2b-quote">Hotele & SPA</a></li>
+        <li><a href="#" data-form-open="b2b-quote">Restauracje</a></li>
+        <li><a href="#" data-form-open="b2b-quote">Salony Auto</a></li>
+        <li><a href="#" data-form-open="b2b-quote">Eventy</a></li>
+        <li><a href="#" data-form-open="b2b-quote">Biura</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Oferta</h5>
+      <ul>
+        <li><a href="#" data-form-open="bouquet-order">Bukiety bespoke</a></li>
+        <li><a href="#" data-form-open="wedding-inquiry">Florystyka ślubna</a></li>
+        <li><a href="#" data-form-open="workshop-inquiry">Warsztaty</a></li>
+        <li><a href="#">Dostawa domowa</a></li>
+        <li><a href="#">Portfolio</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Informacje</h5>
+      <ul>
+        <li><a href="#">O Viktorii</a></li>
+        <li><a href="#">Kontakt</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Polityka prywatności</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Vittoria Fiore Gallery. Wszelkie prawa zastrzeżone.</span>
+    <div class="footer-bottom-loc">Warszawa<span>·</span>Cała Polska</div>
+    <div class="footer-socials">
+      <a href="#" title="Instagram" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r=".9" fill="currentColor"/>
+        </svg>
+      </a>
+      <a href="#" title="Facebook" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.3-.04-1.3-.13-2.45-.13-2.43 0-4.1 1.48-4.1 4.2v2.23H7.7V13h2.75v8h3.05z"/>
+        </svg>
+      </a>
+      <a href="#" title="LinkedIn" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.2 8h4.6v14H.2V8zm7.6 0h4.4v1.9h.1c.6-1.13 2.1-2.32 4.3-2.32 4.6 0 5.5 3 5.5 7V22h-4.6v-6.2c0-1.5 0-3.4-2.1-3.4s-2.4 1.6-2.4 3.3V22H7.8V8z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── MODAL CONTAINER ─── -->
+<div class="modal" id="vfgModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel">
+    <button class="modal-close" data-close aria-label="Zamknij"><svg class="ico"><use href="#ico-close"/></svg></button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+  // ── THEME TOGGLE ──
+  const html = document.documentElement;
+  const toggleBtn = document.getElementById('themeToggleSwitch');
+
+  // default theme = light; dark only when user explicitly toggled
+  if (localStorage.getItem('vfg-theme') !== 'dark') html.classList.add('light');
+
+  toggleBtn.addEventListener('click', () => {
+    html.classList.toggle('light');
+    localStorage.setItem('vfg-theme', html.classList.contains('light') ? 'light' : 'dark');
+  });
+
+  // ── FAQ accordion ──
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-question').addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
+
+  // ── Smooth scroll ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  // ── Scroll-reveal (fade up on enter) ──
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.classList.add('is-visible');
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => io.observe(el));
+
+  // ── MOBILE NAV BURGER ──
+  const burger = document.getElementById('navBurger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (burger && mobileMenu) {
+    burger.addEventListener('click', () => {
+      const open = burger.classList.toggle('is-open');
+      mobileMenu.classList.toggle('is-open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.classList.toggle('modal-locked', open);
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.classList.remove('is-open');
+        mobileMenu.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('modal-locked');
+      });
+    });
+  }
+
+  // ── MODAL FORMS ──
+  // Each form has unique source label so backend (and Viktoriya) knows WHERE the lead came from.
+  const FORM_CONFIGS = {
+    'b2b-quote': {
+      tag: 'B2B · Wycena',
+      title: 'Porozmawiajmy o <em>współpracy</em>',
+      sub: 'Hotele · restauracje · salony auto · biura. Odpiszemy z indywidualną wyceną w ciągu 24h.',
+      fields: [
+        { name: 'name',     label: 'Imię i nazwisko',    type: 'text',  placeholder: 'Jan Kowalski', required: true, half: true },
+        { name: 'company',  label: 'Firma / hotel',      type: 'text',  placeholder: 'Nazwa firmy', required: true, half: true },
+        { name: 'email',    label: 'Email',              type: 'email', placeholder: 'kontakt@firma.pl', required: true, half: true },
+        { name: 'phone',    label: 'Telefon',            type: 'tel',   placeholder: '+48 ___ ___ ___', required: true, half: true },
+        { name: 'business', label: 'Rodzaj działalności', type: 'select', options: ['Hotel / SPA','Restauracja','Salon samochodowy','Biuro / Coworking','Event / Konferencja','Inne'], required: true },
+        { name: 'address',  label: 'Adres / lokalizacja montażu', type: 'text', placeholder: 'ul. Marszałkowska 1, Warszawa' },
+        { name: 'message',  label: 'O projekcie', type: 'textarea', placeholder: 'Opisz krótko potrzeby, częstotliwość, budżet…', rows: 3 }
+      ],
+      submit: 'Wyślij zapytanie',
+      thanksTitle: 'Dziękujemy <em>za zapytanie</em>',
+      thanksSub: 'Skontaktujemy się z Tobą w ciągu 24h z indywidualną wyceną B2B.'
+    },
+    'bouquet-order': {
+      tag: 'Zamówienie · Bukiet',
+      title: 'Twój bukiet <em>bespoke</em>',
+      sub: 'Dostawa w Warszawie w 3 godziny. Poza Warszawą — uzgadniamy indywidualnie.',
+      fields: [
+        { name: 'product',  label: 'Wybrana kompozycja', type: 'text', readonly: true },
+        { name: 'name',     label: 'Imię i nazwisko', type: 'text', required: true, half: true },
+        { name: 'phone',    label: 'Telefon',         type: 'tel',  required: true, half: true, placeholder: '+48 ___ ___ ___' },
+        { name: 'email',    label: 'Email',           type: 'email', required: true },
+        { name: 'address',  label: 'Adres dostawy',   type: 'text', required: true, placeholder: 'ul., nr, kod, miasto' },
+        { name: 'date',     label: 'Data dostawy',    type: 'date', required: true, half: true },
+        { name: 'time',     label: 'Preferowana godzina', type: 'select', options: ['9:00–12:00','12:00–15:00','15:00–18:00','18:00–20:00'], half: true },
+        { name: 'message',  label: 'Komentarz dla florystki', type: 'textarea', placeholder: 'Bilecik, dedykacja, preferencje kolorystyczne…', rows: 2 }
+      ],
+      submit: 'Zamów bukiet',
+      thanksTitle: 'Zamówienie <em>przyjęte</em>',
+      thanksSub: 'Skontaktujemy się z Tobą telefonicznie w ciągu 1h, aby potwierdzić szczegóły dostawy.'
+    },
+    'wedding-inquiry': {
+      tag: 'Florystyka ślubna',
+      title: 'Zaprojektujmy Twój <em>ślub</em>',
+      sub: 'Indywidualny projekt — od bukietu Panny Młodej po dekoracje sali. Bezpłatna konsultacja.',
+      fields: [
+        { name: 'name',     label: 'Imię i nazwisko', type: 'text', required: true, half: true },
+        { name: 'phone',    label: 'Telefon',         type: 'tel',  required: true, half: true },
+        { name: 'email',    label: 'Email',           type: 'email', required: true },
+        { name: 'weddingDate', label: 'Data ślubu', type: 'date', required: true, half: true },
+        { name: 'guests',   label: 'Liczba gości',    type: 'number', placeholder: '80', half: true },
+        { name: 'venue',    label: 'Sala / lokalizacja', type: 'text', placeholder: 'Pałac w Jabłonnie' },
+        { name: 'message',  label: 'O Twojej wizji', type: 'textarea', placeholder: 'Styl, kolory, ulubione kwiaty…', rows: 3 }
+      ],
+      submit: 'Wyślij zapytanie',
+      thanksTitle: 'Gratulujemy <em>i dziękujemy</em>',
+      thanksSub: 'Skontaktujemy się w ciągu 24h, aby umówić bezpłatną konsultację.'
+    },
+    'portfolio-inquiry': {
+      tag: 'Konsultacja · Realizacja',
+      title: 'Porozmawiajmy o <em>projekcie</em>',
+      sub: 'Spodobała Ci się ta realizacja? Stwórzmy podobny projekt dla Twojej przestrzeni.',
+      fields: [
+        { name: 'project',  label: 'Inspirująca realizacja', type: 'text', readonly: true },
+        { name: 'name',     label: 'Imię i nazwisko', type: 'text', required: true, half: true },
+        { name: 'email',    label: 'Email',           type: 'email', required: true, half: true },
+        { name: 'phone',    label: 'Telefon',         type: 'tel',   placeholder: '+48 ___ ___ ___' },
+        { name: 'message',  label: 'Krótko o Twojej przestrzeni', type: 'textarea', rows: 3 }
+      ],
+      submit: 'Umów konsultację',
+      thanksTitle: 'Zapytanie <em>wysłane</em>',
+      thanksSub: 'Odpiszemy w ciągu 24h z propozycją terminu konsultacji.'
+    },
+    'workshop-inquiry': {
+      tag: 'Warsztaty florystyczne',
+      title: 'Zapisz się na <em>warsztaty</em>',
+      sub: 'Małe grupy do 8 osób · własny bukiet do domu · kwiaty premium.',
+      fields: [
+        { name: 'name',     label: 'Imię i nazwisko', type: 'text', required: true, half: true },
+        { name: 'phone',    label: 'Telefon',         type: 'tel',  required: true, half: true },
+        { name: 'email',    label: 'Email',           type: 'email', required: true },
+        { name: 'workshopType', label: 'Rodzaj warsztatu', type: 'select', options: ['Indywidualny','Para','Grupa znajomych','Team-building dla firmy'] },
+        { name: 'persons',  label: 'Liczba osób', type: 'number', placeholder: '2', half: true },
+        { name: 'preferDate', label: 'Preferowana data', type: 'date', half: true },
+        { name: 'message',  label: 'Dodatkowe informacje', type: 'textarea', rows: 2 }
+      ],
+      submit: 'Zarezerwuj termin',
+      thanksTitle: 'Rezerwacja <em>przyjęta</em>',
+      thanksSub: 'Potwierdzimy termin warsztatu w ciągu 24h.'
+    }
+  };
+
+  const modal = document.getElementById('vfgModal');
+  const modalBody = document.getElementById('modalBody');
+
+  function renderField(f) {
+    const id = 'fld_' + f.name;
+    const req = f.required ? ' required' : '';
+    const ro  = f.readonly ? ' readonly' : '';
+    const ph  = f.placeholder ? ` placeholder="${f.placeholder}"` : '';
+    let input;
+    if (f.type === 'textarea') {
+      input = `<textarea id="${id}" name="${f.name}" rows="${f.rows||3}"${ph}${req}></textarea>`;
+    } else if (f.type === 'select') {
+      const opts = ['<option value="">— wybierz —</option>'].concat(
+        f.options.map(o => `<option value="${o}">${o}</option>`)
+      ).join('');
+      input = `<select id="${id}" name="${f.name}"${req}>${opts}</select>`;
+    } else {
+      input = `<input id="${id}" name="${f.name}" type="${f.type}"${ph}${req}${ro}>`;
+    }
+    return `<div class="form-group${f.half ? ' form-group--half' : ''}">
+      <label for="${id}">${f.label}${f.required ? ' *' : ''}</label>
+      ${input}
+    </div>`;
+  }
+
+  function renderForm(sourceKey, prefill = {}) {
+    const cfg = FORM_CONFIGS[sourceKey];
+    if (!cfg) return;
+    // pair adjacent half-fields into rows for nicer 2-col layout
+    const groups = [];
+    let buffer = [];
+    cfg.fields.forEach(f => {
+      if (f.half) {
+        buffer.push(f);
+        if (buffer.length === 2) { groups.push(buffer); buffer = []; }
+      } else {
+        if (buffer.length) { groups.push(buffer); buffer = []; }
+        groups.push([f]);
+      }
+    });
+    if (buffer.length) groups.push(buffer);
+
+    const fieldsHtml = groups.map(grp => {
+      if (grp.length === 2) {
+        return `<div class="form-row">${grp.map(renderField).join('')}</div>`;
+      }
+      return renderField(grp[0]);
+    }).join('');
+
+    modalBody.innerHTML = `
+      <span class="modal-source-tag">${cfg.tag}</span>
+      <h3 class="modal-title" id="modalTitle">${cfg.title}</h3>
+      <p class="modal-sub">${cfg.sub}</p>
+      <form class="modal-form" data-source="${sourceKey}" novalidate>
+        <input type="hidden" name="source" value="${sourceKey}">
+        ${fieldsHtml}
+        <button type="submit" class="btn-primary">${cfg.submit} <svg class="btn-ico"><use href="#ico-arrow-right"/></svg></button>
+        <div class="modal-foot">Wysyłając zgadzasz się na kontakt w sprawie zapytania. Twoje dane są bezpieczne.</div>
+      </form>
+    `;
+
+    // prefill values
+    Object.keys(prefill).forEach(k => {
+      const el = modalBody.querySelector(`[name="${k}"]`);
+      if (el) el.value = prefill[k];
+    });
+
+    modalBody.querySelector('form').addEventListener('submit', handleSubmit);
+  }
+
+  function openModal(sourceKey, prefill) {
+    renderForm(sourceKey, prefill);
+    modal.classList.add('is-open');
+    document.body.classList.add('modal-locked');
+    setTimeout(() => {
+      const first = modalBody.querySelector('input:not([readonly]),select,textarea');
+      if (first) first.focus();
+    }, 50);
+  }
+  function closeModal() {
+    modal.classList.remove('is-open');
+    document.body.classList.remove('modal-locked');
+  }
+
+  modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeModal));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // Open modal from any element with data-form-open
+  document.querySelectorAll('[data-form-open]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const source = btn.dataset.formOpen;
+      const prefill = {};
+      // optional prefill via data-prefill-<field> attrs
+      Object.keys(btn.dataset).forEach(k => {
+        if (k.startsWith('prefill')) {
+          const fieldName = k.replace('prefill', '');
+          const lc = fieldName.charAt(0).toLowerCase() + fieldName.slice(1);
+          prefill[lc] = btn.dataset[k];
+        }
+      });
+      openModal(source, prefill);
+    });
+  });
+
+  // Submit handler — shared by modal forms + main contact form
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const source = form.dataset.source || 'unknown';
+    const data = Object.fromEntries(new FormData(form).entries());
+    // backend integration point — for now log to console
+    console.log('[VFG lead]', { source, data, ts: new Date().toISOString() });
+
+    // determine thank-you text
+    const cfg = FORM_CONFIGS[source];
+    const title = cfg ? cfg.thanksTitle : 'Dziękujemy <em>za wiadomość</em>';
+    const sub   = cfg ? cfg.thanksSub   : 'Odpiszemy w ciągu 24h.';
+
+    const thanksHtml = `
+      <div class="thanks-state">
+        <div class="thanks-icon"><svg class="ico"><use href="#ico-check"/></svg></div>
+        <h3 class="thanks-title">${title}</h3>
+        <p class="thanks-sub">${sub}</p>
+        <div class="thanks-source">Źródło zapytania: <strong>${source}</strong></div>
+      </div>
+    `;
+
+    // For modal — replace modalBody. For inline form — replace form parent.
+    if (form.closest('.modal-form, .modal-panel')) {
+      modalBody.innerHTML = thanksHtml;
+    } else {
+      const wrapper = form.closest('[data-form-wrap]') || form.parentElement;
+      wrapper.innerHTML = thanksHtml;
+    }
+  }
+
+  // Bind main contact form (inline, in contact section)
+  const mainForm = document.querySelector('form.contact-form');
+  if (mainForm) {
+    if (!mainForm.dataset.source) mainForm.dataset.source = 'main-contact';
+    if (!mainForm.querySelector('[name="source"]')) {
+      const h = document.createElement('input');
+      h.type = 'hidden'; h.name = 'source'; h.value = mainForm.dataset.source;
+      mainForm.appendChild(h);
+    }
+    mainForm.addEventListener('submit', handleSubmit);
+  }
+
+  // Newsletter — small inline thank-you under field
+  const newsletterForm = document.querySelector('.newsletter-form');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = newsletterForm.querySelector('input[type="email"]').value;
+      console.log('[VFG lead]', { source: 'newsletter', data: { email }, ts: new Date().toISOString() });
+      newsletterForm.outerHTML = `<div class="newsletter-thanks">Dziękujemy — jesteś na liście. Pierwszy newsletter wkrótce.</div>`;
+    });
+  }
+</script>
+</body>
+</html>
