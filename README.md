@@ -2,7 +2,9 @@
 
 Luxury floral studio website by Viktoriya — premium B2B floral design for hotels, restaurants, car dealerships, and corporate spaces.
 
-**Live preview:** open `vittoria-design.html` in any modern browser.
+**Live preview:** [luichakr.github.io/Florystyka](https://luichakr.github.io/Florystyka/)
+
+Or open `index.html` locally in any modern browser.
 
 ## Highlights
 
