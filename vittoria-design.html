@@ -1,0 +1,2873 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vittoria Fiore Gallery — Luksusowe Aranżacje Kwiatowe Warszawa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── DARK THEME (default) ── */
+    :root {
+      --black:   #0E0E0E;
+      --charcoal:#161616;
+      --card:    #1A1A1A;
+      --gold:    #C9A96E;
+      --gold-lt: #E0C898;
+      --ivory:   #F5F0E8;
+      --muted:   #8A8070;
+      --border:  rgba(201,169,110,.18);
+
+      /* semantic aliases */
+      --bg:        var(--black);
+      --bg-alt:    var(--charcoal);
+      --bg-card:   var(--card);
+      --text:      var(--ivory);
+      --text-muted:var(--muted);
+      --nav-bg:    rgba(14,14,14,.92);
+      --topbar-bg: var(--gold);
+      --topbar-text:#111;
+      --hero-overlay: linear-gradient(135deg,#1a1510 0%,#2a1f14 40%,#1a1510 100%);
+      --about-bg:  linear-gradient(135deg,#0e0c18,#1e1428,#0e0c18);
+      --offer-bg:  linear-gradient(135deg,#1a1408 0%,#2a1f0a 50%,#1a1408 100%);
+      --footer-bg: #080808;
+      --shadow:    none;
+    }
+
+    /* ── LIGHT THEME ── */
+    html.light {
+      --black:   #FAF7F2;
+      --charcoal:#F0EBE3;
+      --card:    #FFFFFF;
+      --gold:    #A8813E;
+      --gold-lt: #C9A96E;
+      --ivory:   #1C1714;
+      --muted:   #7A6A58;
+      --border:  rgba(168,129,62,.2);
+
+      --bg:        #FAF7F2;
+      --bg-alt:    #F0EBE3;
+      --bg-card:   #FFFFFF;
+      --text:      #1C1714;
+      --text-muted:#7A6A58;
+      --nav-bg:    rgba(250,247,242,.94);
+      --topbar-bg: #1C1714;
+      --topbar-text:#C9A96E;
+      --hero-overlay: linear-gradient(135deg,#ede5d8 0%,#f5ede0 40%,#ede5d8 100%);
+      --about-bg:  linear-gradient(135deg,#ede5d8,#e8ddd0,#ede5d8);
+      --offer-bg:  linear-gradient(135deg,#f0e8d4 0%,#f5edda 50%,#f0e8d4 100%);
+      --footer-bg: #1C1714;
+      --shadow:    0 2px 24px rgba(0,0,0,.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    /* Scroll reveal — opt-in via .reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1);
+      transition-delay: var(--delay, 0ms);
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      transition: background .4s, color .4s;
+    }
+
+    /* ─── TOP BAR ─── */
+    .topbar {
+      background: var(--gold);
+      color: #111;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 9px 20px;
+    }
+    .topbar span { margin: 0 18px; opacity: .8; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 72px;
+    }
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .nav-left a, .nav-right a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-left a:hover, .nav-right a:hover { color: var(--gold); }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .lang-switch {
+      display: flex;
+      gap: 6px;
+      font-size: 11px;
+      letter-spacing: .08em;
+    }
+    .lang-switch a {
+      color: var(--muted) !important;
+      padding: 2px 4px;
+      border-radius: 2px;
+      transition: all .2s;
+    }
+    .lang-switch a.active { color: var(--gold) !important; }
+    .nav-cta {
+      border: 1px solid var(--gold);
+      color: var(--gold) !important;
+      padding: 7px 18px;
+      border-radius: 2px;
+      font-size: 11px !important;
+      letter-spacing: .12em;
+      transition: all .2s;
+    }
+    .nav-cta:hover {
+      background: var(--gold);
+      color: #111 !important;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 64px 80px 80px;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(42px, 5vw, 72px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ivory);
+      margin-bottom: 28px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 420px;
+      margin-bottom: 48px;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold);
+      color: #111;
+      padding: 16px 36px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all .25s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-lt); }
+    .btn-ghost {
+      color: var(--ivory);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color .2s;
+    }
+    .btn-ghost:hover { color: var(--gold); }
+    .btn-ghost::after { content: '→'; transition: transform .2s; }
+    .btn-ghost:hover::after { transform: translateX(4px); }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 64px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+    .hero-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--gold);
+    }
+    .hero-stat-label {
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--black) 0%, transparent 30%);
+      z-index: 1;
+    }
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      filter: brightness(.75) contrast(1.05);
+    }
+    /* Hero right — editorial typographic panel, no photo */
+    .hero-img-placeholder {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background:
+        radial-gradient(circle at 70% 40%, rgba(201,169,110,.10) 0%, transparent 55%),
+        linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);
+      overflow: hidden;
+    }
+    /* Faint vertical guide line */
+    .hero-img-placeholder::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; left: 50%;
+      width: 1px;
+      background: var(--border);
+      opacity: .5;
+    }
+    /* Oversized italic V monogram, anchored bottom-right */
+    .hero-monogram {
+      position: absolute;
+      right: -40px;
+      bottom: -80px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(360px, 38vw, 540px);
+      line-height: .85;
+      color: var(--gold);
+      opacity: .08;
+      pointer-events: none;
+      user-select: none;
+    }
+    /* Floating editorial caption block — top right */
+    .hero-caption {
+      position: absolute;
+      top: 80px;
+      right: 80px;
+      z-index: 2;
+      text-align: right;
+      max-width: 280px;
+    }
+    .hero-caption-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 64px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      letter-spacing: -.02em;
+    }
+    .hero-caption-label {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+    .hero-caption-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 24px 0 24px auto;
+    }
+    .hero-caption-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 19px;
+      line-height: 1.4;
+      color: var(--text);
+    }
+    .hero-caption-cite {
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 16px;
+    }
+
+    /* Floating editorial badge over hero image */
+    .hero-badge {
+      position: absolute;
+      bottom: 48px;
+      right: 48px;
+      z-index: 3;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 18px 22px;
+      max-width: 280px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+    .hero-badge-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 4px rgba(201,169,110,.18);
+      animation: pulse 2.4s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 4px rgba(201,169,110,.18); }
+      50%     { box-shadow: 0 0 0 9px rgba(201,169,110,.05); }
+    }
+    .hero-badge-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .hero-badge-sub {
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Decorative floral SVG overlay */
+    .hero-deco {
+      position: absolute;
+      bottom: 40px;
+      left: 40px;
+      z-index: 2;
+    }
+
+    /* Subtle ambient glow on hero (gold) */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 40%; right: -10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(201,169,110,.10) 0%, transparent 60%);
+      filter: blur(20px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ─── TRUST BAR ─── */
+    .trust-bar {
+      background: var(--charcoal);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      letter-spacing: .08em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .trust-item strong { color: var(--ivory); }
+    .trust-stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; }
+    .trust-divider {
+      width: 1px;
+      height: 28px;
+      background: var(--border);
+    }
+
+    /* ─── SECTION COMMON ─── */
+    section { padding: 100px 80px; }
+    .section-eyebrow {
+      font-size: 11px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--ivory);
+      margin-bottom: 16px;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 56px;
+    }
+
+    /* ─── SERVICES ─── */
+    .services { background: var(--charcoal); }
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    /* Bento: 3 cols × 4 rows, hero card occupies 2×2 */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 200px;
+      gap: 16px;
+    }
+    .service-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      padding: 32px 32px 28px;
+      transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .25s, background .25s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 100% 0%, rgba(201,169,110,.10) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity .3s;
+      pointer-events: none;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+    }
+    .service-card:hover::before { opacity: 1; }
+
+    /* Hero card — first one spans 2×2 */
+    .service-card.service-card--hero {
+      grid-column: span 2;
+      grid-row: span 2;
+      padding: 48px;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(201,169,110,.12) 0%, transparent 55%),
+        var(--bg-alt);
+    }
+    .service-card.service-card--hero h3 {
+      font-size: 42px;
+      margin-bottom: 16px;
+    }
+    .service-card.service-card--hero p {
+      font-size: 15px;
+      max-width: 440px;
+    }
+    /* Tall card spans 2 rows (kept for future use) */
+    .service-card.service-card--tall { grid-row: span 2; }
+    /* Wide footer row */
+    .service-card.service-card--wide { grid-column: span 1; }
+
+    .service-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: .2em;
+      color: var(--gold);
+      opacity: .7;
+      line-height: 1;
+    }
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 18px;
+      flex-shrink: 0;
+      transition: background .25s, color .25s;
+    }
+    .service-card:hover .service-icon {
+      background: var(--gold);
+      color: var(--bg);
+    }
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 8px;
+      letter-spacing: -.005em;
+    }
+    .service-card p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .service-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 18px;
+      width: fit-content;
+    }
+    .service-tag::before {
+      content: '';
+      width: 18px; height: 1px;
+      background: var(--gold);
+    }
+    .service-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+
+    /* ─── OFFER STRIP ─── */
+    .offer-strip {
+      background: linear-gradient(135deg, #1a1408 0%, #2a1f0a 50%, #1a1408 100%);
+      border-top: 1px solid var(--gold);
+      border-bottom: 1px solid var(--gold);
+      padding: 36px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .offer-text {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .offer-pct {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .offer-desc strong {
+      display: block;
+      font-size: 16px;
+      color: var(--ivory);
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+    .offer-desc span { font-size: 13px; color: var(--muted); }
+
+    /* ─── PORTFOLIO ─── */
+    .portfolio { background: var(--bg); }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 300px 300px;
+      gap: 12px;
+    }
+    .port-item {
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      transition: border-color .3s, transform .35s cubic-bezier(.2,.7,.2,1);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .port-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at var(--gx,30%) var(--gy,70%), rgba(201,169,110,.10) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity .35s;
+      pointer-events: none;
+    }
+    .port-item:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+    .port-item:hover::before { opacity: 1; }
+    .port-item:first-child {
+      grid-column: 1 / 2;
+      grid-row: 1 / 3;
+      padding: 44px 40px;
+    }
+    .port-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 64px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--gold);
+      opacity: .35;
+      line-height: 1;
+    }
+    .port-item:first-child .port-num { font-size: 96px; }
+    .port-meta {
+      font-size: 10px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .port-meta::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .port-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--text);
+      margin: 14px 0 6px;
+      line-height: 1.15;
+    }
+    .port-item:first-child .port-title {
+      font-size: 38px;
+    }
+    .port-loc {
+      font-size: 13px;
+      color: var(--text-muted);
+      letter-spacing: .04em;
+    }
+    .port-tag {
+      position: absolute;
+      top: 32px; right: 32px;
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 4px 10px;
+    }
+    .port-arrow {
+      position: absolute;
+      bottom: 28px;
+      right: 32px;
+      width: 36px; height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 14px;
+      transition: all .25s;
+    }
+    .port-item:hover .port-arrow {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--bg);
+      transform: rotate(-45deg);
+    }
+    .portfolio-cta {
+      text-align: center;
+      margin-top: 56px;
+    }
+
+    /* ─── BOUQUETS ─── */
+    .bouquets { background: var(--bg-alt); }
+    .bouquets-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .product-card {
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      transition: border-color .3s, transform .35s cubic-bezier(.2,.7,.2,1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-6px);
+    }
+    .product-visual {
+      height: 280px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(201,169,110,.10) 0%, transparent 60%),
+        var(--bg-alt);
+    }
+    /* Stylized monogram letter in middle */
+    .product-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 180px;
+      line-height: 1;
+      color: var(--gold);
+      opacity: .25;
+      transition: opacity .3s, transform .5s cubic-bezier(.2,.7,.2,1);
+    }
+    .product-card:hover .product-mark {
+      opacity: .5;
+      transform: scale(1.08);
+    }
+    .product-num {
+      position: absolute;
+      top: 16px; left: 20px;
+      font-size: 10px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .product-badge {
+      position: absolute;
+      top: 16px; right: 20px;
+      font-size: 9px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 3px 8px;
+    }
+    .product-info { padding: 24px 22px 22px; }
+    .product-info h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+    .product-info .origin {
+      font-size: 10.5px;
+      letter-spacing: .15em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .product-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .product-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .product-price small { font-size: 12px; color: var(--text-muted); font-family: 'Inter', sans-serif; }
+    .product-cta {
+      width: 32px; height: 32px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 13px;
+      transition: all .25s;
+    }
+    .product-card:hover .product-cta {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--bg);
+    }
+
+    /* ─── ABOUT ─── */
+    .about {
+      background: var(--bg);
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 0;
+      padding: 0;
+    }
+    /* Cartouche panel — typographic monogram */
+    .about-cartouche {
+      position: relative;
+      min-height: 640px;
+      padding: 80px 56px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(201,169,110,.10) 0%, transparent 55%),
+        var(--bg-alt);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+    .about-cartouche::before {
+      content: '';
+      position: absolute;
+      top: 32px; left: 32px; right: 32px; bottom: 32px;
+      border: 1px solid var(--border);
+      pointer-events: none;
+    }
+    .about-cartouche::after {
+      content: '';
+      position: absolute;
+      top: 38px; left: 38px;
+      width: 14px; height: 14px;
+      border-top: 1px solid var(--gold);
+      border-left: 1px solid var(--gold);
+    }
+    .cartouche-top, .cartouche-bottom {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .cartouche-est {
+      font-size: 10px;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .cartouche-mono {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(140px, 16vw, 220px);
+      line-height: 1;
+      color: var(--gold);
+      letter-spacing: -.02em;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      margin: auto 0;
+    }
+    .cartouche-line {
+      width: 80px; height: 1px;
+      background: var(--gold);
+      margin: 16px auto;
+    }
+    .cartouche-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--text);
+    }
+    .cartouche-stats {
+      display: flex;
+      justify-content: space-around;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .cartouche-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .cartouche-stat-lbl {
+      font-size: 9px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .about-content {
+      padding: 88px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--bg);
+    }
+    .about-content blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--gold);
+      line-height: 1.4;
+      margin: 28px 0 32px;
+      padding-left: 20px;
+      border-left: 2px solid var(--gold);
+    }
+    .about-content p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .signature {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-style: italic;
+      color: var(--ivory);
+      margin-top: 32px;
+    }
+    .signature small {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-style: normal;
+      margin-top: 4px;
+    }
+
+    /* ─── FAQ ─── */
+    .faq { background: var(--bg); }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 64px;
+    }
+    .faq-item {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px 28px 0;
+      cursor: pointer;
+      position: relative;
+      transition: padding-left .3s;
+    }
+    .faq-item:last-child { border-bottom: 1px solid var(--border); }
+    .faq-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 28px; bottom: 28px;
+      width: 2px;
+      background: var(--gold);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform .35s cubic-bezier(.2,.7,.2,1);
+    }
+    .faq-item.open { padding-left: 24px; }
+    .faq-item.open::before { transform: scaleY(1); }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .faq-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      font-style: italic;
+      color: var(--gold);
+      letter-spacing: .15em;
+      margin-bottom: 6px;
+    }
+    .faq-question h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .faq-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 12px;
+      flex-shrink: 0;
+      transition: all .3s cubic-bezier(.2,.7,.2,1);
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+      color: var(--gold);
+    }
+    .faq-answer {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s cubic-bezier(.2,.7,.2,1), padding .3s;
+      max-width: 80%;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 240px;
+      padding-top: 16px;
+    }
+
+    /* ─── CONTACT ─── */
+    .contact {
+      background: var(--bg-alt);
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 80px;
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 28px; margin-top: 40px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+      transition: border-color .25s;
+    }
+    .form-group:focus-within { border-color: var(--gold); }
+    .form-group label {
+      font-size: 10px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: transparent;
+      border: none;
+      color: var(--text);
+      padding: 6px 0 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      outline: none;
+      resize: none;
+      width: 100%;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-muted);
+      opacity: .55;
+    }
+    .form-group select option { background: var(--bg-card); color: var(--text); }
+    .contact-form .btn-primary { align-self: flex-start; margin-top: 12px; padding: 18px 44px; }
+    .contact-right {}
+    .contact-info { display: flex; flex-direction: column; gap: 28px; margin-top: 32px; }
+    .contact-info-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .ci-icon {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .ci-text strong { display: block; font-size: 13px; color: var(--ivory); margin-bottom: 3px; }
+    .ci-text span { font-size: 13px; color: var(--muted); }
+
+    /* ─── NEWSLETTER ─── */
+    .footer-newsletter {
+      padding: 64px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      border-bottom: 1px solid rgba(201,169,110,.18);
+      background: linear-gradient(135deg, rgba(201,169,110,.06) 0%, transparent 70%);
+    }
+    .newsletter-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px;
+      font-weight: 300;
+      color: var(--ivory);
+      line-height: 1.15;
+      margin: 12px 0 12px;
+    }
+    .newsletter-title em { font-style: italic; color: var(--gold); }
+    .newsletter-sub { color: var(--muted); font-size: 14px; line-height: 1.6; max-width: 440px; }
+    .newsletter-form {
+      display: flex;
+      gap: 12px;
+      align-items: stretch;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+    }
+    .newsletter-form input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--ivory);
+      padding: 14px 0;
+      font-size: 15px;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .newsletter-form input::placeholder { color: var(--muted); }
+    .newsletter-form .btn-primary { padding: 14px 28px; font-size: 11px; }
+    html.light .newsletter-form input { color: var(--gold); }
+    html.light .newsletter-title { color: var(--gold); }
+    html.light .newsletter-sub { color: rgba(201,169,110,.7); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--footer-bg);
+      border-top: 1px solid var(--border);
+      padding: 60px 80px 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      margin-bottom: 16px;
+    }
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-style: italic;
+    }
+    .footer-col h5 {
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-col ul li a:hover { color: var(--ivory); }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .footer-socials { display: flex; gap: 16px; }
+    .footer-socials a {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: all .2s;
+    }
+    .footer-socials a:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ─── UTILITIES ─── */
+    .text-gold { color: var(--gold); }
+    .center { text-align: center; }
+    .center .section-eyebrow { justify-content: center; }
+    .center .section-eyebrow::before { display: none; }
+    .center .section-title { margin: 0 auto 16px; }
+    .center .section-sub { margin: 0 auto 56px; text-align: center; }
+
+    /* ─── SCROLL INDICATOR ─── */
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 80px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      z-index: 3;
+    }
+    .scroll-hint::before {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%,100% { opacity: .4; }
+      50% { opacity: 1; }
+    }
+
+    /* ─── FLORAL DECORATIONS ─── */
+    .floral-deco {
+      position: absolute;
+      opacity: .06;
+      pointer-events: none;
+    }
+
+    /* ─── THEME TOGGLE ─── */
+    .theme-toggle {
+      width: 44px;
+      height: 24px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      position: relative;
+      cursor: pointer;
+      transition: border-color .3s, background .3s;
+      flex-shrink: 0;
+    }
+    .theme-toggle::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--gold);
+      transition: transform .3s, background .3s;
+    }
+    html.light .theme-toggle::after {
+      transform: translateX(20px);
+    }
+    html.light .theme-toggle {
+      background: #e8ddd0;
+      border-color: var(--gold);
+    }
+    .theme-icon {
+      font-size: 14px;
+      cursor: pointer;
+      user-select: none;
+      transition: opacity .2s;
+    }
+    .theme-icon:hover { opacity: .7; }
+
+    /* ─── LIGHT THEME OVERRIDES ─── */
+    /* Elements using hardcoded dark values */
+    html.light footer { background: var(--footer-bg); }
+    html.light footer .footer-logo,
+    html.light footer .footer-col ul li a,
+    html.light footer .footer-bottom,
+    html.light footer .footer-tagline { color: #C9A96E; }
+    html.light footer .footer-col ul li a { color: rgba(201,169,110,.7); }
+    html.light footer .footer-col ul li a:hover { color: #C9A96E; }
+    html.light footer .footer-bottom { color: rgba(201,169,110,.5); }
+    html.light footer .footer-logo span { color: #C9A96E; }
+    html.light footer .footer-socials a { border-color: rgba(201,169,110,.3); color: rgba(201,169,110,.6); }
+
+    html.light .about-img-bg { background: var(--about-bg); }
+    html.light .about-content { background: var(--bg-alt); }
+    html.light .about-content blockquote { color: var(--gold); }
+    html.light .about-content p { color: var(--text-muted); }
+    html.light .about-img-bg::after { color: rgba(168,129,62,.1); }
+    html.light .about-gold-border { border-color: var(--border); }
+    html.light .about { background: var(--bg); }
+
+    html.light .offer-strip { background: var(--offer-bg); border-color: var(--gold); }
+
+    /* light-theme hero handled inline above with image */
+
+    html.light .services { background: var(--bg-alt); }
+    html.light .service-card { background: var(--bg-alt); }
+    html.light .service-card:hover { background: #ebe3d8; }
+    html.light .service-card h3 { color: var(--text); }
+    html.light .service-card p { color: var(--text-muted); }
+    html.light .service-num { color: rgba(168,129,62,.2); }
+    html.light .service-tag { color: var(--gold); border-color: var(--border); }
+
+    html.light .bouquets { background: var(--bg-alt); }
+    html.light .product-card { background: #fff; border-color: rgba(168,129,62,.15); }
+    html.light .product-info h4 { color: var(--text); }
+    html.light .product-price small { color: var(--text-muted); }
+
+    html.light .portfolio { background: var(--bg); }
+
+    html.light .trust-bar { background: var(--bg-alt); }
+
+    html.light .faq { background: var(--bg); }
+    html.light .faq-item { border-color: var(--border); }
+    html.light .faq-question h4 { color: var(--text); }
+
+    html.light .contact { background: var(--bg-alt); }
+    /* form-group inputs are transparent/underline — no light override needed */
+    html.light .form-group select option { background: #fff; color: #1C1714; }
+    html.light .ci-text strong { color: var(--text); }
+
+    html.light nav { box-shadow: 0 1px 24px rgba(0,0,0,.08); }
+    html.light .nav-logo { color: var(--text); }
+    html.light .topbar { background: var(--topbar-bg); color: var(--topbar-text); }
+    html.light .btn-primary { background: var(--gold); color: #fff; }
+    html.light .btn-primary:hover { background: var(--gold-lt); }
+    html.light .hero h1 { color: var(--text); }
+    html.light .hero-sub { color: var(--text-muted); }
+    html.light .btn-ghost { color: var(--text); }
+    html.light .hero-stat-label { color: var(--text-muted); }
+    html.light .section-title { color: var(--text); }
+    html.light .section-sub { color: var(--text-muted); }
+
+    /* contact info block in light */
+    html.light [style*="background:var(--card)"] { background: #fff !important; }
+
+    /* ─── MODAL FORMS ─── */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .modal.is-open { display: flex; }
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(8,8,8,.72);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      animation: fadeIn .25s ease;
+    }
+    html.light .modal-backdrop { background: rgba(28,23,20,.55); }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .modal-panel {
+      position: relative;
+      width: 100%;
+      max-width: 620px;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 48px 48px 40px;
+      animation: slideUp .35s cubic-bezier(.2,.7,.2,1);
+    }
+    .modal-close {
+      position: absolute;
+      top: 18px; right: 18px;
+      width: 36px; height: 36px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s;
+      line-height: 1;
+    }
+    .modal-close:hover { color: var(--gold); border-color: var(--gold); }
+    .modal-source-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 9px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 5px 10px;
+      margin-bottom: 20px;
+    }
+    .modal-source-tag::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+    .modal-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .modal-title em { font-style: italic; color: var(--gold); }
+    .modal-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .modal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .modal-form .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+    .modal-form .form-group {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+      transition: border-color .25s;
+    }
+    .modal-form .form-group:focus-within { border-color: var(--gold); }
+    .modal-form label {
+      font-size: 9.5px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .modal-form input,
+    .modal-form select,
+    .modal-form textarea {
+      background: transparent;
+      border: none;
+      color: var(--text);
+      padding: 4px 0 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      outline: none;
+      resize: none;
+      width: 100%;
+    }
+    .modal-form input::placeholder,
+    .modal-form textarea::placeholder { color: var(--text-muted); opacity: .55; }
+    .modal-form .btn-primary {
+      align-self: flex-start;
+      padding: 16px 38px;
+      margin-top: 8px;
+    }
+    .modal-foot {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 12px;
+      letter-spacing: .04em;
+    }
+
+    /* Thank-you state (replaces form contents) */
+    .thanks-state {
+      text-align: center;
+      padding: 24px 0 12px;
+    }
+    .thanks-icon {
+      width: 64px; height: 64px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 26px;
+      margin: 0 auto 24px;
+      animation: scaleIn .45s cubic-bezier(.2,.7,.2,1);
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(.6); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    .thanks-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px;
+      color: var(--text);
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+    .thanks-title em { font-style: italic; color: var(--gold); }
+    .thanks-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 380px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+    }
+    .thanks-source {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      margin-top: 4px;
+    }
+    .thanks-source strong { color: var(--gold); font-weight: 500; }
+
+    /* Newsletter inline thank-you */
+    .newsletter-thanks {
+      font-size: 14px;
+      color: var(--gold);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      letter-spacing: .02em;
+    }
+
+    /* SVG socials */
+    .footer-socials a {
+      width: 36px; height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(201,169,110,.25);
+      border-radius: 50%;
+      color: var(--gold);
+      transition: all .25s;
+    }
+    .footer-socials a:hover {
+      background: var(--gold);
+      color: var(--bg);
+      border-color: var(--gold);
+    }
+    .footer-socials svg { width: 16px; height: 16px; }
+
+    body.modal-locked { overflow: hidden; }
+
+    /* ════════════════════════════════════════════════════════════
+       RESPONSIVE — large screens / tablet / mobile
+       ════════════════════════════════════════════════════════════ */
+
+    /* Burger button — hidden by default, shown on mobile */
+    .nav-burger {
+      display: none;
+      width: 36px; height: 36px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    .nav-burger span {
+      display: block;
+      width: 22px; height: 1.5px;
+      background: var(--text);
+      transition: transform .3s, opacity .3s;
+    }
+    .nav-burger.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-burger.is-open span:nth-child(2) { opacity: 0; }
+    .nav-burger.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0; right: 0; bottom: 0;
+      background: var(--bg);
+      z-index: 99;
+      padding: 32px 28px 40px;
+      flex-direction: column;
+      gap: 6px;
+      overflow-y: auto;
+    }
+    .mobile-menu.is-open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--text);
+      text-decoration: none;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: -.005em;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu-lang {
+      display: flex;
+      gap: 16px;
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      letter-spacing: .15em;
+    }
+    .mobile-menu-lang a {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      padding: 0;
+      border: none;
+      color: var(--text-muted);
+      letter-spacing: .15em;
+    }
+    .mobile-menu-lang a.active { color: var(--gold); }
+
+    /* ─── LARGE SCREEN (TV / 4K) — cap content width ─── */
+    @media (min-width: 1600px) {
+      section, .topbar, .trust-bar, footer .footer-grid,
+      .footer-newsletter, .footer-bottom { max-width: 1680px; margin-left: auto; margin-right: auto; }
+      .hero h1 { font-size: clamp(56px, 4.5vw, 88px); }
+      .section-title { font-size: clamp(40px, 3.5vw, 64px) !important; }
+    }
+
+    /* ─── TABLET (≤ 1024px) ─── */
+    @media (max-width: 1024px) {
+      /* Section padding */
+      section { padding: 72px 40px; }
+      nav { padding: 0 28px; }
+      .topbar { padding: 8px 28px; font-size: 11px; letter-spacing: .08em; }
+      .topbar span { margin: 0 10px; }
+
+      /* Hero stacked */
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 56px 40px 64px; }
+      .hero-right { min-height: 360px; }
+      .hero h1 { font-size: clamp(36px, 5.6vw, 56px); }
+      .hero-caption { top: 32px; right: 32px; max-width: 220px; }
+      .hero-caption-num { font-size: 48px; }
+      .hero-monogram { right: -20px; bottom: -50px; font-size: clamp(260px, 40vw, 360px); }
+      .hero-badge { bottom: 28px; right: 28px; padding: 14px 18px; max-width: 240px; }
+      .scroll-hint { display: none; }
+
+      /* Trust bar */
+      .trust-bar { padding: 18px 24px; gap: 20px; }
+
+      /* Services bento → 2 columns */
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
+      }
+      .service-card.service-card--hero {
+        grid-column: span 2;
+        grid-row: span 1;
+        padding: 36px;
+      }
+      .service-card.service-card--hero h3 { font-size: 32px; }
+
+      /* Portfolio 2 cols */
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+      }
+      .port-item:first-child {
+        grid-column: 1 / 3;
+        grid-row: auto;
+        min-height: 260px;
+      }
+      .port-item:first-child .port-title { font-size: 30px; }
+      .port-item { min-height: 220px; }
+
+      /* Bouquets 2 cols */
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .product-visual { height: 220px; }
+      .product-mark { font-size: 140px; }
+
+      /* About stack */
+      .about { grid-template-columns: 1fr; }
+      .about-cartouche { min-height: 480px; padding: 64px 40px; }
+      .about-content { padding: 56px 40px; }
+      .cartouche-mono { font-size: clamp(120px, 18vw, 180px); }
+
+      /* FAQ single col */
+      .faq-grid { grid-template-columns: 1fr; gap: 0; }
+
+      /* Contact stack */
+      .contact { grid-template-columns: 1fr; gap: 56px; }
+      .contact-form .form-row { gap: 20px; }
+
+      /* Footer */
+      .footer-newsletter { padding: 48px 40px; grid-template-columns: 1fr; gap: 32px; }
+      .newsletter-title { font-size: 30px; }
+      .footer-grid { padding: 48px 40px; grid-template-columns: 1fr 1fr; gap: 36px 32px; }
+      .footer-bottom { padding: 24px 40px; flex-direction: row; gap: 16px; flex-wrap: wrap; }
+
+      /* Bouquets header */
+      .bouquets-header { flex-direction: column; align-items: flex-start; }
+
+      /* Services header */
+      .services-header { flex-direction: column; align-items: flex-start; }
+      .section-sub { max-width: 100%; }
+
+      /* About cartouche stats — keep horizontal */
+      .cartouche-stats { gap: 24px; }
+    }
+
+    /* Burger appears on ≤ 900 (covers tablet portrait + mobile) */
+    @media (max-width: 900px) {
+      nav .nav-left, nav .nav-right .lang-switch, nav .nav-cta { display: none; }
+      .nav-burger { display: flex; }
+      .nav-right { gap: 12px; }
+    }
+
+    /* ─── MOBILE (≤ 720px) ─── */
+    @media (max-width: 720px) {
+      section { padding: 56px 20px; }
+      nav { padding: 0 20px; height: 64px; }
+      .nav-logo { font-size: 14px; letter-spacing: .15em; }
+      .nav-logo span { font-size: 11px; }
+      .mobile-menu { top: 64px; }
+
+      .topbar { font-size: 10px; letter-spacing: .06em; padding: 7px 16px; line-height: 1.5; }
+      .topbar span { margin: 0 6px; }
+
+      /* Hero */
+      .hero-left { padding: 36px 20px 56px; }
+      .hero h1 { font-size: clamp(30px, 8vw, 44px); margin-bottom: 20px; }
+      .hero-sub { font-size: 14px; margin-bottom: 32px; }
+      .hero-eyebrow { font-size: 10px; margin-bottom: 20px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .hero-actions .btn-primary { width: 100%; text-align: center; }
+      .hero-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 24px;
+        margin-top: 40px;
+        padding-top: 28px;
+      }
+      .hero-stat-num { font-size: 28px; }
+      .hero-stat-label { font-size: 9px; }
+      .hero-right { min-height: 280px; }
+      .hero-monogram { right: -10px; bottom: -30px; font-size: 200px; }
+      .hero-caption { top: 24px; right: 20px; max-width: 200px; }
+      .hero-caption-num { font-size: 38px; }
+      .hero-caption-quote { font-size: 14px; }
+      .hero-badge { bottom: 20px; right: 20px; max-width: 200px; padding: 12px 14px; }
+      .hero-badge-title { font-size: 14px; }
+      .hero-badge-sub { font-size: 9px; }
+
+      /* Trust bar */
+      .trust-bar {
+        padding: 16px 20px;
+        gap: 12px;
+        flex-direction: column;
+        font-size: 10px;
+      }
+      .trust-item { font-size: 10px; gap: 6px; }
+      .trust-divider { display: none; }
+
+      /* Section title */
+      .section-title { font-size: clamp(28px, 7vw, 36px) !important; }
+      .section-eyebrow { font-size: 10px; }
+      .section-sub { font-size: 13px; }
+
+      /* Services bento → 1 column */
+      .services-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        gap: 12px;
+      }
+      .service-card { grid-row: auto !important; grid-column: auto !important; padding: 28px 24px; min-height: 180px; }
+      .service-card.service-card--hero { padding: 32px 24px; }
+      .service-card.service-card--hero h3 { font-size: 28px; }
+      .service-card h3 { font-size: 22px; }
+
+      /* Portfolio 1 col */
+      .portfolio-grid { grid-template-columns: 1fr; grid-template-rows: auto; gap: 12px; }
+      .port-item, .port-item:first-child {
+        grid-column: auto !important; grid-row: auto !important;
+        min-height: 240px;
+        padding: 28px 24px;
+      }
+      .port-item:first-child .port-title { font-size: 26px; }
+      .port-num { font-size: 48px; }
+      .port-item:first-child .port-num { font-size: 64px; }
+
+      /* Bouquets 1 col */
+      .products-grid { grid-template-columns: 1fr; gap: 12px; }
+      .product-visual { height: 200px; }
+      .product-mark { font-size: 120px; }
+
+      /* Offer strip */
+      .offer-strip {
+        flex-direction: column !important;
+        gap: 20px;
+        align-items: flex-start !important;
+        padding: 28px 20px !important;
+      }
+      .offer-pct { font-size: 56px !important; }
+      .offer-strip .btn-primary { width: 100%; text-align: center; }
+
+      /* About */
+      .about-cartouche { min-height: 380px; padding: 48px 28px; }
+      .about-content { padding: 48px 24px; }
+      .about-cartouche::before { top: 20px; left: 20px; right: 20px; bottom: 20px; }
+      .about-cartouche::after { top: 26px; left: 26px; }
+      .cartouche-mono { font-size: clamp(80px, 22vw, 140px); }
+      .about-content blockquote { font-size: 18px; padding-left: 14px; margin: 20px 0 24px; }
+
+      /* FAQ */
+      .faq-item { padding: 22px 18px 22px 0; }
+      .faq-question h4 { font-size: 16px; line-height: 1.35; }
+      .faq-answer { font-size: 13px; max-width: 100%; }
+
+      /* Contact form */
+      .contact-form .form-row { grid-template-columns: 1fr; gap: 22px; }
+      .contact-form { gap: 22px; }
+      .contact-form .btn-primary { width: 100%; text-align: center; }
+
+      /* Footer */
+      .footer-newsletter { padding: 40px 24px; gap: 24px; }
+      .newsletter-title { font-size: 26px; }
+      .newsletter-form { flex-direction: column; gap: 16px; border: none; }
+      .newsletter-form input {
+        border-bottom: 1px solid var(--border);
+        padding: 12px 0;
+      }
+      .newsletter-form .btn-primary { width: 100%; text-align: center; padding: 14px 24px; }
+      .footer-grid { padding: 40px 24px; grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+      .footer-grid > div:first-child { grid-column: span 2; margin-bottom: 12px; }
+      .footer-logo { font-size: 16px; }
+      .footer-tagline { font-size: 12px; }
+      .footer-bottom {
+        padding: 20px 24px;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      /* Modal — full-screen on mobile */
+      .modal { padding: 0; align-items: stretch; }
+      .modal-panel {
+        max-width: 100%;
+        max-height: 100vh;
+        min-height: 100vh;
+        padding: 56px 24px 32px;
+        border: none;
+      }
+      .modal-title { font-size: 26px; }
+      .modal-form .form-row { grid-template-columns: 1fr; gap: 22px; }
+      .modal-form { gap: 20px; }
+      .modal-form .btn-primary { width: 100%; }
+      .modal-close { top: 14px; right: 14px; }
+
+      /* Portfolio CTA */
+      .portfolio-cta { margin-top: 40px; }
+    }
+
+    /* ─── SMALL MOBILE (≤ 380px) ─── */
+    @media (max-width: 380px) {
+      section { padding: 48px 16px; }
+      nav { padding: 0 16px; }
+      .hero-left { padding: 28px 16px 48px; }
+      .hero h1 { font-size: 28px; }
+      .hero-caption { display: none; }
+      .hero-monogram { font-size: 160px; bottom: -20px; }
+      .hero-stats { gap: 16px; }
+      .modal-panel { padding: 48px 18px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  Dostawa w Warszawie w 3h &nbsp;·&nbsp; Aranżacje dla hoteli, restauracji & eventów premium &nbsp;·&nbsp; +48 XXX XXX XXX
+</div>
+
+<!-- NAV -->
+<nav>
+  <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-left">
+    <a href="#" data-form-open="b2b-quote">Dla firm</a>
+    <a href="#bouquets">Bukiety</a>
+    <a href="#" data-form-open="wedding-inquiry">Ślub</a>
+    <a href="#" data-form-open="workshop-inquiry">Warsztaty</a>
+  </div>
+  <a href="#" class="nav-logo">Vittoria<span>&nbsp;·&nbsp;</span>Fiore Gallery</a>
+  <div class="nav-right">
+    <div class="lang-switch">
+      <a href="#" class="active">PL</a>
+      <a href="#">RU</a>
+      <a href="#">EN</a>
+    </div>
+    <button class="theme-toggle" id="themeToggleSwitch" aria-label="Toggle theme"></button>
+    <a href="#contact" class="nav-cta">Kontakt</a>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" data-form-open="b2b-quote">Dla firm</a>
+  <a href="#bouquets">Bukiety</a>
+  <a href="#" data-form-open="wedding-inquiry">Ślub</a>
+  <a href="#" data-form-open="workshop-inquiry">Warsztaty</a>
+  <a href="#portfolio">Realizacje</a>
+  <a href="#about">O Viktorii</a>
+  <a href="#contact">Kontakt</a>
+  <div class="mobile-menu-lang">
+    <a href="#" class="active">PL</a>
+    <a href="#">RU</a>
+    <a href="#">EN</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" style="padding:0; position:relative;">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Fiori che raccontano storie</div>
+    <h1>Luksusowa sztuka kwiatowa dla przestrzeni, które wymagają <em>doskonałości.</em></h1>
+    <p class="hero-sub">Aranżacje kwiatowe dla hoteli, restauracji, salonów samochodowych i eventów premium w Warszawie i całej Polsce.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary" data-form-open="b2b-quote">Porozmawiajmy o współpracy</a>
+      <a href="#bouquets" class="btn-ghost">Zobacz bukiety</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">8+</div>
+        <div class="hero-stat-label">Lat doświadczenia</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">200+</div>
+        <div class="hero-stat-label">Eventów premium</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">50+</div>
+        <div class="hero-stat-label">Hoteli i restauracji</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-placeholder">
+      <div class="hero-monogram">V</div>
+      <div class="hero-caption">
+        <div class="hero-caption-num">98%</div>
+        <div class="hero-caption-label">Klientów powraca</div>
+        <div class="hero-caption-divider"></div>
+        <div class="hero-caption-quote">„Każda kompozycja to dialog między kwiatem a przestrzenią."</div>
+        <div class="hero-caption-cite">— Viktoriya, Founder</div>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <div>
+        <div class="hero-badge-title">Dostępna konsultacja</div>
+        <div class="hero-badge-sub">Odpowiedź w 24h</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <span class="trust-stars">★★★★★</span>
+    <strong>4.9</strong>
+    <span>Google · 182 opinie</span>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><strong>Hotele</strong></div>
+  <div class="trust-item"><strong>Restauracje</strong></div>
+  <div class="trust-item"><strong>Eventy</strong></div>
+  <div class="trust-item"><strong>Wesela</strong></div>
+  <div class="trust-item"><strong>Salony Auto</strong></div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">Warszawa <span>&nbsp;·&nbsp;</span> <strong>cała Polska</strong></div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <div>
+      <div class="section-eyebrow">Oferta premium</div>
+      <h2 class="section-title">Tworzymy dla przestrzeni,<br>które mówią o <em>klasie</em></h2>
+    </div>
+    <p class="section-sub" style="margin:0">Każda aranżacja to indywidualny projekt — dostosowany do charakteru miejsca, sezonu i estetyki marki naszego klienta.</p>
+  </div>
+  <div class="services-grid reveal">
+    <!-- Hero card 2×2 -->
+    <div class="service-card service-card--hero">
+      <div class="service-head">
+        <div class="service-icon">✦</div>
+        <div class="service-num">01 / Flagship</div>
+      </div>
+      <div>
+        <h3>Hotele & SPA</h3>
+        <p>Regularne, kuratorowane kompozycje kwiatowe dla lobby, restauracji hotelowej i stref relaksu. Subskrypcja tygodniowa lub miesięczna z gwarancją świeżości.</p>
+        <span class="service-tag">B2B · abonament</span>
+      </div>
+    </div>
+    <!-- Standard cards -->
+    <div class="service-card">
+      <div class="service-head">
+        <div class="service-icon">◈</div>
+        <div class="service-num">02</div>
+      </div>
+      <div>
+        <h3>Restauracje Fine Dining</h3>
+        <p>Sezonowe aranżacje stołów, kompozycje wejściowe i dekoracje baru.</p>
+        <span class="service-tag">Sezonowe</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-head">
+        <div class="service-icon">◇</div>
+        <div class="service-num">03</div>
+      </div>
+      <div>
+        <h3>Salony Samochodowe</h3>
+        <p>Premium display dla showroomów — Ferrari, Porsche, Mercedes.</p>
+        <span class="service-tag">Luxury display</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-head">
+        <div class="service-icon">❋</div>
+        <div class="service-num">04</div>
+      </div>
+      <div>
+        <h3>Eventy & Konferencje</h3>
+        <p>Ekskluzywna oprawa konferencji, gal i wieczorów specjalnych.</p>
+        <span class="service-tag">Jednorazowe</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-head">
+        <div class="service-icon">✿</div>
+        <div class="service-num">05</div>
+      </div>
+      <div>
+        <h3>Florystyka Ślubna</h3>
+        <p>Kompleksowa oprawa ceremonii, sali weselnej i bukietów.</p>
+        <span class="service-tag">Wesela premium</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-head">
+        <div class="service-icon">⬡</div>
+        <div class="service-num">06</div>
+      </div>
+      <div>
+        <h3>Biura & Przestrzenie</h3>
+        <p>Stałe kompozycje dla biur klasy A i sal konferencyjnych.</p>
+        <span class="service-tag">B2B · cykliczne</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER STRIP -->
+<div class="offer-strip">
+  <div class="offer-text">
+    <div class="offer-pct">−10%</div>
+    <div class="offer-desc">
+      <strong>na pierwszą współpracę B2B</strong>
+      <span>Dla hoteli, restauracji i firm — zapytaj o indywidualną wycenę</span>
+    </div>
+  </div>
+  <a href="#" class="btn-primary" data-form-open="b2b-quote">Zapytaj o wycenę</a>
+</div>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="center reveal" style="margin-bottom:48px">
+    <div class="section-eyebrow">Portfolio</div>
+    <h2 class="section-title">Realizacje, które <em>mówią same</em></h2>
+  </div>
+  <div class="portfolio-grid reveal">
+    <div class="port-item" data-form-open="portfolio-inquiry" data-prefill-project="Lobby Hotelu Bristol — Warszawa">
+      <div class="port-meta">2025 · Flagship</div>
+      <div class="port-num">01</div>
+      <div>
+        <div class="port-title">Lobby<br>Hotelu Bristol</div>
+        <div class="port-loc">Warszawa · cykliczna kompozycja</div>
+      </div>
+      <span class="port-tag">Hotel</span>
+      <div class="port-arrow">→</div>
+    </div>
+    <div class="port-item" data-form-open="portfolio-inquiry" data-prefill-project="Atelier Amaro — Fine Dining">
+      <div class="port-meta">Case 02</div>
+      <div>
+        <div class="port-num">02</div>
+        <div class="port-title">Atelier Amaro</div>
+        <div class="port-loc">Fine Dining · Warszawa</div>
+      </div>
+      <span class="port-tag">Restauracja</span>
+      <div class="port-arrow">→</div>
+    </div>
+    <div class="port-item" data-form-open="portfolio-inquiry" data-prefill-project="Ferrari Showroom — Auto Fus">
+      <div class="port-meta">Case 03</div>
+      <div>
+        <div class="port-num">03</div>
+        <div class="port-title">Ferrari Showroom</div>
+        <div class="port-loc">Auto Fus · premium display</div>
+      </div>
+      <span class="port-tag">Salon Auto</span>
+      <div class="port-arrow">→</div>
+    </div>
+    <div class="port-item" data-form-open="portfolio-inquiry" data-prefill-project="Wesele Pałac w Jabłonnie">
+      <div class="port-meta">Case 04</div>
+      <div>
+        <div class="port-num">04</div>
+        <div class="port-title">Wesele Pałac<br>w Jabłonnie</div>
+        <div class="port-loc">Florystyka pełna</div>
+      </div>
+      <span class="port-tag">Wesele</span>
+      <div class="port-arrow">→</div>
+    </div>
+    <div class="port-item" data-form-open="portfolio-inquiry" data-prefill-project="Gala BNP Paribas — 380 gości">
+      <div class="port-meta">Case 05</div>
+      <div>
+        <div class="port-num">05</div>
+        <div class="port-title">Gala BNP Paribas</div>
+        <div class="port-loc">Event korporacyjny · 380 gości</div>
+      </div>
+      <span class="port-tag">Event</span>
+      <div class="port-arrow">→</div>
+    </div>
+  </div>
+  <div class="portfolio-cta">
+    <a href="#" class="btn-ghost" style="justify-content:center;display:inline-flex">Zobacz pełne portfolio</a>
+  </div>
+</section>
+
+<!-- BOUQUETS -->
+<section class="bouquets" id="bouquets">
+  <div class="bouquets-header reveal">
+    <div>
+      <div class="section-eyebrow">Na zamówienie</div>
+      <h2 class="section-title" style="margin-bottom:8px">Bukiety <em>Bespoke</em></h2>
+      <p class="section-sub" style="max-width:520px">Personalizowane kompozycje z najlepszych kwiatów — Holandia, Ekwador, Kenia. Dostawa w Warszawie w 3 godziny.</p>
+    </div>
+    <a href="#" class="btn-ghost" data-form-open="bouquet-order">Zobacz wszystkie kompozycje</a>
+  </div>
+  <div class="products-grid reveal">
+    <div class="product-card" data-form-open="bouquet-order" data-prefill-product="№ 01 Róże Ekwadorskie — od 290 zł">
+      <div class="product-visual">
+        <span class="product-num">№ 01</span>
+        <span class="product-badge">Bestseller</span>
+        <div class="product-mark">R</div>
+      </div>
+      <div class="product-info">
+        <h4>Róże Ekwadorskie</h4>
+        <div class="origin">Ekwador · 50–101 szt.</div>
+        <div class="product-row">
+          <div class="product-price">od 290 zł <small>/ bukiet</small></div>
+          <div class="product-cta">→</div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-form-open="bouquet-order" data-prefill-product="№ 02 Piwonie Holenderskie — od 340 zł">
+      <div class="product-visual">
+        <span class="product-num">№ 02</span>
+        <span class="product-badge">Sezonowe</span>
+        <div class="product-mark">P</div>
+      </div>
+      <div class="product-info">
+        <h4>Piwonie Holenderskie</h4>
+        <div class="origin">Holandia · sezonowe</div>
+        <div class="product-row">
+          <div class="product-price">od 340 zł <small>/ bukiet</small></div>
+          <div class="product-cta">→</div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-form-open="bouquet-order" data-prefill-product="№ 03 Kompozycja Autorska — od 420 zł">
+      <div class="product-visual">
+        <span class="product-num">№ 03</span>
+        <span class="product-badge">Authorial</span>
+        <div class="product-mark">A</div>
+      </div>
+      <div class="product-info">
+        <h4>Kompozycja Autorska</h4>
+        <div class="origin">Mix premium · seasonal</div>
+        <div class="product-row">
+          <div class="product-price">od 420 zł <small>/ bukiet</small></div>
+          <div class="product-cta">→</div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" data-form-open="bouquet-order" data-prefill-product="№ 04 Hortensje & Orchidee — od 380 zł">
+      <div class="product-visual">
+        <span class="product-num">№ 04</span>
+        <span class="product-badge">Premium</span>
+        <div class="product-mark">H</div>
+      </div>
+      <div class="product-info">
+        <h4>Hortensje & Orchidee</h4>
+        <div class="origin">Holandia · całoroczne</div>
+        <div class="product-row">
+          <div class="product-price">od 380 zł <small>/ bukiet</small></div>
+          <div class="product-cta">→</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="about" id="about">
+  <div class="about-cartouche reveal">
+    <div class="cartouche-top">
+      <div class="cartouche-est">Estd · MMXVII</div>
+    </div>
+    <div class="cartouche-mono">V <span style="font-size:.55em;vertical-align:middle">·</span> F <span style="font-size:.55em;vertical-align:middle">·</span> G</div>
+    <div class="cartouche-bottom">
+      <div class="cartouche-line"></div>
+      <div class="cartouche-tagline">Fiori che raccontano storie</div>
+      <div class="cartouche-stats">
+        <div>
+          <div class="cartouche-stat-num">8+</div>
+          <div class="cartouche-stat-lbl">Lat</div>
+        </div>
+        <div>
+          <div class="cartouche-stat-num">200+</div>
+          <div class="cartouche-stat-lbl">Eventów</div>
+        </div>
+        <div>
+          <div class="cartouche-stat-num">3</div>
+          <div class="cartouche-stat-lbl">Kraje</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about-content reveal">
+    <div class="section-eyebrow">O mnie</div>
+    <h2 class="section-title">Viktoriya —<br><em>Florystka z duszą</em> artysty</h2>
+    <blockquote>„Każdy kwiat opowiada historię. Moją rolą jest sprawić, żeby opowiadał historię Twojej przestrzeni."</blockquote>
+    <p>Jestem Viktoriya — twórczyni Vittoria Fiore Gallery. Inspirowana włoską estetyką i miłością do natury, od lat tworzę luksusowe aranżacje dla najbardziej wymagających przestrzeni w Polsce.</p>
+    <p>Pracuję wyłącznie z kwiatami najwyższej jakości, sprowadzanymi bezpośrednio z Holandii, Ekwadoru i Kenii. Każdy projekt traktuję jak dzieło sztuki — z dbałością o każdy detal.</p>
+    <div class="signature">
+      Viktoriya
+      <small>Founder & Creative Director · Vittoria Fiore Gallery</small>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="center reveal" style="margin-bottom:56px">
+    <div class="section-eyebrow">FAQ</div>
+    <h2 class="section-title">Najczęstsze <em>pytania</em></h2>
+  </div>
+  <div class="faq-grid reveal">
+    <div class="faq-item open">
+      <div class="faq-question">
+        <h4>Jak zamówić regularne dekoracje kwiatowe dla hotelu lub restauracji?</h4>
+        <div class="faq-icon">⌄</div>
+      </div>
+      <div class="faq-answer">Skontaktuj się z nami telefonicznie lub przez formularz. Umówimy bezpłatną konsultację, podczas której omówimy Twoje potrzeby, styl i budżet. Przygotujemy indywidualną ofertę z możliwością abonamentu tygodniowego lub miesięcznego.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        <h4>Ile kosztuje florystyka na event lub konferencję korporacyjną?</h4>
+        <div class="faq-icon">⌄</div>
+      </div>
+      <div class="faq-answer">Cena zależy od skali eventu, rodzaju kompozycji i użytych kwiatów. Wyceny przygotowujemy indywidualnie. Skontaktuj się z nami z opisem eventu — odpiszemy w ciągu 24 godzin.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        <h4>Czy oferujecie aranżacje dla restauracji w Warszawie i poza nią?</h4>
+        <div class="faq-icon">⌄</div>
+      </div>
+      <div class="faq-answer">Tak — obsługujemy klientów w Warszawie z dostawą tego samego dnia, a także w całej Polsce dla eventów i dużych projektów. Skontaktuj się z nami, żeby omówić szczegóły logistyki.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        <h4>Jak działają warsztaty florystyczne Vittoria Fiore?</h4>
+        <div class="faq-icon">⌄</div>
+      </div>
+      <div class="faq-answer">Warsztaty odbywają się w kameralnej atmosferze w małych grupach (do 8 osób). W programie: teoria kompozycji, praca z kwiatami premium i stworzenie własnego bukietu, który zabierasz do domu. Organizujemy też warsztaty dla firm (team-building).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        <h4>Czy dostarczacie kwiaty do domu — subskrypcja tygodniowa?</h4>
+        <div class="faq-icon">⌄</div>
+      </div>
+      <div class="faq-answer">Tak, oferujemy cotygodniową dostawę świeżych kompozycji do domu na terenie Warszawy. Każdy bukiet jest inny — sezonowy i tworzony przez Vikoriyę. Możesz zamówić jednorazowo lub wykupić abonament.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        <h4>Z jakich krajów pochodzą kwiaty Vittoria Fiore Gallery?</h4>
+        <div class="faq-icon">⌄</div>
+      </div>
+      <div class="faq-answer">Pracujemy wyłącznie z kwiatami premium: róże z Ekwadoru i Kenii, piwonie i hortensje z Holandii, egzotyczne gatunki sprowadzane na specjalne zamówienie. Jakość ma dla nas znaczenie — nie idziemy na kompromisy.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-left">
+    <div class="section-eyebrow">Kontakt</div>
+    <h2 class="section-title">Porozmawiajmy<br>o Twojej <em>przestrzeni</em></h2>
+    <p class="section-sub" style="margin-bottom:32px">Opowiedz nam o swoim projekcie. Skontaktujemy się w ciągu 24 godzin z indywidualną propozycją.</p>
+    <form class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Imię i nazwisko</label>
+          <input type="text" placeholder="Jan Kowalski">
+        </div>
+        <div class="form-group">
+          <label>Firma / Hotel / Restauracja</label>
+          <input type="text" placeholder="Nazwa firmy">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Telefon</label>
+          <input type="tel" placeholder="+48 000 000 000">
+        </div>
+        <div class="form-group">
+          <label>Rodzaj współpracy</label>
+          <select>
+            <option value="">Wybierz...</option>
+            <option>Hotel / SPA</option>
+            <option>Restauracja</option>
+            <option>Salon samochodowy</option>
+            <option>Event / Konferencja</option>
+            <option>Ślub</option>
+            <option>Bukiet na zamówienie</option>
+            <option>Warsztaty florystyczne</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Wiadomość</label>
+        <textarea rows="4" placeholder="Opisz krótko swój projekt lub potrzeby..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="align-self:flex-start">Wyślij zapytanie</button>
+    </form>
+  </div>
+  <div class="contact-right">
+    <div class="section-eyebrow">Dane kontaktowe</div>
+    <h3 class="section-title" style="font-size:32px;margin-bottom:8px">Vittoria<br><em>Fiore Gallery</em></h3>
+    <div class="contact-info">
+      <div class="contact-info-item">
+        <div class="ci-icon">✆</div>
+        <div class="ci-text">
+          <strong>Telefon</strong>
+          <span>+48 XXX XXX XXX</span>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ci-icon">✉</div>
+        <div class="ci-text">
+          <strong>Email</strong>
+          <span>hello@vittoriagallery.com</span>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ci-icon">◎</div>
+        <div class="ci-text">
+          <strong>Warszawa</strong>
+          <span>Dostawa · cała Polska na eventy</span>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ci-icon">◷</div>
+        <div class="ci-text">
+          <strong>Godziny</strong>
+          <span>Pon–Pt 9:00–19:00 · Sob 10:00–16:00</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:40px;padding:20px;border:1px solid var(--border);background:var(--card)">
+      <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Języki obsługi</div>
+      <div style="display:flex;gap:12px;font-size:13px;color:var(--muted)">
+        <span>🇵🇱 Polski</span>
+        <span>🇷🇺 Русский</span>
+        <span>🇬🇧 English</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-newsletter reveal">
+    <div class="newsletter-left">
+      <div class="section-eyebrow" style="color:var(--gold)">Newsletter</div>
+      <h3 class="newsletter-title">Zostań w kręgu <em>premium</em></h3>
+      <p class="newsletter-sub">Nowe kompozycje, sezonowe inspiracje i ekskluzywne oferty B2B — raz w miesiącu.</p>
+    </div>
+    <form class="newsletter-form" onsubmit="event.preventDefault()">
+      <input type="email" placeholder="twój@email.com" aria-label="Email">
+      <button type="submit" class="btn-primary">Subskrybuj →</button>
+    </form>
+  </div>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">Vittoria<span>&nbsp;·&nbsp;</span>Fiore Gallery</div>
+      <p class="footer-tagline">Luksusowe aranżacje kwiatowe<br>dla przestrzeni, które wymagają doskonałości.<br><br><em style="color:var(--gold)">Fiori che raccontano storie.</em></p>
+    </div>
+    <div class="footer-col">
+      <h5>Dla firm</h5>
+      <ul>
+        <li><a href="#" data-form-open="b2b-quote">Hotele & SPA</a></li>
+        <li><a href="#" data-form-open="b2b-quote">Restauracje</a></li>
+        <li><a href="#" data-form-open="b2b-quote">Salony Auto</a></li>
+        <li><a href="#" data-form-open="b2b-quote">Eventy</a></li>
+        <li><a href="#" data-form-open="b2b-quote">Biura</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Oferta</h5>
+      <ul>
+        <li><a href="#" data-form-open="bouquet-order">Bukiety bespoke</a></li>
+        <li><a href="#" data-form-open="wedding-inquiry">Florystyka ślubna</a></li>
+        <li><a href="#" data-form-open="workshop-inquiry">Warsztaty</a></li>
+        <li><a href="#">Dostawa domowa</a></li>
+        <li><a href="#">Portfolio</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Informacje</h5>
+      <ul>
+        <li><a href="#">O Viktorii</a></li>
+        <li><a href="#">Kontakt</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Polityka prywatności</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Vittoria Fiore Gallery. Wszelkie prawa zastrzeżone.</span>
+    <div class="footer-socials">
+      <a href="#" title="Instagram" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r=".9" fill="currentColor"/>
+        </svg>
+      </a>
+      <a href="#" title="Facebook" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.3-.04-1.3-.13-2.45-.13-2.43 0-4.1 1.48-4.1 4.2v2.23H7.7V13h2.75v8h3.05z"/>
+        </svg>
+      </a>
+      <a href="#" title="LinkedIn" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.2 8h4.6v14H.2V8zm7.6 0h4.4v1.9h.1c.6-1.13 2.1-2.32 4.3-2.32 4.6 0 5.5 3 5.5 7V22h-4.6v-6.2c0-1.5 0-3.4-2.1-3.4s-2.4 1.6-2.4 3.3V22H7.8V8z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── MODAL CONTAINER ─── -->
+<div class="modal" id="vfgModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel">
+    <button class="modal-close" data-close aria-label="Zamknij">×</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+  // ── THEME TOGGLE ──
+  const html = document.documentElement;
+  const toggleBtn = document.getElementById('themeToggleSwitch');
+
+  // restore saved preference
+  if (localStorage.getItem('vfg-theme') === 'light') html.classList.add('light');
+
+  toggleBtn.addEventListener('click', () => {
+    html.classList.toggle('light');
+    localStorage.setItem('vfg-theme', html.classList.contains('light') ? 'light' : 'dark');
+  });
+
+  // ── FAQ accordion ──
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-question').addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
+
+  // ── Smooth scroll ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  // ── Scroll-reveal (fade up on enter) ──
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.classList.add('is-visible');
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => io.observe(el));
+
+  // ── MOBILE NAV BURGER ──
+  const burger = document.getElementById('navBurger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (burger && mobileMenu) {
+    burger.addEventListener('click', () => {
+      const open = burger.classList.toggle('is-open');
+      mobileMenu.classList.toggle('is-open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.classList.toggle('modal-locked', open);
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.classList.remove('is-open');
+        mobileMenu.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('modal-locked');
+      });
+    });
+  }
+
+  // ── MODAL FORMS ──
+  // Each form has unique source label so backend (and Viktoriya) knows WHERE the lead came from.
+  const FORM_CONFIGS = {
+    'b2b-quote': {
+      tag: 'B2B · Wycena',
+      title: 'Porozmawiajmy o <em>współpracy</em>',
+      sub: 'Hotele · restauracje · salony auto · biura. Odpiszemy z indywidualną wyceną w ciągu 24h.',
+      fields: [
+        { name: 'name',     label: 'Imię i nazwisko',    type: 'text',  placeholder: 'Jan Kowalski', required: true, half: true },
+        { name: 'company',  label: 'Firma / hotel',      type: 'text',  placeholder: 'Nazwa firmy', required: true, half: true },
+        { name: 'email',    label: 'Email',              type: 'email', placeholder: 'kontakt@firma.pl', required: true, half: true },
+        { name: 'phone',    label: 'Telefon',            type: 'tel',   placeholder: '+48 ___ ___ ___', required: true, half: true },
+        { name: 'business', label: 'Rodzaj działalności', type: 'select', options: ['Hotel / SPA','Restauracja','Salon samochodowy','Biuro / Coworking','Event / Konferencja','Inne'], required: true },
+        { name: 'address',  label: 'Adres / lokalizacja montażu', type: 'text', placeholder: 'ul. Marszałkowska 1, Warszawa' },
+        { name: 'message',  label: 'O projekcie', type: 'textarea', placeholder: 'Opisz krótko potrzeby, częstotliwość, budżet…', rows: 3 }
+      ],
+      submit: 'Wyślij zapytanie',
+      thanksTitle: 'Dziękujemy <em>za zapytanie</em>',
+      thanksSub: 'Skontaktujemy się z Tobą w ciągu 24h z indywidualną wyceną B2B.'
+    },
+    'bouquet-order': {
+      tag: 'Zamówienie · Bukiet',
+      title: 'Twój bukiet <em>bespoke</em>',
+      sub: 'Dostawa w Warszawie w 3 godziny. Poza Warszawą — uzgadniamy indywidualnie.',
+      fields: [
+        { name: 'product',  label: 'Wybrana kompozycja', type: 'text', readonly: true },
+        { name: 'name',     label: 'Imię i nazwisko', type: 'text', required: true, half: true },
+        { name: 'phone',    label: 'Telefon',         type: 'tel',  required: true, half: true, placeholder: '+48 ___ ___ ___' },
+        { name: 'email',    label: 'Email',           type: 'email', required: true },
+        { name: 'address',  label: 'Adres dostawy',   type: 'text', required: true, placeholder: 'ul., nr, kod, miasto' },
+        { name: 'date',     label: 'Data dostawy',    type: 'date', required: true, half: true },
+        { name: 'time',     label: 'Preferowana godzina', type: 'select', options: ['9:00–12:00','12:00–15:00','15:00–18:00','18:00–20:00'], half: true },
+        { name: 'message',  label: 'Komentarz dla florystki', type: 'textarea', placeholder: 'Bilecik, dedykacja, preferencje kolorystyczne…', rows: 2 }
+      ],
+      submit: 'Zamów bukiet',
+      thanksTitle: 'Zamówienie <em>przyjęte</em>',
+      thanksSub: 'Skontaktujemy się z Tobą telefonicznie w ciągu 1h, aby potwierdzić szczegóły dostawy.'
+    },
+    'wedding-inquiry': {
+      tag: 'Florystyka ślubna',
+      title: 'Zaprojektujmy Twój <em>ślub</em>',
+      sub: 'Indywidualny projekt — od bukietu Panny Młodej po dekoracje sali. Bezpłatna konsultacja.',
+      fields: [
+        { name: 'name',     label: 'Imię i nazwisko', type: 'text', required: true, half: true },
+        { name: 'phone',    label: 'Telefon',         type: 'tel',  required: true, half: true },
+        { name: 'email',    label: 'Email',           type: 'email', required: true },
+        { name: 'weddingDate', label: 'Data ślubu', type: 'date', required: true, half: true },
+        { name: 'guests',   label: 'Liczba gości',    type: 'number', placeholder: '80', half: true },
+        { name: 'venue',    label: 'Sala / lokalizacja', type: 'text', placeholder: 'Pałac w Jabłonnie' },
+        { name: 'message',  label: 'O Twojej wizji', type: 'textarea', placeholder: 'Styl, kolory, ulubione kwiaty…', rows: 3 }
+      ],
+      submit: 'Wyślij zapytanie',
+      thanksTitle: 'Gratulujemy <em>i dziękujemy</em>',
+      thanksSub: 'Skontaktujemy się w ciągu 24h, aby umówić bezpłatną konsultację.'
+    },
+    'portfolio-inquiry': {
+      tag: 'Konsultacja · Realizacja',
+      title: 'Porozmawiajmy o <em>projekcie</em>',
+      sub: 'Spodobała Ci się ta realizacja? Stwórzmy podobny projekt dla Twojej przestrzeni.',
+      fields: [
+        { name: 'project',  label: 'Inspirująca realizacja', type: 'text', readonly: true },
+        { name: 'name',     label: 'Imię i nazwisko', type: 'text', required: true, half: true },
+        { name: 'email',    label: 'Email',           type: 'email', required: true, half: true },
+        { name: 'phone',    label: 'Telefon',         type: 'tel',   placeholder: '+48 ___ ___ ___' },
+        { name: 'message',  label: 'Krótko o Twojej przestrzeni', type: 'textarea', rows: 3 }
+      ],
+      submit: 'Umów konsultację',
+      thanksTitle: 'Zapytanie <em>wysłane</em>',
+      thanksSub: 'Odpiszemy w ciągu 24h z propozycją terminu konsultacji.'
+    },
+    'workshop-inquiry': {
+      tag: 'Warsztaty florystyczne',
+      title: 'Zapisz się na <em>warsztaty</em>',
+      sub: 'Małe grupy do 8 osób · własny bukiet do domu · kwiaty premium.',
+      fields: [
+        { name: 'name',     label: 'Imię i nazwisko', type: 'text', required: true, half: true },
+        { name: 'phone',    label: 'Telefon',         type: 'tel',  required: true, half: true },
+        { name: 'email',    label: 'Email',           type: 'email', required: true },
+        { name: 'workshopType', label: 'Rodzaj warsztatu', type: 'select', options: ['Indywidualny','Para','Grupa znajomych','Team-building dla firmy'] },
+        { name: 'persons',  label: 'Liczba osób', type: 'number', placeholder: '2', half: true },
+        { name: 'preferDate', label: 'Preferowana data', type: 'date', half: true },
+        { name: 'message',  label: 'Dodatkowe informacje', type: 'textarea', rows: 2 }
+      ],
+      submit: 'Zarezerwuj termin',
+      thanksTitle: 'Rezerwacja <em>przyjęta</em>',
+      thanksSub: 'Potwierdzimy termin warsztatu w ciągu 24h.'
+    }
+  };
+
+  const modal = document.getElementById('vfgModal');
+  const modalBody = document.getElementById('modalBody');
+
+  function renderField(f) {
+    const id = 'fld_' + f.name;
+    const req = f.required ? ' required' : '';
+    const ro  = f.readonly ? ' readonly' : '';
+    const ph  = f.placeholder ? ` placeholder="${f.placeholder}"` : '';
+    let input;
+    if (f.type === 'textarea') {
+      input = `<textarea id="${id}" name="${f.name}" rows="${f.rows||3}"${ph}${req}></textarea>`;
+    } else if (f.type === 'select') {
+      const opts = ['<option value="">— wybierz —</option>'].concat(
+        f.options.map(o => `<option value="${o}">${o}</option>`)
+      ).join('');
+      input = `<select id="${id}" name="${f.name}"${req}>${opts}</select>`;
+    } else {
+      input = `<input id="${id}" name="${f.name}" type="${f.type}"${ph}${req}${ro}>`;
+    }
+    return `<div class="form-group${f.half ? ' form-group--half' : ''}">
+      <label for="${id}">${f.label}${f.required ? ' *' : ''}</label>
+      ${input}
+    </div>`;
+  }
+
+  function renderForm(sourceKey, prefill = {}) {
+    const cfg = FORM_CONFIGS[sourceKey];
+    if (!cfg) return;
+    // pair adjacent half-fields into rows for nicer 2-col layout
+    const groups = [];
+    let buffer = [];
+    cfg.fields.forEach(f => {
+      if (f.half) {
+        buffer.push(f);
+        if (buffer.length === 2) { groups.push(buffer); buffer = []; }
+      } else {
+        if (buffer.length) { groups.push(buffer); buffer = []; }
+        groups.push([f]);
+      }
+    });
+    if (buffer.length) groups.push(buffer);
+
+    const fieldsHtml = groups.map(grp => {
+      if (grp.length === 2) {
+        return `<div class="form-row">${grp.map(renderField).join('')}</div>`;
+      }
+      return renderField(grp[0]);
+    }).join('');
+
+    modalBody.innerHTML = `
+      <span class="modal-source-tag">${cfg.tag}</span>
+      <h3 class="modal-title" id="modalTitle">${cfg.title}</h3>
+      <p class="modal-sub">${cfg.sub}</p>
+      <form class="modal-form" data-source="${sourceKey}" novalidate>
+        <input type="hidden" name="source" value="${sourceKey}">
+        ${fieldsHtml}
+        <button type="submit" class="btn-primary">${cfg.submit} →</button>
+        <div class="modal-foot">Wysyłając zgadzasz się na kontakt w sprawie zapytania. Twoje dane są bezpieczne.</div>
+      </form>
+    `;
+
+    // prefill values
+    Object.keys(prefill).forEach(k => {
+      const el = modalBody.querySelector(`[name="${k}"]`);
+      if (el) el.value = prefill[k];
+    });
+
+    modalBody.querySelector('form').addEventListener('submit', handleSubmit);
+  }
+
+  function openModal(sourceKey, prefill) {
+    renderForm(sourceKey, prefill);
+    modal.classList.add('is-open');
+    document.body.classList.add('modal-locked');
+    setTimeout(() => {
+      const first = modalBody.querySelector('input:not([readonly]),select,textarea');
+      if (first) first.focus();
+    }, 50);
+  }
+  function closeModal() {
+    modal.classList.remove('is-open');
+    document.body.classList.remove('modal-locked');
+  }
+
+  modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeModal));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // Open modal from any element with data-form-open
+  document.querySelectorAll('[data-form-open]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const source = btn.dataset.formOpen;
+      const prefill = {};
+      // optional prefill via data-prefill-<field> attrs
+      Object.keys(btn.dataset).forEach(k => {
+        if (k.startsWith('prefill')) {
+          const fieldName = k.replace('prefill', '');
+          const lc = fieldName.charAt(0).toLowerCase() + fieldName.slice(1);
+          prefill[lc] = btn.dataset[k];
+        }
+      });
+      openModal(source, prefill);
+    });
+  });
+
+  // Submit handler — shared by modal forms + main contact form
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const source = form.dataset.source || 'unknown';
+    const data = Object.fromEntries(new FormData(form).entries());
+    // backend integration point — for now log to console
+    console.log('[VFG lead]', { source, data, ts: new Date().toISOString() });
+
+    // determine thank-you text
+    const cfg = FORM_CONFIGS[source];
+    const title = cfg ? cfg.thanksTitle : 'Dziękujemy <em>za wiadomość</em>';
+    const sub   = cfg ? cfg.thanksSub   : 'Odpiszemy w ciągu 24h.';
+
+    const thanksHtml = `
+      <div class="thanks-state">
+        <div class="thanks-icon">✓</div>
+        <h3 class="thanks-title">${title}</h3>
+        <p class="thanks-sub">${sub}</p>
+        <div class="thanks-source">Źródło zapytania: <strong>${source}</strong></div>
+      </div>
+    `;
+
+    // For modal — replace modalBody. For inline form — replace form parent.
+    if (form.closest('.modal-form, .modal-panel')) {
+      modalBody.innerHTML = thanksHtml;
+    } else {
+      const wrapper = form.closest('[data-form-wrap]') || form.parentElement;
+      wrapper.innerHTML = thanksHtml;
+    }
+  }
+
+  // Bind main contact form (inline, in contact section)
+  const mainForm = document.querySelector('form.contact-form');
+  if (mainForm) {
+    if (!mainForm.dataset.source) mainForm.dataset.source = 'main-contact';
+    if (!mainForm.querySelector('[name="source"]')) {
+      const h = document.createElement('input');
+      h.type = 'hidden'; h.name = 'source'; h.value = mainForm.dataset.source;
+      mainForm.appendChild(h);
+    }
+    mainForm.addEventListener('submit', handleSubmit);
+  }
+
+  // Newsletter — small inline thank-you under field
+  const newsletterForm = document.querySelector('.newsletter-form');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = newsletterForm.querySelector('input[type="email"]').value;
+      console.log('[VFG lead]', { source: 'newsletter', data: { email }, ts: new Date().toISOString() });
+      newsletterForm.outerHTML = `<div class="newsletter-thanks">Dziękujemy — jesteś na liście. Pierwszy newsletter wkrótce.</div>`;
+    });
+  }
+</script>
+</body>
+</html>
