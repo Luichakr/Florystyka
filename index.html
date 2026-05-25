@@ -877,12 +877,12 @@
     .products-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      gap: 20px;
     }
     .product-card {
-      border: 1px solid var(--border);
+      border: 1px solid rgba(201,169,110,.18);
       background: var(--bg-card);
-      transition: border-color .3s, transform .35s cubic-bezier(.2,.7,.2,1);
+      transition: border-color .3s, transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;
       cursor: pointer;
       position: relative;
       overflow: hidden;
@@ -890,76 +890,75 @@
       flex-direction: column;
     }
     .product-card:hover {
-      border-color: var(--gold);
+      border-color: rgba(201,169,110,.4);
       transform: translateY(-6px);
+      box-shadow: 0 24px 50px rgba(60, 40, 20, .08);
     }
+    /* Photo placeholder — vertical 4:5 */
     .product-visual {
-      height: 280px;
+      aspect-ratio: 4 / 5;
       position: relative;
       overflow: hidden;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
       background:
-        radial-gradient(circle at 50% 50%, rgba(201,169,110,.10) 0%, transparent 60%),
-        var(--bg-alt);
+        radial-gradient(circle at 50% 55%, rgba(232,220,200,.55) 0%, transparent 60%),
+        linear-gradient(135deg, #ece2d0 0%, #d8c8ad 100%);
     }
-    /* Stylized monogram letter in middle */
-    .product-mark {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: 180px;
-      line-height: 1;
-      color: var(--gold);
-      opacity: .25;
-      transition: opacity .3s, transform .5s cubic-bezier(.2,.7,.2,1);
-    }
-    .product-card:hover .product-mark {
-      opacity: .5;
-      transform: scale(1.08);
+    .product-visual::after {
+      /* subtle ribbon shadow at bottom of placeholder */
+      content: '';
+      position: absolute;
+      left: 18%; right: 18%; bottom: 12%;
+      height: 18px;
+      background: radial-gradient(ellipse, rgba(201,169,110,.18) 0%, transparent 65%);
+      filter: blur(3px);
     }
     .product-num {
       position: absolute;
       top: 16px; left: 20px;
+      z-index: 2;
       font-size: 10px;
-      letter-spacing: .25em;
+      letter-spacing: .28em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--gold);
     }
     .product-badge {
       position: absolute;
       top: 16px; right: 20px;
+      z-index: 2;
       font-size: 9px;
-      letter-spacing: .2em;
+      letter-spacing: .22em;
       text-transform: uppercase;
       color: var(--gold);
       border: 1px solid var(--gold);
-      padding: 3px 8px;
+      padding: 4px 10px;
+      background: rgba(255, 252, 247, .55);
+      backdrop-filter: blur(4px);
     }
-    .product-info { padding: 24px 22px 22px; }
+    .product-info {
+      padding: 22px 22px 20px;
+      background: var(--bg-card);
+    }
     .product-info h4 {
       font-family: 'Cormorant Garamond', serif;
       font-size: 22px;
       font-weight: 400;
       color: var(--text);
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       line-height: 1.2;
     }
     .product-info .origin {
       font-size: 10.5px;
-      letter-spacing: .15em;
+      letter-spacing: .2em;
       color: var(--text-muted);
       text-transform: uppercase;
       margin-bottom: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(201,169,110,.18);
     }
     .product-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
     }
     .product-price {
       font-family: 'Cormorant Garamond', serif;
@@ -967,22 +966,27 @@
       color: var(--gold);
       line-height: 1;
     }
-    .product-price small { font-size: 12px; color: var(--text-muted); font-family: 'Inter', sans-serif; }
+    .product-price small {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      letter-spacing: .04em;
+    }
     .product-cta {
-      width: 32px; height: 32px;
-      border: 1px solid var(--border);
+      width: 34px; height: 34px;
+      border: 1px solid rgba(201,169,110,.4);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-muted);
+      color: var(--gold);
       font-size: 13px;
       transition: all .25s;
     }
     .product-card:hover .product-cta {
       background: var(--gold);
       border-color: var(--gold);
-      color: var(--bg);
+      color: var(--bg-card);
     }
 
     /* ─── ABOUT ─── */
@@ -1120,61 +1124,98 @@
     }
 
     /* ─── FAQ ─── */
-    .faq { background: var(--bg); }
+    .faq {
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Foliage placeholder background — replace later with image */
+    .faq::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 600px 800px at -5% 20%, rgba(201,169,110,.10) 0%, transparent 60%),
+        radial-gradient(ellipse 500px 700px at 105% 75%, rgba(201,169,110,.08) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .faq > * { position: relative; z-index: 1; }
+
+    .faq-ornament {
+      display: flex;
+      justify-content: center;
+      margin: 18px auto 0;
+      color: var(--gold);
+    }
+    .faq-ornament svg { width: 88px; height: 14px; stroke: currentColor; fill: currentColor; }
+
     .faq-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0 64px;
+      gap: 16px 24px;
+      max-width: 1240px;
+      margin: 0 auto;
     }
     .faq-item {
-      border-top: 1px solid var(--border);
-      padding: 28px 24px 28px 0;
+      background: rgba(255, 252, 247, .55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(201,169,110,.18);
+      padding: 22px 24px;
       cursor: pointer;
       position: relative;
-      transition: padding-left .3s;
+      transition: border-color .3s, background .3s;
+      display: grid;
+      grid-template-columns: 44px 1fr 24px;
+      gap: 18px;
+      align-items: center;
     }
-    .faq-item:last-child { border-bottom: 1px solid var(--border); }
-    .faq-item::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 28px; bottom: 28px;
-      width: 2px;
+    .faq-item:hover { border-color: rgba(201,169,110,.4); }
+    .faq-item.open {
+      background: rgba(255, 252, 247, .85);
+      border-color: var(--gold);
+      align-items: start;
+    }
+
+    .faq-mark {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .faq-mark .ico { width: 20px; height: 20px; stroke-width: 1.3; }
+    .faq-item.open .faq-mark {
       background: var(--gold);
-      transform: scaleY(0);
-      transform-origin: top;
-      transition: transform .35s cubic-bezier(.2,.7,.2,1);
+      color: var(--bg-card);
     }
-    .faq-item.open { padding-left: 24px; }
-    .faq-item.open::before { transform: scaleY(1); }
+
+    .faq-body {
+      min-width: 0;
+    }
     .faq-question {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-    .faq-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 13px;
-      font-style: italic;
-      color: var(--gold);
-      letter-spacing: .15em;
-      margin-bottom: 6px;
+      flex-direction: column;
     }
     .faq-question h4 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
+      font-size: 17px;
       font-weight: 400;
       color: var(--text);
-      line-height: 1.3;
+      line-height: 1.35;
     }
     .faq-icon {
-      width: 32px;
-      height: 32px;
+      width: 24px;
+      height: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--text-muted);
-      font-size: 12px;
       flex-shrink: 0;
       transition: all .3s cubic-bezier(.2,.7,.2,1);
     }
@@ -1183,18 +1224,65 @@
       color: var(--gold);
     }
     .faq-answer {
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--text-muted);
-      line-height: 1.75;
+      line-height: 1.65;
       max-height: 0;
       overflow: hidden;
       transition: max-height .4s cubic-bezier(.2,.7,.2,1), padding .3s;
-      max-width: 80%;
     }
     .faq-item.open .faq-answer {
-      max-height: 240px;
-      padding-top: 16px;
+      max-height: 360px;
+      padding-top: 14px;
     }
+
+    /* FAQ bottom CTA panel */
+    .faq-cta {
+      max-width: 1240px;
+      margin: 56px auto 0;
+      padding: 32px 40px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 28px;
+      align-items: center;
+    }
+    .faq-cta-mark {
+      width: 56px; height: 56px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+    }
+    .faq-cta-mark .ico { width: 22px; height: 22px; stroke-width: 1.3; }
+    .faq-cta-text strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .faq-cta-text span {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .faq-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 32px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      transition: all .25s;
+    }
+    .faq-cta a:hover { background: var(--gold); color: var(--bg-card); }
+    .faq-cta a svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8; }
 
     /* ─── CONTACT ─── */
     .contact {
@@ -1977,7 +2065,6 @@
       /* Bouquets 2 cols */
       .products-grid { grid-template-columns: repeat(2, 1fr); }
       .product-visual { height: 220px; }
-      .product-mark { font-size: 140px; }
 
       /* About stack */
       .about { grid-template-columns: 1fr; }
@@ -2092,7 +2179,6 @@
       /* Bouquets 1 col */
       .products-grid { grid-template-columns: 1fr; gap: 12px; }
       .product-visual { height: 200px; }
-      .product-mark { font-size: 120px; }
 
       /* Offer strip */
       .offer-strip {
@@ -2202,6 +2288,12 @@
 
     <!-- Star (filled for rating) -->
     <symbol id="ico-star" viewBox="0 0 24 24"><polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.5 12 18.2 5.8 21.5 7 14.5 2 9.6 8.9 8.6"/></symbol>
+
+    <!-- Headset (support icon for FAQ CTA) -->
+    <symbol id="ico-headset" viewBox="0 0 24 24"><path d="M3 18v-7a9 9 0 0 1 18 0v7"/><path d="M3 15h3a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-5z"/><path d="M21 15h-3a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-5z"/></symbol>
+
+    <!-- Ornament divider (small filigree) -->
+    <symbol id="ico-ornament" viewBox="0 0 80 12"><path d="M0 6h28"/><path d="M52 6h28"/><circle cx="40" cy="6" r="2"/><path d="M34 6c0-2 2-3 4-3M46 6c0 2-2 3-4 3M34 6c0 2 2 3 4 3M46 6c0-2-2-3-4-3"/></symbol>
 
     <!-- Floral sprig (for offer mark) -->
     <symbol id="ico-sprig" viewBox="0 0 24 24"><path d="M12 22V8"/><path d="M12 12c-2.5-2-3-4-3-5.5C9 5 10.5 4 12 4s3 1 3 2.5c0 1.5-.5 3.5-3 5.5z"/><path d="M12 15c-2-1-3-2-3-3.5"/><path d="M12 15c2-1 3-2 3-3.5"/><path d="M12 18c-1.6-.6-2.5-1.5-2.5-2.5"/><path d="M12 18c1.6-.6 2.5-1.5 2.5-2.5"/></symbol>
@@ -2512,10 +2604,10 @@
   </div>
   <div class="products-grid reveal">
     <div class="product-card" data-form-open="bouquet-order" data-prefill-product="№ 01 Róże Ekwadorskie — od 290 zł">
-      <div class="product-visual">
+      <div class="product-visual" data-photo="bouquet-rozy">
         <span class="product-num">№ 01</span>
         <span class="product-badge">Bestseller</span>
-        <div class="product-mark">R</div>
+        
       </div>
       <div class="product-info">
         <h4>Róże Ekwadorskie</h4>
@@ -2527,10 +2619,10 @@
       </div>
     </div>
     <div class="product-card" data-form-open="bouquet-order" data-prefill-product="№ 02 Piwonie Holenderskie — od 340 zł">
-      <div class="product-visual">
+      <div class="product-visual" data-photo="bouquet-piwonie">
         <span class="product-num">№ 02</span>
         <span class="product-badge">Sezonowe</span>
-        <div class="product-mark">P</div>
+        
       </div>
       <div class="product-info">
         <h4>Piwonie Holenderskie</h4>
@@ -2542,10 +2634,10 @@
       </div>
     </div>
     <div class="product-card" data-form-open="bouquet-order" data-prefill-product="№ 03 Kompozycja Autorska — od 420 zł">
-      <div class="product-visual">
+      <div class="product-visual" data-photo="bouquet-autorska">
         <span class="product-num">№ 03</span>
         <span class="product-badge">Authorial</span>
-        <div class="product-mark">A</div>
+        
       </div>
       <div class="product-info">
         <h4>Kompozycja Autorska</h4>
@@ -2557,10 +2649,10 @@
       </div>
     </div>
     <div class="product-card" data-form-open="bouquet-order" data-prefill-product="№ 04 Hortensje & Orchidee — od 380 zł">
-      <div class="product-visual">
+      <div class="product-visual" data-photo="bouquet-hortensje">
         <span class="product-num">№ 04</span>
         <span class="product-badge">Premium</span>
-        <div class="product-mark">H</div>
+        
       </div>
       <div class="product-info">
         <h4>Hortensje & Orchidee</h4>
@@ -2615,67 +2707,84 @@
 
 <!-- FAQ -->
 <section class="faq" id="faq">
-  <div class="center reveal" style="margin-bottom:56px">
+  <div class="center reveal" style="margin-bottom:48px">
     <div class="section-eyebrow">FAQ</div>
     <h2 class="section-title">Najczęstsze <em>pytania</em></h2>
+    <div class="faq-ornament"><svg viewBox="0 0 80 12"><use href="#ico-ornament"/></svg></div>
   </div>
   <div class="faq-grid reveal">
     <div class="faq-item open">
-      <div class="faq-question">
-        <h4>Jak działa abonament florystyczny dla hotelu lub restauracji?</h4>
-        <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
+      <div class="faq-mark"><svg class="ico"><use href="#ico-sprig"/></svg></div>
+      <div class="faq-body">
+        <div class="faq-question"><h4>Jak działa abonament florystyczny dla hotelu lub restauracji?</h4></div>
+        <div class="faq-answer">Po bezpłatnej konsultacji przygotowujemy projekt kompozycji dopasowany do Twojej przestrzeni i marki. Świeże aranżacje dostarczamy i wymieniamy 1–2 razy w tygodniu — zawsze przed otwarciem lokalu, dyskretnie, niewidocznie dla gości. Codziennie dbamy o estetykę i czystość kompozycji. Abonament zawieramy na 3, 6 lub 12 miesięcy z gwarancją stałej ceny.</div>
       </div>
-      <div class="faq-answer">Po bezpłatnej konsultacji przygotowujemy projekt kompozycji dopasowany do Twojej przestrzeni i marki. Świeże aranżacje dostarczamy i wymieniamy 1–2 razy w tygodniu — zawsze przed otwarciem lokalu, dyskretnie, niewidocznie dla gości. Codziennie dbamy o estetykę i czystość kompozycji. Abonament zawieramy na 3, 6 lub 12 miesięcy z gwarancją stałej ceny.</div>
+      <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
     </div>
     <div class="faq-item">
-      <div class="faq-question">
-        <h4>Ile kosztuje aranżacja kwiatowa dla biznesu — od jakiej kwoty?</h4>
-        <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
+      <div class="faq-mark"><svg class="ico"><use href="#ico-sprig"/></svg></div>
+      <div class="faq-body">
+        <div class="faq-question"><h4>Ile kosztuje aranżacja kwiatowa dla biznesu — od jakiej kwoty?</h4></div>
+        <div class="faq-answer">Wycena zależy od skali projektu, częstotliwości i sezonu. Abonament B2B startuje od ~800 zł/tydzień za pojedynczą kompozycję recepcyjną. Pełna oprawa hotelu klasy 5★ to indywidualna wycena — zazwyczaj 4 000–15 000 zł/miesiąc. Eventy: od 3 500 zł. Pierwsza konsultacja i wycena są darmowe.</div>
       </div>
-      <div class="faq-answer">Wycena zależy od skali projektu, częstotliwości i sezonu. Abonament B2B startuje od ~800 zł/tydzień za pojedynczą kompozycję recepcyjną. Pełna oprawa hotelu klasy 5★ to indywidualna wycena — zazwyczaj 4 000–15 000 zł/miesiąc. Eventy: od 3 500 zł. Pierwsza konsultacja i wycena są darmowe.</div>
+      <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
     </div>
     <div class="faq-item">
-      <div class="faq-question">
-        <h4>Jak szybko dostarczacie kwiaty w Warszawie?</h4>
-        <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
+      <div class="faq-mark"><svg class="ico"><use href="#ico-sprig"/></svg></div>
+      <div class="faq-body">
+        <div class="faq-question"><h4>Jak szybko dostarczacie kwiaty w Warszawie?</h4></div>
+        <div class="faq-answer">Bukiety bespoke — dostawa w 3 godziny od potwierdzenia zamówienia (Warszawa, w godzinach pracy). Cała Polska — dostawa następnego dnia. Dla eventów i ślubów ustalamy indywidualny harmonogram montażu zwykle 24–48h przed wydarzeniem. Aranżacje B2B dowozimy w ustalonych dniach tygodnia.</div>
       </div>
-      <div class="faq-answer">Bukiety bespoke — dostawa w 3 godziny od potwierdzenia zamówienia (Warszawa, w godzinach pracy). Cała Polska — dostawa następnego dnia. Dla eventów i ślubów ustalamy indywidualny harmonogram montażu zwykle 24–48h przed wydarzeniem. Aranżacje B2B dowozimy w ustalonych dniach tygodnia.</div>
+      <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
     </div>
     <div class="faq-item">
-      <div class="faq-question">
-        <h4>Z jakich kwiatów pracujecie i skąd je sprowadzacie?</h4>
-        <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
+      <div class="faq-mark"><svg class="ico"><use href="#ico-sprig"/></svg></div>
+      <div class="faq-body">
+        <div class="faq-question"><h4>Z jakich kwiatów pracujecie i skąd je sprowadzacie?</h4></div>
+        <div class="faq-answer">Pracujemy wyłącznie z kwiatami premium, sprowadzanymi bezpośrednio z aukcji w Holandii (FloraHolland), z farm w Ekwadorze (róże) i Kenii (sezonowe egzotyki). Codziennie odbieramy świeży towar. Trzymamy najwyższe standardy: kwiat przed wyjazdem do klienta zawsze przechodzi 24h w chłodni — gwarantuje to 7–10 dni życia w wazonie.</div>
       </div>
-      <div class="faq-answer">Pracujemy wyłącznie z kwiatami premium, sprowadzanymi bezpośrednio z aukcji w Holandii (FloraHolland), z farm w Ekwadorze (róże) i Kenii (sezonowe egzotyki). Codziennie odbieramy świeży towar. Trzymamy najwyższe standardy: kwiat przed wyjazdem do klienta zawsze przechodzi 24h w chłodni — gwarantuje to 7–10 dni życia w wazonie.</div>
+      <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
     </div>
     <div class="faq-item">
-      <div class="faq-question">
-        <h4>Z jakim wyprzedzeniem rezerwować florystykę ślubną?</h4>
-        <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
+      <div class="faq-mark"><svg class="ico"><use href="#ico-sprig"/></svg></div>
+      <div class="faq-body">
+        <div class="faq-question"><h4>Z jakim wyprzedzeniem rezerwować florystykę ślubną?</h4></div>
+        <div class="faq-answer">Optymalny czas to 6–9 miesięcy przed datą — wtedy mamy pełną swobodę projektową i gwarancję terminu. Minimum to 3 miesiące. Przyjmujemy maksymalnie 2 śluby tygodniowo, aby zachować jakość. Cykl pracy: konsultacja → moodboard → wycena → zaliczka 30% → próbka kompozycji → montaż w dniu ślubu.</div>
       </div>
-      <div class="faq-answer">Optymalny czas to 6–9 miesięcy przed datą — wtedy mamy pełną swobodę projektową i gwarancję terminu. Minimum to 3 miesiące. Przyjmujemy maksymalnie 2 śluby tygodniowo, aby zachować jakość. Cykl pracy: konsultacja → moodboard → wycena → zaliczka 30% → próbka kompozycji → montaż w dniu ślubu.</div>
+      <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
     </div>
     <div class="faq-item">
-      <div class="faq-question">
-        <h4>Jak działają warsztaty florystyczne i dla kogo są?</h4>
-        <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
+      <div class="faq-mark"><svg class="ico"><use href="#ico-sprig"/></svg></div>
+      <div class="faq-body">
+        <div class="faq-question"><h4>Jak działają warsztaty florystyczne i dla kogo są?</h4></div>
+        <div class="faq-answer">Warsztaty trwają ~3 godziny w studio na Mokotowie, w grupach do 8 osób. W programie: teoria kompozycji włoskiej, dobór kolorów, praca z różami, piwoniami i kwiatami sezonowymi. Zabierasz do domu własny bukiet (~50 łodyg) plus kawę i włoskie słodycze. Cena: 380 zł/osoba. Organizujemy też zamknięte warsztaty firmowe (team-building, integracje, kick-offy) — od 8 do 20 osób.</div>
       </div>
-      <div class="faq-answer">Warsztaty trwają ~3 godziny w studio na Mokotowie, w grupach do 8 osób. W programie: teoria kompozycji włoskiej, dobór kolorów, praca z różami, piwoniami i kwiatami sezonowymi. Zabierasz do domu własny bukiet (~50 łodyg) plus kawę i włoskie słodycze. Cena: 380 zł/osoba. Organizujemy też zamknięte warsztaty firmowe (team-building, integracje, kick-offy) — od 8 do 20 osób.</div>
+      <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
     </div>
     <div class="faq-item">
-      <div class="faq-question">
-        <h4>Jakie są metody płatności i czy wystawiacie faktury VAT?</h4>
-        <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
+      <div class="faq-mark"><svg class="ico"><use href="#ico-sprig"/></svg></div>
+      <div class="faq-body">
+        <div class="faq-question"><h4>Jakie są metody płatności i czy wystawiacie faktury VAT?</h4></div>
+        <div class="faq-answer">Akceptujemy BLIK, karty (Visa/Mastercard), przelew tradycyjny, PayU oraz Przelewy24. Dla klientów B2B — faktura VAT 23% z odroczonym terminem płatności do 14 dni. Przy abonamentach miesięcznych możliwa płatność cykliczna kartą.</div>
       </div>
-      <div class="faq-answer">Akceptujemy BLIK, karty (Visa/Mastercard), przelew tradycyjny, PayU oraz Przelewy24. Dla klientów B2B — faktura VAT 23% z odroczonym terminem płatności do 14 dni. Przy abonamentach miesięcznych możliwa płatność cykliczna kartą.</div>
+      <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
     </div>
     <div class="faq-item">
-      <div class="faq-question">
-        <h4>Co jeśli kompozycja nie spełnia oczekiwań?</h4>
-        <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
+      <div class="faq-mark"><svg class="ico"><use href="#ico-sprig"/></svg></div>
+      <div class="faq-body">
+        <div class="faq-question"><h4>Co jeśli kompozycja nie spełnia oczekiwań?</h4></div>
+        <div class="faq-answer">Dajemy 100% gwarancji satysfakcji. Jeżeli kompozycja nie odpowiada Twoim oczekiwaniom — wymieniamy ją bezpłatnie w ciągu 24h lub zwracamy pieniądze. Każdy bukiet ma 7-dniową gwarancję świeżości. Wystarczy zgłoszenie ze zdjęciem na <a href="mailto:gallery.vittoria@gmail.com" style="color:var(--gold)">gallery.vittoria@gmail.com</a>.</div>
       </div>
-      <div class="faq-answer">Dajemy 100% gwarancji satysfakcji. Jeżeli kompozycja nie odpowiada Twoim oczekiwaniom — wymieniamy ją bezpłatnie w ciągu 24h lub zwracamy pieniądze. Każdy bukiet ma 7-dniową gwarancję świeżości. Wystarczy zgłoszenie ze zdjęciem na <a href="mailto:gallery.vittoria@gmail.com" style="color:var(--gold)">gallery.vittoria@gmail.com</a>.</div>
+      <div class="faq-icon"><svg class="ico"><use href="#ico-chevron-down"/></svg></div>
     </div>
+  </div>
+  <div class="faq-cta reveal">
+    <div class="faq-cta-mark"><svg class="ico"><use href="#ico-headset"/></svg></div>
+    <div class="faq-cta-text">
+      <strong>Nie znalazłaś odpowiedzi na swoje pytanie?</strong>
+      <span>Skontaktuj się z nami — chętnie pomożemy.</span>
+    </div>
+    <a href="#" data-form-open="b2b-quote">Skontaktuj się <svg><use href="#ico-arrow-right"/></svg></a>
   </div>
 </section>
 
