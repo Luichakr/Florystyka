@@ -498,7 +498,7 @@
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-auto-rows: 220px;
+      grid-auto-rows: 260px;
       gap: 18px;
     }
     .service-card {
@@ -524,16 +524,17 @@
       background:
         radial-gradient(circle at 40% 40%, rgba(201,169,110,.18) 0%, transparent 55%),
         linear-gradient(135deg, #e8dccb 0%, #d8c8ad 100%);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       overflow: hidden;
     }
-    .service-photo::after {
-      /* tiny floral mark in placeholder */
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 50%, rgba(201,169,110,.18) 0%, transparent 35%);
-      mix-blend-mode: multiply;
-    }
+    .service-photo[data-photo="service-hotel"]     { background-image: url('service-hotel.jpg'); }
+    .service-photo[data-photo="service-restaurant"]{ background-image: url('service-restaurant.jpg'); }
+    .service-photo[data-photo="service-auto"]      { background-image: url('service-auto.jpg'); }
+    .service-photo[data-photo="service-event"]     { background-image: url('service-event.jpg'); }
+    .service-photo[data-photo="service-wedding"]   { background-image: url('service-wedding.jpg'); }
+    .service-photo[data-photo="service-office"]    { background-image: url('service-office.jpg'); }
     /* Content half — right side */
     .service-content {
       padding: 28px 28px 24px;
@@ -928,7 +929,7 @@
       z-index: 0;
     }
     .product-visual > * { position: relative; z-index: 2; }
-    .product-visual[data-photo="bouquet-rozy"]::before     { background-image: url('bouquet-1.jpg'); transform: scale(1.25); }
+    .product-visual[data-photo="bouquet-rozy"]::before     { background-image: url('bouquet-1.jpg'); transform: scale(1.4); }
     .product-visual[data-photo="bouquet-piwonie"]::before  { background-image: url('bouquet-2.jpg'); }
     .product-visual[data-photo="bouquet-autorska"]::before { background-image: url('bouquet-3.jpg'); }
     .product-visual[data-photo="bouquet-hortensje"]::before{ background-image: url('bouquet-4.jpg'); }
@@ -2495,7 +2496,7 @@
         <div class="service-num">03</div>
         <div>
           <h3>Salony Samochodowe</h3>
-          <p>Premium display dla showroomów — Ferrari, Porsche, Mercedes.</p>
+          <p>Premium display dla showroomów premium klasy.</p>
           <span class="service-tag">Luxury display</span>
         </div>
       </div>
