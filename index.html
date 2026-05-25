@@ -747,7 +747,12 @@
       background:
         radial-gradient(circle at 50% 40%, rgba(232, 220, 200, .14) 0%, transparent 55%),
         linear-gradient(135deg, #2a2018 0%, #14110c 100%);
+      background-size: cover;
+      background-position: center;
       transition: transform .6s cubic-bezier(.2,.7,.2,1);
+    }
+    .port-item[data-photo="portfolio-3"]::before {
+      background: url('portfolio-3.jpg') center/cover no-repeat;
     }
     .port-item:hover::before { transform: scale(1.04); }
     .port-item::after {
@@ -2561,12 +2566,12 @@
       <span class="port-tag">Restauracja</span>
       <div class="port-arrow"><svg class="ico"><use href="#ico-arrow-ur"/></svg></div>
     </div>
-    <div class="port-item" data-form-open="portfolio-inquiry" data-prefill-project="Ferrari Showroom — Auto Fus">
+    <div class="port-item" data-photo="portfolio-3" data-form-open="portfolio-inquiry" data-prefill-project="Mercedes-Benz Showroom">
       <div class="port-meta">Case 03</div>
       <div>
         <div class="port-num">03</div>
-        <div class="port-title">Ferrari Showroom</div>
-        <div class="port-loc">Auto Fus · premium display</div>
+        <div class="port-title">Mercedes-Benz<br>Showroom</div>
+        <div class="port-loc">Premium display dla salonu</div>
       </div>
       <span class="port-tag">Salon Auto</span>
       <div class="port-arrow"><svg class="ico"><use href="#ico-arrow-ur"/></svg></div>
