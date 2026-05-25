@@ -2565,8 +2565,8 @@
   const html = document.documentElement;
   const toggleBtn = document.getElementById('themeToggleSwitch');
 
-  // restore saved preference
-  if (localStorage.getItem('vfg-theme') === 'light') html.classList.add('light');
+  // default theme = light; dark only when user explicitly toggled
+  if (localStorage.getItem('vfg-theme') !== 'dark') html.classList.add('light');
 
   toggleBtn.addEventListener('click', () => {
     html.classList.toggle('light');
