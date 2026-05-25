@@ -991,134 +991,146 @@
 
     /* ─── ABOUT ─── */
     .about {
-      background: var(--bg);
+      background: var(--bg-alt);
       display: grid;
-      grid-template-columns: 5fr 7fr;
-      gap: 0;
-      padding: 0;
+      grid-template-columns: 6fr 5fr;
+      gap: 64px;
+      padding: 80px;
+      align-items: center;
     }
-    /* Cartouche panel — typographic monogram */
-    .about-cartouche {
+    /* Photo column with VFG badge overlay */
+    .about-photo {
       position: relative;
-      min-height: 640px;
-      padding: 80px 56px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(201,169,110,.10) 0%, transparent 55%),
-        var(--bg-alt);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      aspect-ratio: 1 / 1.05;
       overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 55%, rgba(232,220,200,.45) 0%, transparent 65%),
+        linear-gradient(135deg, #e8dccb 0%, #d8c8ad 100%);
     }
-    .about-cartouche::before {
-      content: '';
+    /* Circular VFG badge — top-left overlay */
+    .about-badge {
       position: absolute;
-      top: 32px; left: 32px; right: 32px; bottom: 32px;
-      border: 1px solid var(--border);
-      pointer-events: none;
+      top: 36px;
+      left: 36px;
+      width: 124px;
+      height: 124px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: var(--gold);
+      background: rgba(255, 252, 247, .35);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 2;
     }
-    .about-cartouche::after {
-      content: '';
+    .about-badge-top, .about-badge-bot {
       position: absolute;
-      top: 38px; left: 38px;
-      width: 14px; height: 14px;
-      border-top: 1px solid var(--gold);
-      border-left: 1px solid var(--gold);
-    }
-    .cartouche-top, .cartouche-bottom {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-    }
-    .cartouche-est {
-      font-size: 10px;
+      font-size: 8px;
       letter-spacing: .35em;
       text-transform: uppercase;
-      color: var(--gold);
-    }
-    .cartouche-mono {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(140px, 16vw, 220px);
-      line-height: 1;
-      color: var(--gold);
-      letter-spacing: -.02em;
-      position: relative;
-      z-index: 1;
+      width: 100%;
       text-align: center;
-      margin: auto 0;
+      color: var(--gold);
     }
-    .cartouche-line {
-      width: 80px; height: 1px;
-      background: var(--gold);
-      margin: 16px auto;
-    }
-    .cartouche-tagline {
+    .about-badge-top { top: 14px; }
+    .about-badge-bot { bottom: 14px; }
+    .about-badge-mono {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 18px;
-      color: var(--text);
-    }
-    .cartouche-stats {
-      display: flex;
-      justify-content: space-around;
-      gap: 16px;
-      margin-top: 24px;
-    }
-    .cartouche-stat-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 32px;
       font-weight: 300;
-      color: var(--gold);
+      font-size: 32px;
       line-height: 1;
+      color: var(--gold);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
     }
-    .cartouche-stat-lbl {
-      font-size: 9px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-top: 6px;
-    }
+    .about-badge-mono span { display: block; }
 
     .about-content {
-      padding: 88px 80px;
+      padding: 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background: var(--bg);
+      background: transparent;
+    }
+    .about-content .section-title {
+      font-size: clamp(36px, 3.4vw, 52px);
+      line-height: 1.15;
+      margin-bottom: 28px;
     }
     .about-content blockquote {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 26px;
-      font-weight: 300;
+      font-size: 20px;
+      font-weight: 400;
       font-style: italic;
-      color: var(--gold);
-      line-height: 1.4;
-      margin: 28px 0 32px;
-      padding-left: 20px;
+      color: var(--text);
+      line-height: 1.5;
+      margin: 0 0 28px;
+      padding-left: 22px;
       border-left: 2px solid var(--gold);
     }
     .about-content p {
       font-size: 14px;
-      line-height: 1.8;
-      color: var(--muted);
-      margin-bottom: 16px;
+      line-height: 1.75;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      max-width: 560px;
     }
-    .signature {
+    .about-content p:last-of-type { margin-bottom: 0; }
+
+    /* Stats row at bottom of about-content */
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(201,169,110,.25);
+      max-width: 560px;
+    }
+    .about-stat { text-align: center; }
+    .about-stat-ico {
+      color: var(--gold);
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: center;
+    }
+    .about-stat-ico svg { width: 32px; height: 32px; stroke: currentColor; fill: none; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+    .about-stat-num {
       font-family: 'Cormorant Garamond', serif;
       font-size: 32px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .about-stat-lbl {
+      font-size: 9.5px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .signature {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
       font-style: italic;
-      color: var(--ivory);
+      color: var(--text);
       margin-top: 32px;
     }
     .signature small {
       display: block;
       font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      letter-spacing: .15em;
+      font-size: 10px;
+      letter-spacing: .22em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--text-muted);
       font-style: normal;
       margin-top: 4px;
     }
@@ -2289,6 +2301,11 @@
     <!-- Star (filled for rating) -->
     <symbol id="ico-star" viewBox="0 0 24 24"><polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.5 12 18.2 5.8 21.5 7 14.5 2 9.6 8.9 8.6"/></symbol>
 
+    <!-- Floral stat icons (About section) -->
+    <symbol id="ico-floral-1" viewBox="0 0 32 32"><path d="M16 24V14"/><path d="M16 16c-3-2-4-4-4-6 0-1.5 1.5-3 4-3s4 1.5 4 3c0 2-1 4-4 6z"/><path d="M16 19c-2-1-3-2-3-3.5"/><path d="M16 19c2-1 3-2 3-3.5"/><path d="M16 22c-1.6-.6-2.5-1.5-2.5-2.5"/><path d="M16 22c1.6-.6 2.5-1.5 2.5-2.5"/></symbol>
+    <symbol id="ico-floral-2" viewBox="0 0 32 32"><path d="M16 8a6 6 0 0 1 0 12 6 6 0 0 1 0-12z" transform="rotate(45 16 14)"/><path d="M16 14a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></symbol>
+    <symbol id="ico-floral-3" viewBox="0 0 32 32"><path d="M10 22c0-4 2-7 6-9"/><path d="M11 18c-1.5 0-3-1-3-2.5"/><path d="M13 14c-1.5-.5-2.5-2-2.5-3.5"/><path d="M16 11c-1-1-1-3 0-4.5"/><path d="M19 14c1.5-.5 2.5-2 2.5-3.5"/><path d="M21 18c1.5 0 3-1 3-2.5"/></symbol>
+
     <!-- Headset (support icon for FAQ CTA) -->
     <symbol id="ico-headset" viewBox="0 0 24 24"><path d="M3 18v-7a9 9 0 0 1 18 0v7"/><path d="M3 15h3a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-5z"/><path d="M21 15h-3a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-5z"/></symbol>
 
@@ -2668,39 +2685,35 @@
 
 <!-- ABOUT -->
 <div class="about" id="about">
-  <div class="about-cartouche reveal">
-    <div class="cartouche-top">
-      <div class="cartouche-est">Estd · MMXVII</div>
-    </div>
-    <div class="cartouche-mono">V <span style="font-size:.55em;vertical-align:middle">·</span> F <span style="font-size:.55em;vertical-align:middle">·</span> G</div>
-    <div class="cartouche-bottom">
-      <div class="cartouche-line"></div>
-      <div class="cartouche-tagline">Fiori che raccontano storie</div>
-      <div class="cartouche-stats">
-        <div>
-          <div class="cartouche-stat-num">8+</div>
-          <div class="cartouche-stat-lbl">Lat</div>
-        </div>
-        <div>
-          <div class="cartouche-stat-num">200+</div>
-          <div class="cartouche-stat-lbl">Eventów</div>
-        </div>
-        <div>
-          <div class="cartouche-stat-num">3</div>
-          <div class="cartouche-stat-lbl">Kraje</div>
-        </div>
-      </div>
+  <div class="about-photo reveal" data-photo="about-viktoriya">
+    <div class="about-badge">
+      <div class="about-badge-top">Vittoria Fiore Gallery</div>
+      <div class="about-badge-mono"><span>V . F.</span><span>G</span></div>
+      <div class="about-badge-bot">Estd · MMXVII</div>
     </div>
   </div>
   <div class="about-content reveal">
     <div class="section-eyebrow">O mnie</div>
-    <h2 class="section-title">Viktoriya —<br><em>Florystka z duszą</em> artysty</h2>
+    <h2 class="section-title">Viktoriya —<br><em>Florystka z duszą artysty</em></h2>
     <blockquote>„Każdy kwiat opowiada historię. Moją rolą jest sprawić, żeby opowiadał historię Twojej przestrzeni."</blockquote>
-    <p>Jestem Viktoriya — twórczyni Vittoria Fiore Gallery. Inspirowana włoską estetyką i miłością do natury, od lat tworzę luksusowe aranżacje dla najbardziej wymagających przestrzeni w Polsce.</p>
-    <p>Pracuję wyłącznie z kwiatami najwyższej jakości, sprowadzanymi bezpośrednio z Holandii, Ekwadoru i Kenii. Każdy projekt traktuję jak dzieło sztuki — z dbałością o każdy detal.</p>
-    <div class="signature">
-      Viktoriya
-      <small>Founder & Creative Director · Vittoria Fiore Gallery</small>
+    <p>Jestem Viktoriya — twórczynią Vittoria Fiore Gallery. Inspirują mnie emocje, natura i piękno w najczystszej formie. Od lat tworzę luksusowe aranżacje dla najbardziej wymagających przestrzeni w Polsce.</p>
+    <p>Pracuję wyłącznie z kwiatami najwyższej jakości, sprowadzanymi z Holandii, Ekwadoru i Kenii. Każdy projekt traktuję jak dzieło sztuki — z dbałością o każdy detal.</p>
+    <div class="about-stats">
+      <div class="about-stat">
+        <div class="about-stat-ico"><svg viewBox="0 0 32 32"><use href="#ico-floral-1"/></svg></div>
+        <div class="about-stat-num">8+</div>
+        <div class="about-stat-lbl">Lat<br>doświadczenia</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-ico"><svg viewBox="0 0 32 32"><use href="#ico-floral-2"/></svg></div>
+        <div class="about-stat-num">200+</div>
+        <div class="about-stat-lbl">Zrealizowanych<br>projektów</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-ico"><svg viewBox="0 0 32 32"><use href="#ico-floral-3"/></svg></div>
+        <div class="about-stat-num">3</div>
+        <div class="about-stat-lbl">Kraje, z których<br>pozyskujemy kwiaty</div>
+      </div>
     </div>
   </div>
 </div>
